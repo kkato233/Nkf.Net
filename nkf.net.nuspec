@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Nkf.Net</id>
+    <title>Nkf.Net (x86/x64)</title>
+    <version>0.2.0</version>
+    <authors>kazuchi</authors>
+    <description>nkf を .NET Framework から簡単に利用するためのライブラリです.</description>
+    <language>ja-JP</language>
+    <projectUrl>http://sourceforge.jp/projects/nkf/</projectUrl>
+	<!--
+    <iconUrl>http://system.data.sqlite.org/images/sqlite128.png</iconUrl>
+	-->
+    <licenseUrl>http://sourceforge.jp/softwaremap/trove_list.php?form_cat=195</licenseUrl>
+    <tags>text converter</tags>
+    <copyright>Public Domain</copyright>
+  </metadata>
+  <files>
+    <file src="bin_net20_Release\Nkf.Net.dll" target="lib\net20" />
+    <file src="bin_net20_Release\Nkf.Net.xml" target="lib\net20" />
+	
+    <file src="bin_net40_Release\Nkf.Net.dll" target="lib\net40" />
+    <file src="bin_net40_Release\Nkf.Net.xml" target="lib\net40" />
+
+    <file src="bin_net45_Release\Nkf.Net.dll" target="lib\net45" />
+    <file src="bin_net45_Release\Nkf.Net.xml" target="lib\net45" />
+
+    <file src="bin_net451_Release\Nkf.Net.dll" target="lib\net451" />
+    <file src="bin_net451_Release\Nkf.Net.xml" target="lib\net451" />
+
+    <file src="shared\NativeBinaries\x86\nkf32.dll" target="build\net20\NativeBinaries\x86" />
+    <file src="shared\NativeBinaries\x64\nkf32.dll" target="build\net20\NativeBinaries\x64" />
+
+    <file src="shared\NativeBinaries\x86\nkf32.dll" target="build\net40\NativeBinaries\x86" />
+    <file src="shared\NativeBinaries\x64\nkf32.dll" target="build\net40\NativeBinaries\x64" />
+
+    <file src="shared\NativeBinaries\x86\nkf32.dll" target="build\net45\NativeBinaries\x86" />
+    <file src="shared\NativeBinaries\x64\nkf32.dll" target="build\net45\NativeBinaries\x64" />
+
+    <file src="shared\NativeBinaries\x86\nkf32.dll" target="build\net451\NativeBinaries\x86" />
+    <file src="shared\NativeBinaries\x64\nkf32.dll" target="build\net451\NativeBinaries\x64" />
+	
+    <file src="shared\Nkf.Net.targets" target="build\net20\Nkf.Net.targets" />
+    <file src="shared\Nkf.Net.targets" target="build\net40\Nkf.Net.targets" />
+    <file src="shared\Nkf.Net.targets" target="build\net45\Nkf.Net.targets" />
+    <file src="shared\Nkf.Net.targets" target="build\net451\Nkf.Net.targets" />
+  </files>
+</package>

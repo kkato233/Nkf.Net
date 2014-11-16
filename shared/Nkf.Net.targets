@@ -1,0 +1,68 @@
+<!--
+ *
+ * Nkf.Net.targets -
+ *
+ * WARNING: This MSBuild file requires MSBuild 4.0 features.
+ *
+ * Released to the public domain, use at your own risk!
+ *
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+  ******************************************************************************
+  **                    Native DLL                                            **
+  ******************************************************************************
+  -->
+
+  <ItemGroup>
+    <NativeFiles Condition="'$(MSBuildThisFileDirectory)' != '' And
+                                   HasTrailingSlash('$(MSBuildThisFileDirectory)')"
+                        Include="$(MSBuildThisFileDirectory)**\nkf32.dll" />
+  </ItemGroup>
+
+  <!--
+  ******************************************************************************
+  **                   SQLite Interop Library Build Targets                   **
+  ******************************************************************************
+  -->
+
+  <Target Name="CopyNativeFiles"
+          Condition="'$(CopyNativeFiles)' != 'false' And
+                     '$(OutDir)' != '' And
+                     HasTrailingSlash('$(OutDir)') And
+                     Exists('$(OutDir)')"
+          Inputs="@(NativeFiles)"
+          Outputs="@(NativeFiles -> '$(OutDir)%(RecursiveDir)%(Filename)%(Extension)')">
+    <Copy SourceFiles="@(NativeFiles)"
+          DestinationFiles="@(NativeFiles -> '$(OutDir)%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
+
+  <!--
+  ******************************************************************************
+  -->
+
+  <Target Name="CleanNativeFiles"
+          Condition="'$(CleanNativeFiles)' != 'false' And
+                     '$(OutDir)' != '' And
+                     HasTrailingSlash('$(OutDir)') And
+                     Exists('$(OutDir)')">
+    <Delete Files="@(NativeFiles -> '$(OutDir)%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
+
+  <!--
+  ******************************************************************************
+  **                                Library Build Properties                  **
+  ******************************************************************************
+  -->
+
+  <PropertyGroup>
+    <BuildDependsOn>
+      $(BuildDependsOn);
+      CopyNativeFiles;
+    </BuildDependsOn>
+    <CleanDependsOn>
+      $(CleanDependsOn);
+      CleanNativeFiles;
+    </CleanDependsOn>
+  </PropertyGroup>
+</Project>
