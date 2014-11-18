@@ -3,14 +3,14 @@
   <metadata>
     <id>Nkf.Net</id>
     <title>Nkf.Net (x86/x64)</title>
-    <version>0.2.0</version>
-    <authors>kazuchi</authors>
-    <description>nkf を .NET Framework から簡単に利用するためのライブラリです.</description>
+    <version>0.3.0</version>
+    <authors>kkato233</authors>
+    <description>ものすごく古い漢字コード変換プログラムである nkf を .NET Framework から簡単に利用するためのライブラリです.</description>
     <language>ja-JP</language>
     <projectUrl>https://github.com/kkato233/Nkf.Net/</projectUrl>
     <licenseUrl>https://github.com/kkato233/Nkf.Net/blob/master/MIT-Licence.txt</licenseUrl>
     <tags>text converter</tags>
-    <copyright>Public Domain</copyright>
+    <copyright>MIT Licence</copyright>
   </metadata>
   <files>
     <file src="bin_net20_Release\Nkf.Net.dll" target="lib\net20" />
