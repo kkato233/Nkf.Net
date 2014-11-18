@@ -62,6 +62,7 @@ namespace Nkf.Net
         public static bool NkfConvertSafeWithOption(byte[] outStr, int length, out int bytes, byte[] data, int len,string nkfOption)
         {
             return NkfConvertSafeByGCHandle(outStr, length, out bytes, data, len, nkfOption);
+            //return NkfConvertSafeByAllocHGlobal(outStr, length, out bytes, data, len, nkfOption);
         }
 
         private static bool NkfConvertSafeByAllocHGlobal(byte[] outStr, int length, out int bytes, byte[] data, int len, string nkfOption)
@@ -178,6 +179,7 @@ namespace Nkf.Net
         /// 最後に設定された NkfOption を保存しておく。
         /// (デフォルトは UTF8）
         /// </summary>
+        [ThreadStatic]
         static string _nkfOption = "-w";
 
         private static void SetNkfOptionAtLast()

@@ -58,6 +58,7 @@
     <Compile Include="TestTextReader.cs" />
     <Compile Include="TestWrapNkf.cs" />
     <Compile Include="NkfBaseTest.cs" />
+    <Compile Include="ThreadTest.cs" />
     <Compile Include="UUCodec.cs" />
   </ItemGroup>
   <ItemGroup>
