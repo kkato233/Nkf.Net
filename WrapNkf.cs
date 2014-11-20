@@ -186,6 +186,7 @@ namespace Nkf.Net
         {
             if (_nkfOption != null)
             {
+                Console.WriteLine("Option:" + _nkfOption);
                 NativeMethods.SetNkfOption(_nkfOption);
             }
         }

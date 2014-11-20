@@ -97,138 +97,9 @@ AZ+J%Z:N/Z8JM"N>VNNFZEPKIM(D)Y+B*Z:"8Y+J8"0D*
 
 'YI:.Z)>D"@``
 
-# From JIS
 
-print "JIS  to JIS ...";&test("$nkf -j",$example{'jis'},$example{'jis'});
-print "JIS  to SJIS...";&test("$nkf -s",$example{'jis'},$example{'sjis'});
-print "JIS  to EUC ...";&test("$nkf -e",$example{'jis'},$example{'euc'});
-print "JIS  to UTF8...";&test("$nkf -w",$example{'jis'},$example{'utf8N'});
-print "JIS  to U16L...";&test("$nkf -w16L",$example{'jis'},$example{'u16L'});
-print "JIS  to U16B...";&test("$nkf -w16B",$example{'jis'},$example{'u16B'});
-print "JIS  to JIS ...";&test("$nkf --ic=iso-2022-jp --oc=iso-2022-jp"	,$example{'jis'},$example{'jis'});
-print "JIS  to SJIS...";&test("$nkf --ic=iso-2022-jp --oc=shift_jis"	,$example{'jis'},$example{'sjis'});
-print "JIS  to EUC ...";&test("$nkf --ic=iso-2022-jp --oc=euc-jp"	,$example{'jis'},$example{'euc'});
-print "JIS  to UTF8...";&test("$nkf --ic=iso-2022-jp --oc=utf-8n"	,$example{'jis'},$example{'utf8N'});
-print "JIS  to U16L...";&test("$nkf --ic=iso-2022-jp --oc=utf-16le-bom",$example{'jis'},$example{'u16L'});
-print "JIS  to U16B...";&test("$nkf --ic=iso-2022-jp --oc=utf-16be-bom",$example{'jis'},$example{'u16B'});
+@amb
 
-# From SJIS
-
-print "SJIS to JIS ...";&test("$nkf -j",$example{'sjis'},$example{'jis'});
-print "SJIS to SJIS...";&test("$nkf -s",$example{'sjis'},$example{'sjis'});
-print "SJIS to EUC ...";&test("$nkf -e",$example{'sjis'},$example{'euc'});
-print "SJIS to UTF8...";&test("$nkf -w",$example{'sjis'},$example{'utf8N'});
-print "SJIS to U16L...";&test("$nkf -w16L",$example{'sjis'},$example{'u16L'});
-print "SJIS to U16B...";&test("$nkf -w16B",$example{'sjis'},$example{'u16B'});
-print "SJIS to JIS ...";&test("$nkf --ic=shift_jis --oc=iso-2022-jp"	,$example{'sjis'},$example{'jis'});
-print "SJIS to SJIS...";&test("$nkf --ic=shift_jis --oc=shift_jis"	,$example{'sjis'},$example{'sjis'});
-print "SJIS to EUC ...";&test("$nkf --ic=shift_jis --oc=euc-jp"	,$example{'sjis'},$example{'euc'});
-print "SJIS to UTF8...";&test("$nkf --ic=shift_jis --oc=utf-8n"	,$example{'sjis'},$example{'utf8N'});
-print "SJIS to U16L...";&test("$nkf --ic=shift_jis --oc=utf-16le-bom"	,$example{'sjis'},$example{'u16L'});
-print "SJIS to U16B...";&test("$nkf --ic=shift_jis --oc=utf-16be-bom"	,$example{'sjis'},$example{'u16B'});
-
-# From EUC
-
-print "EUC  to JIS ...";&test("$nkf -j",$example{'euc'},$example{'jis'});
-print "EUC  to SJIS...";&test("$nkf -s",$example{'euc'},$example{'sjis'});
-print "EUC  to EUC ...";&test("$nkf -e",$example{'euc'},$example{'euc'});
-print "EUC  to UTF8...";&test("$nkf -w",$example{'euc'},$example{'utf8N'});
-print "EUC  to U16L...";&test("$nkf -w16L",$example{'euc'},$example{'u16L'});
-print "EUC  to U16B...";&test("$nkf -w16B",$example{'euc'},$example{'u16B'});
-print "EUC  to JIS ...";&test("$nkf --ic=euc-jp --oc=iso-2022-jp"	,$example{'euc'},$example{'jis'});
-print "EUC  to SJIS...";&test("$nkf --ic=euc-jp --oc=shift_jis"	,$example{'euc'},$example{'sjis'});
-print "EUC  to EUC ...";&test("$nkf --ic=euc-jp --oc=euc-jp"	,$example{'euc'},$example{'euc'});
-print "EUC  to UTF8...";&test("$nkf --ic=euc-jp --oc=utf-8n"	,$example{'euc'},$example{'utf8N'});
-print "EUC  to U16L...";&test("$nkf --ic=euc-jp --oc=utf-16le-bom"	,$example{'euc'},$example{'u16L'});
-print "EUC  to U16B...";&test("$nkf --ic=euc-jp --oc=utf-16be-bom"	,$example{'euc'},$example{'u16B'});
-
-# From UTF8
-
-print "UTF8 to JIS ...";&test("$nkf -j",	$example{'utf8N'},$example{'jis'});
-print "UTF8 to SJIS...";&test("$nkf -s",	$example{'utf8N'},$example{'sjis'});
-print "UTF8 to EUC ...";&test("$nkf -e",	$example{'utf8N'},$example{'euc'});
-print "UTF8 to UTF8N..";&test("$nkf -w",	$example{'utf8N'},$example{'utf8N'});
-print "UTF8 to UTF8...";&test("$nkf -w8",	$example{'utf8N'},$example{'utf8'});
-print "UTF8 to UTF8N..";&test("$nkf -w80",	$example{'utf8N'},$example{'utf8N'});
-print "UTF8 to U16L...";&test("$nkf -w16L",	$example{'utf8N'},$example{'u16L'});
-print "UTF8 to U16L0..";&test("$nkf -w16L0",	$example{'utf8N'},$example{'u16L0'});
-print "UTF8 to U16B...";&test("$nkf -w16B",	$example{'utf8N'},$example{'u16B'});
-print "UTF8 to U16B0..";&test("$nkf -w16B0",	$example{'utf8N'},$example{'u16B0'});
-print "UTF8 to JIS ...";&test("$nkf --ic=utf-8 --oc=iso-2022-jp",	$example{'utf8N'},$example{'jis'});
-print "UTF8 to SJIS...";&test("$nkf --ic=utf-8 --oc=shift_jis",	$example{'utf8N'},$example{'sjis'});
-print "UTF8 to EUC ...";&test("$nkf --ic=utf-8 --oc=euc-jp",		$example{'utf8N'},$example{'euc'});
-print "UTF8 to UTF8N..";&test("$nkf --ic=utf-8 --oc=utf-8",		$example{'utf8N'},$example{'utf8N'});
-print "UTF8 to UTF8BOM";&test("$nkf --ic=utf-8 --oc=utf-8-bom",	$example{'utf8N'},$example{'utf8'});
-print "UTF8 to UTF8N..";&test("$nkf --ic=utf-8 --oc=utf-8n",		$example{'utf8N'},$example{'utf8N'});
-print "UTF8 to U16L...";&test("$nkf --ic=utf-8 --oc=utf-16le-bom",	$example{'utf8N'},$example{'u16L'});
-print "UTF8 to U16L0..";&test("$nkf --ic=utf-8 --oc=utf-16le",		$example{'utf8N'},$example{'u16L0'});
-print "UTF8 to U16B...";&test("$nkf --ic=utf-8 --oc=utf-16be-bom",	$example{'utf8N'},$example{'u16B'});
-print "UTF8 to U16B0..";&test("$nkf --ic=utf-8 --oc=utf-16be",		$example{'utf8N'},$example{'u16B0'});
-
-print "UTF8 to UTF8...";&test("$nkf -w","\xf0\xa0\x80\x8b","\xf0\xa0\x80\x8b");
-
-# From JIS
-
-print "JIS  to JIS ...";&test("$nkf -j",$example{'jis1'},$example{'jis1'});
-print "JIS  to SJIS...";&test("$nkf -s",$example{'jis1'},$example{'sjis1'});
-print "JIS  to EUC ...";&test("$nkf -e",$example{'jis1'},$example{'euc1'});
-print "JIS  to UTF8...";&test("$nkf -w",$example{'jis1'},$example{'utf1'});
-
-# From SJIS
-
-print "SJIS to JIS ...";&test("$nkf -j",$example{'sjis1'},$example{'jis1'});
-print "SJIS to SJIS...";&test("$nkf -s",$example{'sjis1'},$example{'sjis1'});
-print "SJIS to EUC ...";&test("$nkf -e",$example{'sjis1'},$example{'euc1'});
-print "SJIS to UTF8...";&test("$nkf -w",$example{'sjis1'},$example{'utf1'});
-
-# From EUC
-
-print "EUC  to JIS ...";&test("$nkf -j",$example{'euc1'},$example{'jis1'});
-print "EUC  to SJIS...";&test("$nkf -s",$example{'euc1'},$example{'sjis1'});
-print "EUC  to EUC ...";&test("$nkf -e",$example{'euc1'},$example{'euc1'});
-print "EUC  to UTF8...";&test("$nkf -w",$example{'euc1'},$example{'utf1'});
-
-# From UTF8
-
-print "UTF8 to JIS ...";&test("$nkf -j",$example{'utf1'},$example{'jis1'});
-print "UTF8 to SJIS...";&test("$nkf -s",$example{'utf1'},$example{'sjis1'});
-print "UTF8 to EUC ...";&test("$nkf -e",$example{'utf1'},$example{'euc1'});
-print "UTF8 to UTF8...";&test("$nkf -w",$example{'utf1'},$example{'utf1'});
-
-# UTF
-sub h {pack("H*",shift)}
-print "SJIS to -w...          ";&test("$nkf -w",h("82A0"),h("E38182"));
-print "SJIS to -w8...         ";&test("$nkf -w8",h("82A0"),h("EFBBBFE38182"));
-print "SJIS to -w80...        ";&test("$nkf -w80",h("82A0"),h("E38182"));
-print "SJIS to UTF-8...       ";&test("$nkf --oc=UTF-8",h("82A0"),h("E38182"));
-print "SJIS to UTF-8N...      ";&test("$nkf --oc=UTF-8N",h("82A0"),h("E38182"));
-print "SJIS to UTF-8-BOM...   ";&test("$nkf --oc=UTF-8-BOM",h("82A0"),h("EFBBBFE38182"));
-print "SJIS to -w16...        ";&test("$nkf -w16",h("82A0"),h("FEFF3042"));
-print "SJIS to UTF-16...      ";&test("$nkf --oc=UTF-16",h("82A0"),h("FEFF3042"));
-print "SJIS to -w16B...       ";&test("$nkf -w16B",h("82A0"),h("FEFF3042"));
-print "SJIS to -w16B0...      ";&test("$nkf -w16B0",h("82A0"),h("3042"));
-print "SJIS to UTF-16BE...    ";&test("$nkf --oc=UTF-16BE",h("82A0"),h("3042"));
-print "SJIS to UTF-16BE-BOM...";&test("$nkf --oc=UTF-16BE-BOM",h("82A0"),h("FEFF3042"));
-print "SJIS to -w16L...       ";&test("$nkf -w16L",h("82A0"),h("FFFE4230"));
-print "SJIS to -w16L0...      ";&test("$nkf -w16L0",h("82A0"),h("4230"));
-print "SJIS to UTF-16LE...    ";&test("$nkf --oc=UTF-16LE",h("82A0"),h("4230"));
-print "SJIS to UTF-16LE-BOM...";&test("$nkf --oc=UTF-16LE-BOM",h("82A0"),h("FFFE4230"));
-print "SJIS to -w32...        ";&test("$nkf -w32",h("82A0"),h("0000FEFF00003042"));
-print "SJIS to UTF-32...      ";&test("$nkf --oc=UTF-32",h("82A0"),h("0000FEFF00003042"));
-print "SJIS to -w32B...       ";&test("$nkf -w32B",h("82A0"),h("0000FEFF00003042"));
-print "SJIS to -w32B0...      ";&test("$nkf -w32B0",h("82A0"),h("00003042"));
-print "SJIS to UTF-32BE...    ";&test("$nkf --oc=UTF-32BE",h("82A0"),h("00003042"));
-print "SJIS to UTF-32BE-BOM...";&test("$nkf --oc=UTF-32BE-BOM",h("82A0"),h("0000FEFF00003042"));
-print "SJIS to -w32L...       ";&test("$nkf -w32L",h("82A0"),h("FFFE000042300000"));
-print "SJIS to -w32L0...      ";&test("$nkf -w32L0",h("82A0"),h("42300000"));
-print "SJIS to UTF-32LE...    ";&test("$nkf --oc=UTF-32LE",h("82A0"),h("42300000"));
-print "SJIS to UTF-32LE-BOM...";&test("$nkf --oc=UTF-32LE-BOM",h("82A0"),h("FFFE000042300000"));
-
-
-print "\nOther Features\n\n";
-# Ambigous Case
-
-$example{'amb'} = unpack('u',<<'eofeof');
 MI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&E
 MPK"QI<*PL:7"L+&EPK"QI<(*I<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*P
 ML:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<(*I<*PL:7"L+&E
@@ -236,9 +107,9 @@ MPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"
 ML+&EPK"QI<(*I<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"Q
 MI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<(*I<*PL:7"L+&EPK"QI<*PL:7"
 ML+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<(*
-eofeof
 
-$example{'amb.euc'} = unpack('u',<<'eofeof');
+@amb.euc
+
 M&R1")4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25"
 M,#$E0C`Q)4(P,25",#$E0C`Q)4(;*$(*&R1")4(P,25",#$E0C`Q)4(P,25"
 M,#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(;
@@ -247,9 +118,9 @@ M,25",#$E0C`Q)4(P,25",#$E0C`Q)4(;*$(*&R1")4(P,25",#$E0C`Q)4(P
 M,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q
 M)4(;*$(*&R1")4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q
 >)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(;*$(*
-eofeof
 
-$example{'amb.sjis'} = unpack('u',<<'eofeof');
+@amb.sjis
+
 M&RA))4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25"
 M,#$E0C`Q)4(P,25",#$E0C`Q)4(;*$(*&RA))4(P,25",#$E0C`Q)4(P,25"
 M,#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(;
@@ -258,123 +129,56 @@ M,25",#$E0C`Q)4(P,25",#$E0C`Q)4(;*$(*&RA))4(P,25",#$E0C`Q)4(P
 M,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q
 M)4(;*$(*&RA))4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q
 >)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(;*$(*
-eofeof
 
-printf "%-40s", "Ambiguous Case.";
-    &test("$nkf -j",$example{'amb'},$example{'amb.euc'});
-
-# Input assumption
-
-printf "%-40s", "SJIS  Input assumption";
-    &test("$nkf -jSx",$example{'amb'},$example{'amb.sjis'});
-
-# UTF8_STR_OF_JIS_SECOND_LEVEL_KANJI
-$example{'utf8_str_of_jis_second_level_kanji'} = "\xe9\xa4\x83\xe5\xad\x90";
-
-printf "%-40s", "UTF8_STR_OF_JIS_SECOND_LEVEL_KANJI";
-    &test("$nkf -w",$example{'utf8_str_of_jis_second_level_kanji'},
-	    $example{'utf8_str_of_jis_second_level_kanji'});
-
-# Broken JIS
-
-printf "%-40s", "Broken JIS";
-    $input = $example{'jis'};
-    $input =~ s/\033//g;
-    &test("$nkf -Be",$input,$example{'euc'});
-printf "%-40s", "Broken JIS is safe on Normal JIS?";
-    $input = $example{'jis'};
-    &test("$nkf -Be",$input,$example{'euc'});
 
 # test_data/cp932
 
-$example{'test_data/cp932'} = unpack('u',<<'eofeof');
+@test_data/cp932
+
 %^D`@_$L`
-eofeof
 
-$example{'test_data/cp932.ans'} = unpack('u',<<'eofeof');
+@test_data/cp932.ans
+
 %_/$@_.X`
-eofeof
 
-printf "%-40s", "test_data/cp932";
-    &test("$nkf -eS",$example{'test_data/cp932'},$example{'test_data/cp932.ans'});
-printf "%-40s", "test_data/cp51932";
-    &test("$nkf --ic=cp932 --oc=cp51932",$example{'test_data/cp932'},$example{'test_data/cp932.ans'});
-
-# test_data/cp932inv
-printf "%-40s", "test_data/cp932inv";
-    &test("$nkf -sE --cp932",$example{'test_data/cp932.ans'},$example{'test_data/cp932'});
 
 # test_data/no-cp932inv
 
-$example{'test_data/no-cp932inv.ans'} = unpack('u',<<'eofeof');
+@test_data/no-cp932inv.ans
+
 %[N\@[NP`
-eofeof
 
-printf "%-40s", "test_data/no-cp932inv";
-    &test("$nkf -sE --no-cp932",$example{'test_data/cp932.ans'},$example{'test_data/no-cp932inv.ans'});
-# JIS X 0212
-$example{'jisx0212_euc'} = "\x8F\xA2\xAF\x8F\xED\xE3";
-$example{'jisx0212_jis'} = "\x1b\x24\x28\x44\x22\x2f\x6d\x63\x1b\x28\x42";
 
-printf "%-40s", "ISO-2022-JP-1 to EUC-JP";
-    &test("$nkf --ic=ISO-2022-JP-1 --oc=EUC-JP",$example{'jisx0212_jis'},$example{'jisx0212_euc'});
-
-printf "%-40s", "EUC-JP to ISO-2022-JP-1";
-    &test("$nkf --ic=EUC-JP --oc=ISO-2022-JP-1",$example{'jisx0212_euc'},$example{'jisx0212_jis'});
 # JIS X 0213
 
-$example{'jisx0213_sjis'} = unpack('u',<<'eofeof');
+@jisx0213_sjis
+
 0@:V(G9ATF)WJIN_W\$#\]```
-eofeof
 
-$example{'jisx0213_euc'} = unpack('u',<<'eofeof');
+
+@jisx0213_euc
+
 2HJ^O_<_5S_WTJ/[YCZ&AC_[V
-eofeof
 
-$example{'jisx0213_jis2000'} = unpack('u',<<'eofeof');
+@jisx0213_jis2000
+
 ;&R0H3R(O+WU/54]]="A^>1LD*%`A(7YV&RA"
-eofeof
-$example{'jisx0213_jis2004'} = unpack('u',<<'eofeof');
+
+@jisx0213_jis2004
+
 ;&R0H42(O+WU/54]]="A^>1LD*%`A(7YV&RA"
-eofeof
 
-$example{'jisx0213_utf8'} = unpack('u',<<'eofeof');
+
+@jisx0213_utf8
+
 :[[R'Y:REY:V!Y;>+Y;>BZ;ZB\*""B?"JFK(`
-eofeof
 
-printf "%-40s", "Shift_JISX0213 to EUC-JISX0213";
-    &test("$nkf --ic=Shift_JISX0213 --oc=EUC-JISX0213",$example{'jisx0213_sjis'},$example{'jisx0213_euc'});
 
-printf "%-40s", "EUC-JISX0213 to Shift_JISX0213";
-    &test("$nkf --ic=EUC-JISX0213 --oc=Shift_JISX0213",$example{'jisx0213_euc'},$example{'jisx0213_sjis'});
-
-printf "%-40s", "ISO-2022-JP-3 to EUC-JISX0213";
-    &test("$nkf --ic=ISO-2022-JP-3 --oc=EUC-JISX0213",$example{'jisx0213_jis2000'},$example{'jisx0213_euc'});
-
-printf "%-40s", "ISO-2022-JP-2004 to EUC-JISX0213";
-    &test("$nkf --ic=ISO-2022-JP-2004 --oc=EUC-JISX0213",$example{'jisx0213_jis2004'},$example{'jisx0213_euc'});
-
-printf "%-40s", "EUC-JISX0213 to ISO-2022-JP-2004";
-    &test("$nkf --ic=EUC-JISX0213 --oc=ISO-2022-JP-2004",$example{'jisx0213_euc'},$example{'jisx0213_jis2004'});
-
-printf "%-40s", "EUC-JISX0213 to UTF-8";
-    &test("$nkf --ic=EUC-JISX0213 -w",$example{'jisx0213_euc'},$example{'jisx0213_utf8'});
-
-printf "%-40s", "UTF-8 to EUC-JISX0213";
-    &test("$nkf -W --oc=EUC-JISX0213",$example{'jisx0213_utf8'},$example{'jisx0213_euc'});
-
-printf "%-40s",  "ISO-2022-JP-{1,3,2004} to UTF-8";
-    &test("$nkf --ic=iso-2022-jp-2004 -w",
-	"\x1b\$B5Y\x1b\$(O~e\x1b\$(Q.!\x1b\$(P#M\x1b\$(D\\e\x1b(B",
-	"\xe4\xbc\x91\xe9\xb7\x97\xe4\xbf\xb1\xe5\x8c\x8b\xe8\xa4\xb1");
-printf "%-40s",  "UTF-8 to ISO-2022-JP-2004";
-    &test("$nkf -W --oc=iso-2022-jp-2004",
-	"\xe4\xbc\x91\xe9\xb7\x97\xe4\xbf\xb1\xe5\x8c\x8b\xe8\xa4\xb1",
-	"\x1b\$(Q5Y~e.!\x1b\$(P#M\x1b(B");
 
 # test_data/jisx0213nonbmp
 
-$example{'test_data/jisx0213nonbmp'} = unpack('u',<<'eofeof');
+@test_data/jisx0213nonbmp
+
 MKJ*OPJ_,K^"O^\_4S^//[O6Z]?+VJ?:R]N#W[/C^^:GYQ_G4^>[ZW?NS^\G[
 M[/S)_-'^YH^AH8^AJX^AKH^AMH^AQH^A\(^A]X^A^8^CHH^CI8^CIX^CL8^C
 MLH^CN(^COX^CP8^CRH^CTH^CTX^CV8^CW(^C]X^DJH^DL8^DLH^DNH^DO8^D
@@ -395,9 +199,10 @@ MT(_ZUX_ZY8_ZYH_Z\8_Z\H_Z_H_[H8_[K(_[K8_[MH_[MX_[O8_[OH_[SH_[
 MSX_[UX_[VH_[W(_[W8_[X8_[Y8_[YX_[Z8_[\8_\HH_\HX_\N(_\PH_\S(_\
 MUH_\V8_\W8_\]H_]K(_]RX_]S(_]V8_]VX_]W8_]YX_][8_]\(_^I8_^J8_^
 =JX_^LH_^M8_^TX_^V(_^VH_^[H_^\(_^\H_^]@H`
-eofeof
 
-$example{'test_data/jisx0213nonbmp.ans'} = unpack('u',<<'eofeof');
+
+@test_data/jisx0213nonbmp.ans
+
 M\*"`B_"AB+WPH8R;\*&1KO"AHKWPH*Z?\*&:M/"AN+3PHX>$\*.7A/"CG+_P
 MHYVC\*.SOO"DG['PI9*.\*64CO"EG;'PI:>$\*6VH?"FJ[_PIKF`\*>#M/"G
 MFH3PJ(FW\*B/C?"JAI#PH(*)\*""HO"@@J3PH(:B\*"(D_"@C*OPH(Z!\*"-
@@ -425,16 +230,12 @@ MF?"HJXWPJ*ND\*BKG?"HKX'PJ*^O\*BTD/"HM;'PJ+>[\*BXG_"HN+;PJ+J)
 M\*B[J_"HO++PJ+^X\*F*H/"IBK'PJ9*0\*F7C_"IF;_PJ9NP\*F<F?"IG9#P
 MJ:.&\*FILO"IMYOPJ;B]\*FXE?"INHKPJ;F)\*F[A/"INZGPJ;N;\*F_CO"J
 K@*_PJH":\*J#N?"J@H+PHHB8\*J.C/"JD+?PJI>Q\*J8@O"JF)KPJIJR"@``
-eofeof
 
-printf "%-40s",  "EUC-JISX0213 to UTF-8 (not in BMP)";
-    &test("$nkf --ic=euc-jisx0213 -w",$example{'test_data/jisx0213nonbmp'},$example{'test_data/jisx0213nonbmp.ans'});
-printf "%-40s",  "UTF-8 to EUC-JISX0213 (not in BMP)";
-    &test("$nkf -W --oc=euc-jisx0213",$example{'test_data/jisx0213nonbmp.ans'},$example{'test_data/jisx0213nonbmp'});
 
 # test_data/jisx0213needx0213_f
 
-$example{'test_data/jisx0213needx0213_f'} = unpack('u',<<'eofeof');
+@test_data/jisx0213needx0213_f
+
 MXH*LPKS#B<.?P['%C<6"Q)C$C<6OR:[%B\63RJ+)FLN0RZ;+GN*=O^*%M^*3
 MFN.+DN.+G^*8GO"@@(OE@(+EA(OCDYOEC:'EC:/EEH;OJ+CEG+/EHJGEI9WE
 MB9WFD[?FF8CFFJ#FGKOFH;+CKK;GI(#OJ8WGIKCOJ97GKYGGL:WGM9SGN8?H
@@ -445,9 +246,9 @@ MG+KHG;+HH(OPIYB4Z*.2Z*6%Y)JAZ*BUY)R,\*>NOO"GMJ#HM(GHN:SDH8[H
 MOK;HO['I@K#IA8;IA9GIB9'PJ*:(Z8N&Z8N[Z8V:Z9")Z96XZ9J]Z9N:Z9Z6
 MZ:"EZ:*\Z:.QZ:6`Z:B@Z:BQZ:NE\*FXO>FOKO"INZGIL:GPJH":Z;:9Z;B"
 -\**(F/"JE['PJIJR"@``
-eofeof
 
-$example{'test_data/jisx0213needx0213_f.ans'} = unpack('u',<<'eofeof');
+@test_data/jisx0213needx0213_f.ans
+
 MJ:&ILZG`J=6IYZG^JJZJOJK,JM6JZZKZJZJKO:O#J]6KX:OQK*JLO*S+K-VL
 MZJW^KJ*NO*[,KMNN[Z[PKZJOMJ_%K]^OZ:_^]:3UN/7$]=CUX_7^^:WYM/G$
 M^='YYOGP^J3ZM/K(^MWZ[?KY^Z'[MOO.^]+[Y_OY_*_\N/S)_-W\[/SPC_.M
@@ -456,130 +257,81 @@ MC_7KC_7TC_:BC_:WC_;!C_;2C_;FC_;PC_>AC_>[C_?.C_?:C_?BC_?\C_BJ
 MC_BSC_C`C_C.C_C8C_CKC_CYC_FOC_FSC_G/C_G<C_GJC_GTC_JHC_J^C_K!
 MC_K=C_KFC_KVC_NDC_NQC_O%C_O2C_OOC_OSC_RDC_R\C_S&C_S2C_SDC_S^
 EC_VAC_VTC_W,C_W8C_WMC_WVC_ZKC_Z\C_[-C_[3C_[NC_[V"@``
-eofeof
 
-printf "%-40s",  "test_data/jisx0213needx0213_f    ";
-    &test("$nkf -W --oc=euc-jisx0213",$example{'test_data/jisx0213needx0213_f'},$example{'test_data/jisx0213needx0213_f.ans'});
 
 # test_data/shift_jisx0213-utf8-need-no-cp932
 
-$example{'test_data/shift_jisx0213-utf8-need-no-cp932'} = unpack('u',<<'eofeof');
+@test_data/shift_jisx0213-utf8-need-no-cp932
+
 M[4#M3NU/[5/M7NU?[6;M;>UO[7#M=^U][7[MA.V-[8_MGNV?[:OMKNVO[;[M
 MO^W"[<[MS^W0[=[MW^WL[>[M[^W[[?SN1>Y.[D_N4>Y>[E_N;>YO[GWN?NZ'
 F[HWNC^Z0[I[NG^ZF[J[NK^ZV[K_NQ^[.[L_NT.[?[NSN[^[[[OP`
-eofeof
 
-$example{'test_data/shift_jisx0213-utf8-need-no-cp932.ans'} = unpack('u',<<'eofeof');
+@test_data/shift_jisx0213-utf8-need-no-cp932.ans
+
 MYZ&#YZ2<YZ2N[ZF-[ZF2[ZF3\*6=L>>HN>>IK>^IE>>KJ^>MCN>MH.^IEN2)
 MI.>QF>>TL>>U@>>WH^>XB.>XD>>_G^>_K.^IF^B%H.B%I^B%J.B*H^B*I.B,
 MHNB,NNB-@^B/A^B/C^B0BNB2M.B2NNB3@NB6HNB6L.B9F^B9HNB>K>B>M>B@
 MG^BCM>^IH.BDF.BHE>BHHNBIN>^IH^BMAN^II.BWCO"HB;?HO93PJ(^-Z+ZF
 /Z8*^Z82BZ82OZ8>[Z8>D
-eofeof
 
-printf "%-40s",  "test_data/shift_jisx0213-utf8-need-no-cp932    ";
-    &test("$nkf --ic=shift_jisx0213 -w",$example{'test_data/shift_jisx0213-utf8-need-no-cp932'},$example{'test_data/shift_jisx0213-utf8-need-no-cp932.ans'});
+@test_data/jisx0213utf8comb
 
-# jisx0213conflict-ibmext
-$example{'shift_jisx0213conflict-ibmext'} = "\x87\x40\xed\x40\xee\xf6\xfa\x52\xfb\x45\xfb\xfc\xfc\x4b";
-$example{'shift_jisx0213conflict-ibmext.x0213utf8'} = "\xe2\x91\xa0\xe7\xa1\x83\xe9\x86\x9e\xe8\xb4\x89\xe9\x8c\x8d\xe9\xa8\xa0\xf0\xa9\xa9\xb2";
-$example{'shift_jisx0213conflict-ibmext.cp932utf8'} = "\xe2\x91\xa0\xe7\xba\x8a\xe2\x85\xb7\xe2\x85\xa8\xe6\xb7\xbc\xe9\xab\x99\xe9\xbb\x91";
-
-printf "%-40s",  "Shift_JISX0213 to UTF-8 (ibmext etc)";
-    &test("$nkf --ic=shift_jisx0213 -w",
-    $example{'shift_jisx0213conflict-ibmext'},
-    $example{'shift_jisx0213conflict-ibmext.x0213utf8'});
-
-printf "%-40s",  "CP932 to UTF-8 (ibmext etc)";
-    &test("$nkf --ic=cp932 -w",
-    $example{'shift_jisx0213conflict-ibmext'},
-    $example{'shift_jisx0213conflict-ibmext.cp932utf8'});
-
-printf "%-40s",  "UTF-8 to Shift_JISX0213 (ibmext etc)";
-    &test("$nkf --oc=shift_jisx0213 -W",
-    $example{'shift_jisx0213conflict-ibmext.x0213utf8'},
-    $example{'shift_jisx0213conflict-ibmext'});
-
-printf "%-40s",  "UTF-8 to CP932 (ibmext etc)";
-    &test("$nkf --oc=cp932 -W --cp932inv",
-    $example{'shift_jisx0213conflict-ibmext.cp932utf8'},
-    "\x87\x40\xfa\x5c\xfa\x47\x87\x5c\xfb\x45\xfb\xfc\xfc\x4b");
-# test_data/jisx0213utf8comb
-
-$example{'test_data/jisx0213utf8comb'} = unpack('u',<<'eofeof');
 MI/>D^*3YI/JD^Z7WI?BE^:7ZI?NE_*7]I?ZF^*O$J\BKR:O*J\NKS*O-J\ZK
 .SZOEJ^:KVJO<J^"KY`H`
-eofeof
 
-$example{'test_data/jisx0213utf8comb.ans'} = unpack('u',<<'eofeof');
+@test_data/jisx0213utf8comb.ans
+
 MXX&+XX*:XX&-XX*:XX&/XX*:XX&1XX*:XX&3XX*:XX*KXX*:XX*MXX*:XX*O
 MXX*:XX*QXX*:XX*SXX*:XX*[XX*:XX.$XX*:XX.(XX*:XX>WXX*:PZ;,@,F4
 MS(#)E,R!RHS,@,J,S(')F<R`R9G,@<F:S(#)FLR!RZG+I<NERZG,@<R`RZ7+
 "J0H`
-eofeof
 
-$example{'test_data/jisx0213utf8combr.ans'} = unpack('u',<<'eofeof');
+
+
+@test_data/jisx0213utf8combr.ans
+
 MI/>D^*3YI/JD^Z7WI?BE^:7ZI?NE_*7]I?ZF^*O$J\BKR:O*J\NKS*O-J\ZK
 ,SZOEJ^:KVJO<J^8*
-eofeof
 
-printf "%-40s",  "EUC-JISX0213 to UTF-8 (combining)";
-    &test("$nkf --ic=euc-jisx0213 -w",$example{'test_data/jisx0213utf8comb'},$example{'test_data/jisx0213utf8comb.ans'});
-printf "%-40s",  "UTF-8 to EUC-JISX0213 (combining)";
-    &test("$nkf -W --oc=euc-jisx0213",$example{'test_data/jisx0213utf8comb.ans'},$example{'test_data/jisx0213utf8combr.ans'});
+
 
 # test_data/jisx0213comb
 
-$example{'test_data/jisx0213comb'} = unpack('u',<<'eofeof');
+@test_data/jisx0213comb
+
 MXX&+XX*:XX&-XX*:XX&/XX*:XX&1XX*:XX&3XX*:XX*KXX*:XX*MXX*:XX*O
 MXX*:XX*QXX*:XX*SXX*:XX*[XX*:XX.$XX*:XX.(XX*:XX>WXX*:PZ;,@,F4
 MS(#)E,R!RHS,@,J,S(')F<R`R9G,@<F:S(#)FLR!RZG+I<NERZG,@<R`RZ7+
 "J0H`
-eofeof
 
-$example{'test_data/jisx0213comb.ans'} = unpack('u',<<'eofeof');
+
+@test_data/jisx0213comb.ans
+
 M,$LPFC!-,)HP3S":,%$PFC!3,)HPJS":,*TPFC"O,)HPL3":,+,PFC"[,)HP
 MQ#":,,@PFC'W,)H`Y@,``E0#``)4`P$"C`,``HP#`0)9`P`"60,!`EH#``):
 4`P$"Z0+E`N4"Z0,!`P`"Y0+I``H`
-eofeof
 
-printf "%-40s",  "UTF-8 to UTF-16BE (combining)";
-    &test("$nkf -W --oc=utf-16be",$example{'test_data/jisx0213comb'},$example{'test_data/jisx0213comb.ans'});
-printf "%-40s",  "UTF-16BE to UTF-8 (combining)";
-    &test("$nkf --ic=utf-16be -w",$example{'test_data/jisx0213comb.ans'},$example{'test_data/jisx0213comb'});
-
-printf "%-40s", "UTF-32BE to EUC-JISX0213 (w/o comb char)";
-    &test("$nkf --ic=UTF-32BE --oc=euc-jisx0213",h("000030AB"),h("A5AB"));
-printf "%-40s", "UTF-16LE to EUC-JISX0213 (w/o comb char)";
-    &test("$nkf --ic=utf-16le --oc=euc-jisx0213",h("AB30"),h("A5AB"));
-printf "%-40s", "UTF-8 to EUC-JISX0213 (w/o comb char)";
-    &test("$nkf --ic=utf-8 --oc=euc-jisx0213",h("E382AB"),h("A5AB"));
 
 # test_data/no_best_fit_chars
 
-$example{'test_data/no_best_fit_chars'} = unpack('u',<<'eofeof');
+@test_data/no_best_fit_chars
+
 ;XH"5XHBE[[R-[[^@[[^A[[^B[[^C[[^D[[^E
-eofeof
 
-printf "%-40s", "no_best_fit_chars (eucJP-ascii)";
-    &test("$nkf -W --oc=eucJP-ascii --no-best-fit-chars",$example{'test_data/no_best_fit_chars'},'');
 
-$example{'test_data/no_best_fit_chars_ms'} = unpack('u',<<'eofeof');
+@test_data/no_best_fit_chars_ms
+
 9PJ+"H\*EPJ;"K.*`E.*`EN*`ON*(DN.`G```
-eofeof
 
-printf "%-40s", "no_best_fit_chars (eucJP-ms)";
-    &test("$nkf -W --oc=eucJP-ms --no-best-fit-chars",$example{'test_data/no_best_fit_chars_ms'},'');
 
-$example{'test_data/no_best_fit_chars_cp932'} = unpack('u',<<'eofeof');
+@test_data/no_best_fit_chars_cp932
+
 MPJ'"HL*CPJ7"IL*IPJK"J\*LPJW"KL*OPK+"L\*UPK?"N,*YPKK"N\.`PX'#
 M@L.#PX3#A<.&PX?#B,.)PXK#B\.,PXW#CL./PY##D<.2PY/#E,.5PY;#F,.9
 MPYK#F\.<PYW#GL.?PZ##H<.BPZ/#I,.EPZ;#I\.HPZG#JL.KPZS#K<.NPZ_#
 @L,.QP[+#L\.TP[7#ML.XP[G#NL.[P[S#O<.^P[_C@I0`
-eofeof
 
-printf "%-40s", "no_best_fit_chars (cp932)";
-    &test("$nkf -W --oc=CP932 --no-best-fit-chars",$example{'test_data/no_best_fit_chars_cp932'},'');
 # test_data/irv
 
 # $example{'test_data/irv'} = unpack('u',<<'eofeof');
@@ -595,20 +347,12 @@ printf "%-40s", "no_best_fit_chars (cp932)";
 
 
 # UCS Mapping Test
-print "\nUCS Mapping Test\n\n";
 
 print "Shift_JIS to UTF-16\n";
 $example{'ms_ucs_map_1_sjis'} = "\x81\x60\x81\x61\x81\x7C\x81\x91\x81\x92\x81\xCA";
 $example{'ms_ucs_map_1_utf16'} = "\x30\x1C\x20\x16\x22\x12\x00\xA2\x00\xA3\x00\xAC";
 $example{'ms_ucs_map_1_utf16_ms'} = "\xFF\x5E\x22\x25\xFF\x0D\xFF\xE0\xFF\xE1\xFF\xE2";
 
-printf "%-40s", "Normal UCS Mapping :";
-    &test("$nkf -w16B0 --ic=Shift_JIS",$example{'ms_ucs_map_1_sjis'},$example{'ms_ucs_map_1_utf16'});
-
-printf "%-40s", "Microsoft UCS Mapping :";
-    &test("$nkf -w16B0 -S --ms-ucs-map",$example{'ms_ucs_map_1_sjis'},$example{'ms_ucs_map_1_utf16_ms'});
-printf "%-40s", "CP932 to UTF-16BE :";
-    &test("$nkf --ic=cp932 --oc=utf-16be",$example{'ms_ucs_map_1_sjis'},$example{'ms_ucs_map_1_utf16_ms'});
 
 # X0201 仮名
 # X0201->X0208 conversion
@@ -617,24 +361,27 @@ printf "%-40s", "CP932 to UTF-16BE :";
 
 print "\nX0201 test\n\n";
 
-$example{'x0201.sjis'} = unpack('u',<<'eofeof');
+@x0201.sjis
+
 MD5.*<(-*@TR#3H-0@U*#2X--@T^#48-3"I%3B7""8()A@F*"8X)D@F6"9H*!
 M@H*"@X*$@H6"AH*'"I%3BTR-AH%)@9>!E(&0@9.!3X&5@9:!:8%J@7R!>X&!
 M@6V!;H%O@7"!CPJ4O(IPMK>X/;FZMMZWWKC>N=ZZWH+&"I2\BG#*W\O?S-_-
 MW\[?M]^QW@K*W\O?S`IH86YK86MU(,K?R]_,I`K*W\O?S-VA"I2\BG""S(SC
 !"@!"
-eofeof
 
-$example{'x0201.euc'} = unpack('u',<<'eofeof');
+
+@x0201.euc
+
 MP;2ST:6KI:VEKZ6QI;.EK*6NI;"ELJ6T"L&TL=&CP:/"H\.CQ*/%H\:CQZ/A
 MH^*CXZ/DH^6CYJ/G"L&TM:VYYJ&JH?>A]*'PH?.AL*'UH?:ARJ'+H=VAW*'A
 MH<ZASZ'0H=&A[PK(OK/1CK:.MXZX/8ZYCKJ.MH[>CK>.WHZXCMZ.N8[>CKJ.
 MWJ3("LB^L]&.RH[?CLN.WX[,CM^.S8[?CLZ.WXZWCM^.L8[>"H[*CM^.RX[?
 MCLP*:&%N:V%K=2".RH[?CLN.WX[,CJ0*CLJ.WX[+CM^.S([=CJ$*R+ZST:3.
 #N.4*
-eofeof
 
-$example{'x0201.utf'} = unpack('u',<<'eofeof');
+
+@x0201.utf
+
 MY86HZ*>2XX*KXX*MXX*OXX*QXX*SXX*LXX*NXX*PXX*RXX*T"N6%J.B+L>^\
 MH>^\HN^\H^^\I.^\I>^\IN^\I^^]@>^]@N^]@^^]A.^]A>^]AN^]APKEA:CH
 MJ)CEC[?OO('OO*#OO(/OO(3OO(7OO+[OO(;OO(KOO(COO(GBB)+OO(OOO)WO
@@ -643,98 +390,60 @@ M[[Z>[[VX[[Z>[[VY[[Z>[[VZ[[Z>XX&H"N6-BNBGDN^^BN^^G^^^B^^^G^^^
 MC.^^G^^^C>^^G^^^CN^^G^^]M^^^G^^]L>^^G@KOOHKOOI_OOHOOOI_OOHP*
 M:&%N:V%K=2#OOHKOOI_OOHOOOI_OOHSOO:0*[[Z*[[Z?[[Z+[[Z?[[Z,[[Z=
 1[[VA"N6-BNBGDN.!KN6^C`H`
-eofeof
 
-$example{'x0201.jis'} = unpack('u',<<'eofeof');
+
+@x0201.jis
+
 M&R1"030S424K)2TE+R4Q)3,E+"4N)3`E,B4T&RA""ALD0D$T,5$C02-"(T,C
 M1"-%(T8C1R-A(V(C8R-D(V4C9B-G&RA""ALD0D$T-2TY9B$J(7<A="%P(7,A
 M,"%U(78A2B%+(5TA7"%A(4XA3R%0(5$A;QLH0@H;)$)(/C-1&RA)-C<X&RA"
 M/1LH23DZ-EXW7CA>.5XZ7ALD0B1(&RA""ALD0D@^,U$;*$E*7TM?3%]-7TY?
 M-U\Q7ALH0@H;*$E*7TM?3!LH0@IH86YK86MU(!LH24I?2U],)!LH0@H;*$E*
 97TM?3%TA&RA""ALD0D@^,U$D3CAE&RA""@``
-eofeof
 
-$example{'x0201.sosi'} = unpack('u',<<'eofeof');
+
+
+@x0201.sosi
+
 M&R1"030S424K)2TE+R4Q)3,E+"4N)3`E,B4T&RA*"ALD0D$T,5$C02-"(T,C
 M1"-%(T8C1R-A(V(C8R-D(V4C9B-G&RA*"ALD0D$T-2TY9B$J(7<A="%P(7,A
 M,"%U(78A2B%+(5TA7"%A(4XA3R%0(5$A;QLH2@H;)$)(/C-1&RA*#C8W.`\;
 M*$H]#CDZ-EXW7CA>.5XZ7@\;)$(D2!LH2@H;)$)(/C-1&RA*#DI?2U],7TU?
 M3E\W7S%>#PH.2E]+7TP/&RA*"FAA;FMA:W4@#DI?2U],)`\;*$H*#DI?2U],
 672$/&RA*"ALD0D@^,U$D3CAE&RA""@``
-eofeof
 
-$example{'x0201.x0208'} = unpack('u',<<'eofeof');
+
+@x0201.x0208
+
 M&R1"030S424K)2TE+R4Q)3,E+"4N)3`E,B4T&RA""ALD0D$T,5$;*$)!0D-$
 M149'86)C9&5F9PH;)$)!-#4M.68;*$(A0",D)5XF*B@I+2L]6UU[?1LD0B%O
 M&RA""ALD0D@^,U$E*R4M)2\;*$(]&R1")3$E,R4L)2XE,"4R)30D2!LH0@H;
 M)$)(/C-1)5$E5"57)5HE724M(2PE(B$K&RA""ALD0B51)50E51LH0@IH86YK
 M86MU(!LD0B51)50E52$B&RA""ALD0B51)50E525S(2,;*$(*&R1"2#XS421.
 &.&4;*$(*
-eofeof
 
-# -X is necessary to allow X0201 in SJIS
-# -Z convert X0208 alphabet to ASCII
-printf "%-40s", "X0201 conversion: SJIS";
-    &test("$nkf -jXZ",$example{'x0201.sjis'},$example{'x0201.x0208'});
-printf "%-40s", "X0201 conversion: JIS";
-    &test("$nkf -jZ",$example{'x0201.jis'},$example{'x0201.x0208'});
-printf "%-40s", "X0201 conversion: SI/SO";
-    &test("$nkf -jZ",$example{'x0201.sosi'},$example{'x0201.x0208'});
-printf "%-40s", "X0201 conversion: EUC";
-    &test("$nkf -jZ",$example{'x0201.euc'},$example{'x0201.x0208'});
-printf "%-40s", "X0201 conversion: UTF8";
-    &test("$nkf -jZ",$example{'x0201.utf'},$example{'x0201.x0208'});
-printf "%-40s", "-wZ"; &test("$nkf -wZ",
-	"\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2",
-	"\xE3\x80\x80aA&\xE3\x82\xA2");
-printf "%-40s", "-wZ0"; &test("$nkf -wZ0",
-	"\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2",
-	"\xE3\x80\x80aA&\xE3\x82\xA2");
-printf "%-40s", "-wZ1"; &test("$nkf -wZ1",
-	"\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2",
-	" aA&\xE3\x82\xA2");
-printf "%-40s", "-wZ2"; &test("$nkf -wZ2",
-	"\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2",
-	"  aA&\xE3\x82\xA2");
-printf "%-40s", "-wZ3"; &test("$nkf -wZ3",
-	"\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2",
-	"\xE3\x80\x80aA&amp;\xE3\x82\xA2");
-printf "%-40s", "-wZ4"; &test("$nkf -wZ4",
-	"\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2",
-	"\xE3\x80\x80aA&\xEF\xBD\xB1");
-# -x means X0201 output
-printf "%-40s", "X0201 output: SJIS";
-    &test("$nkf -xs",$example{'x0201.euc'},$example{'x0201.sjis'});
-printf "%-40s", "X0201 output: JIS";
-    &test("$nkf -xj",$example{'x0201.sjis'},$example{'x0201.jis'});
-printf "%-40s", "X0201 output: EUC";
-    &test("$nkf -xe",$example{'x0201.jis'},$example{'x0201.euc'});
-printf "%-40s", "X0201 output: UTF8";
-    &test("$nkf -xw",$example{'x0201.jis'},$example{'x0201.utf'});
+
+
 # test_data/x0201jis=
 
-$example{'test_data/x0201jis=.ans'} = unpack('u',<<'eofeof');
+@test_data/x0201jis=.ans
+
 MH:*CI*6FIZBIJJNLK:ZOL+&RL[2UMK>XN;J[O+V^O\#!PL/$Q<;'R,G*R\S-
 2SL_0T=+3U-76U]C9VMO<W=[?
-eofeof
 
-printf "%-40s",  "X0201 JIS contains '='";
-    &test("$nkf -xs",
-    "\x1b(I!\"#\$%&'()*+,-./0123456789:;<=>?\@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_\x1b(B",
-    $example{'test_data/x0201jis=.ans'});
+
 # test_data/Xx0213
 
-$example{'test_data/Xx0213'} = unpack('u',<<'eofeof');
+@test_data/Xx0213
+
 M[[VV[[Z?[[VW[[Z?[[VX[[Z?[[VY[[Z?[[VZ[[Z?[[V^[[Z?[[Z"[[Z?[[Z$
 *[[Z?XX>WXX*:"@``
-eofeof
 
-$example{'test_data/Xx0213.ans'} = unpack('u',<<'eofeof');
+@test_data/Xx0213.ans
+
 3I?>E^*7YI?JE^Z7\I?VE_J;X"@``
-eofeof
 
-printf "%-40s",  "test_data/Xx0213    ";
-    &test("$nkf -X -W --oc=euc-jisx0213",$example{'test_data/Xx0213'},$example{'test_data/Xx0213.ans'});
+
 # test_data/xx0213
 
 $example{'test_data/xx0213'} = unpack('u',<<'eofeof');
@@ -1007,7 +716,9 @@ M0TI#26M*0U%M2D-G:TMH<V]19ST]/ST@86%A82!A86%A(&%A86$*(&%A86$*
 &+2TM+0H*
 eofeof
 
-$example{'test_data/mime_out.ans.alt2'} = unpack('u',<<'eofeof');
+
+@test_data/mime_out.ans.alt2
+
 M"BTM+2T*4W5B:F5C=#H@86%A82!A86%A(&%A86$@86%A82!A86%A(&%A86$@
 M86%A82!A86%A(&%A86$@86%A82!A86%A(&%A86$@86%A80H@86%A80HM+2TM
 M"E-U8FIE8W0Z(#T_25-/+3(P,C(M2E`_0C]'>5)#2D-):TI#46U*0V=K2VE1
@@ -1018,7 +729,7 @@ M4FM*0U%K6FE1;TI'9V)+14D]/ST*+2TM+0I3=6)J96-T.B!A86%A(&%A86$@
 M86%A82!A86%A(&%A86$@86%A82!A86%A(#T_25-/+3(P,C(M2E`_0C]'>5)#
 M2D-):TI"<V]19ST]/ST*(#T_25-/+3(P,C(M2E`_0C]'>5)#2D-9:TM#47%'
 @>6A#/ST@86%A82!A86%A(&%A86$@86%A80HM+2TM"@H`
-eofeof
+
 
 $example{'test_data/mime_out.ans.alt3'} = unpack('u',<<'eofeof');
 M"BTM+2T*4W5B:F5C=#H@86%A82!A86%A(&%A86$@86%A82!A86%A(&%A86$@
