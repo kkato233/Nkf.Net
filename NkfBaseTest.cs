@@ -290,11 +290,95 @@ namespace Nkf.Net.Test
 
             // test_data/Xx0213
             Test("test_data/Xx0213    ", "-X -W --oc=euc-jisx0213", example["test_data/Xx0213"], example["test_data/Xx0213.ans"]);
+			
+			// test_data/xx0213
+			Test("test_data/xx0213",
+				"-x -W --oc=euc-jisx0213",
+                example["test_data/xx0213"],example["test_data/xx0213.ans"]);
+
+			// test_data/Z4x0213
+			Test("test_data/Z4x0213",
+				"-Z4 --ic=euc-jisx0213 -w",
+                example["test_data/Z4x0213"],example["test_data/Z4x0213.ans"]);
+			
+			// test_data/Z4comb
+			Test("test_data/Z4comb",
+				"-Z4 -W --oc=euc-jisx0213",
+                example["test_data/Z4comb"],example["test_data/Z4comb.ans"]);
+			
+			// MIME decode
+			// MIME ISO-2022-JP
+			/* MIME テストは正しくテストコードを描いていない・・
+			# printf "%-40s", "Next test is expected to Fail.\n";
+printf "%-40s", "MIME decode (strict)";
+    $tmp = &test("$nkf -jmS",$example{'mime.iso2022'},$example{'mime.ans.strict'});
+			*/
+			/*
+			printf "%-40s", "MIME decode (nonstrict)";
+    $tmp = &test("$nkf -jmN",$example{'mime.iso2022'},$example{'mime.ans'},$example{'mime.ans.alt'});
+    # open(OUT,">tmp1");printf "%-40s", OUT pack('u',$tmp);close(OUT);
+# unbuf mode implies more pessimistic decode
+printf "%-40s", "MIME decode (unbuf)";
+    $tmp = &test("$nkf -jmNu",$example{'mime.iso2022'},$example{'mime.unbuf'},$example{'mime.unbuf.alt'});
+    # open(OUT,">tmp2");printf "%-40s", OUT pack('u',$tmp);close(OUT);
+#MIME BASE64 must be LF?
+			*/
+			Test("MIME decode (base64)",
+				"-jmB",
+                example["mime.base64"],example["mime.base64.ans"]);
+				
+			// MIME ISO-8859-1
+			
+			// Without -l, ISO-8859-1 was handled as X0201.
+			Test("MIME ISO-8859-1 (Q)",
+				"-jml",
+                example["mime.is8859"],example["mime.is8859.ans"]);
+				
+			// test_data/cr
+			Test("test_data/cr",
+				"-jd",
+                example["test_data/cr"],example["test_data/cr.ans"]);
+				
+			// test_data/fixed-qencode
+			Test("test_data/fixed-qencode",
+				"-jmQ",
+                example["test_data/fixed-qencode"],example["test_data/fixed-qencode.ans"]);
+
+			// test_data/long-fold-1
+			Test("test_data/long-fold-1",
+				"-jF60",
+                example["test_data/long-fold-1"],example["test_data/long-fold-1.ans"]);
+			
+			// test_data/long-fold
+			Test("test_data/long-fold",
+				"-jF60",
+                example["test_data/long-fold"],example["test_data/long-fold.ans"]);
+				
+			// test_data/mime_out
+			
+			/*
+			printf "%-40s", "test_data/mime_out";
+    &test("$nkf -jM",$example{'test_data/mime_out'},$example{'test_data/mime_out.ans'},$example{'test_data/mime_out.ans.alt'},$example{'test_data/mime_out.ans.alt2'},$example{'test_data/mime_out.ans.alt3'});
+			*/
+			Test("test_data/mime_out",
+				"-jM",
+                example["test_data/mime_out"],
+				example["test_data/mime_out.ans"],example["test_data/mime_out.ans.alt"],
+				example["test_data/mime_out.ans.alt2"],example["test_data/mime_out.ans.alt3"]);
+				
+			// test_data/mime_out3
+			Test("test_data/mime_out3",
+				"-jSM",
+                x("\x82\xD9\x82\xB0 A"),example["test_data/long-fold.ans"]);
+	/*
+	printf "%-40s", "test_data/long-fold-1";
+    &test("$nkf -jF60",$example{'test_data/long-fold-1'},$example{'test_data/long-fold-1.ans'});
             /*
-            # 
+            # test_data/Z4x0213
 #
-printf "%-40s",  "test_data/Xx0213    ";
-    &test("$nkf -X -W --oc=euc-jisx0213",$example{'test_data/Xx0213'},$example{'test_data/Xx0213.ans'});
+
+printf "%-40s",  "test_data/Z4comb    ";
+    &test("$nkf -Z4 -W --oc=euc-jisx0213",$example{'test_data/Z4comb'},$example{'test_data/Z4comb.ans'});
              * */
 
         }
@@ -461,7 +545,8 @@ printf "%-40s",  "test_data/Xx0213    ";
             example["x0201.sjis"] = x201sjis;
         }
 
-        private Dictionary<string, List<Byte>> example = new Dictionary<string, List<byte>>(StringComparer.OrdinalIgnoreCase);
+        //private Dictionary<string, List<Byte>> example = new Dictionary<string, List<byte>>(StringComparer.OrdinalIgnoreCase);
+        private Dictionary<string, List<Byte>> example = new Dictionary<string, List<byte>>();
 
         private IEnumerable<byte> UUDecode(string s)
         {
