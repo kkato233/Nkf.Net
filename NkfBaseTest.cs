@@ -191,11 +191,6 @@ namespace Nkf.Net.Test
                 x("\xe4\xbc\x91\xe9\xb7\x97\xe4\xbf\xb1\xe5\x8c\x8b\xe8\xa4\xb1"),
                 x("\x1b$(Q5Y~e.!\x1b$(P#M\x1b(B"));
 
-            /*
-            
-
-             */
-
             // test_data/jisx0213needx0213_f
 
             Test("test_data/jisx0213needx0213_f", "-W --oc=euc-jisx0213", example["test_data/jisx0213needx0213_f"], example["test_data/jisx0213needx0213_f.ans"]);
@@ -351,7 +346,7 @@ printf "%-40s", "MIME decode (unbuf)";
 			
 			// test_data/long-fold
 			Test("test_data/long-fold",
-				"-jF60",
+                "-jf60",
                 example["test_data/long-fold"],example["test_data/long-fold.ans"]);
 				
 			// test_data/mime_out
@@ -369,17 +364,103 @@ printf "%-40s", "MIME decode (unbuf)";
 			// test_data/mime_out3
 			Test("test_data/mime_out3",
 				"-jSM",
-                x("\x82\xD9\x82\xB0 A"),example["test_data/long-fold.ans"]);
-	/*
-	printf "%-40s", "test_data/long-fold-1";
-    &test("$nkf -jF60",$example{'test_data/long-fold-1'},$example{'test_data/long-fold-1.ans'});
-            /*
-            # test_data/Z4x0213
-#
+                x("\x82\xD9\x82\xB0 A"), x("=?ISO-2022-JP?B?GyRCJFskMhsoQg==?= A"));
 
-printf "%-40s",  "test_data/Z4comb    ";
-    &test("$nkf -Z4 -W --oc=euc-jisx0213",$example{'test_data/Z4comb'},$example{'test_data/Z4comb.ans'});
-             * */
+            // test_data/multi-line
+            Test("test_data/multi-line",
+                "-e",
+                example["test_data/multi-line"], example["test_data/multi-line.ans"]);
+
+            // test_data/-Z4
+            Test("test_data/-Z4    ",
+                "-eEZ4",
+                example["test_data/-Z4"], example["test_data/-Z4.ans"]);
+
+            // test_data/nkf-19-bug-1
+            Test("test_data/nkf-19-bug-1",
+                "-Ej",
+                example["test_data/nkf-19-bug-1"], example["test_data/nkf-19-bug-1.ans"]);
+
+            // test_data/nkf-19-bug-2
+            Test("test_data/nkf-19-bug-2",
+                "-Ee",
+                example["test_data/nkf-19-bug-2"], example["test_data/nkf-19-bug-2.ans"]);
+
+            // test_data/nkf-19-bug-3
+            Test("test_data/nkf-19-bug-3",
+                "-Ee",
+                example["test_data/nkf-19-bug-3"], example["test_data/nkf-19-bug-3.ans"]);
+
+            // test_data/non-strict-mime
+            Test("test_data/non-strict-mime",
+                "-jmN",
+                example["test_data/non-strict-mime"], example["test_data/non-strict-mime.ans"]);
+
+            // test_data/q-encode-softrap
+            Test("test_data/q-encode-softrap",
+                "-jmQ",
+                example["test_data/q-encode-softrap"], example["test_data/q-encode-softrap.ans"]);
+
+            // test_data/q-encode-utf-8
+
+            example["test_data/q-encode-utf-8"] = x(@"=?utf-8?Q?=E3=81=82=E3=81=84=E3=81=86=E3=81=88=E3=81=8A?=
+=?utf-8?Q?=E3=81=8B=E3=81=8D=E3=81=8F=E3=81=91=E3=81=93?=");
+
+
+            example["test_data/q-encode-utf-8.ans"] = x(
+@"\xE3\x81\x82\xE3\x81\x84\xE3\x81\x86\xE3\x81\x88\xE3\x81\x8A
+\xE3\x81\x8B\xE3\x81\x8D\xE3\x81\x8F\xE3\x81\x91\xE3\x81\x93");
+
+            Test("test_data/q-encode-utf-8",
+                "-w",
+                example["test_data/q-encode-utf-8"], example["test_data/q-encode-utf-8.ans"]);
+
+            // test_data/rot13
+            Test("test_data/rot13",
+                "-jr",
+                example["test_data/rot13"], example["test_data/rot13.ans"]);
+
+            // test_data/slash
+            Test("test_data/slash",
+                "-j",
+                example["test_data/slash"], example["test_data/slash.ans"]);
+
+            // test_data/z1space-0
+            Test("test_data/z1space-0",
+                "-e -Z",
+                example["test_data/z1space-0"], example["test_data/z1space-0.ans"]);
+
+            // test_data/z1space-1
+            Test("test_data/z1space-1",
+                "-e -Z1",
+                example["test_data/z1space-1"], example["test_data/z1space-1.ans"]);
+
+            // test_data/z1space-2
+            Test("test_data/z1space-2",
+                "-e -Z2",
+                example["test_data/z1space-2"], example["test_data/z1space-2.ans"]);
+
+            // test_data/bug2273
+            Test("test_data/bug2273",
+                "-e -Z2",
+                example["test_data/bug2273"], example["test_data/bug2273.ans"]);
+
+            // test_data/forum15899
+            Test("test_data/forum15899",
+                "-Mj",
+                example["test_data/forum15899"], example["test_data/forum15899.ans"]);
+
+#if false
+            // test_data/bugs10904
+            Test("test_data/bugs10904",
+                "-Mj",
+                example["test_data/bugs10904"], example["test_data/bugs10904.ans"]);
+#endif            
+            /*
+            
+printf "%-40s", "test_data/bugs10904";
+    &test("$nkf -Mj",$example{'test_data/bugs10904'},$example{'test_data/bugs10904.ans'});
+             */
 
         }
 
@@ -393,6 +474,10 @@ printf "%-40s",  "test_data/Z4comb    ";
             Test("-wZ3", "-wZ3", x("\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x("\xE3\x80\x80aA&amp;\xE3\x82\xA2"));
             Test("-wZ4", "-wZ4", x("\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x("\xE3\x80\x80aA&\xEF\xBD\xB1"));
 
+            // test_data/bugs10904
+            Test("test_data/bugs10904",
+                "-Mj",
+                example["test_data/bugs10904"], example["test_data/bugs10904.ans"]);
         }
 
         [TestMethod]
@@ -423,8 +508,38 @@ printf "%-40s",  "test_data/Z4comb    ";
             return ans;
         }
 
+        /// <summary>
+        /// \xA0 の形式の文字列
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        private List<Byte> h3(string s)
+        {
+            List<Byte> ans = new List<byte>();
+            int i = 0;
+            while(i < s.Length - 3)
+            {
+                if (s[i] == '\r' || s[i] == '\n')
+                {
+                    ans.Add((byte)s[i]);
+                    i++;
+                    continue;
+                }
+                Assert.IsTrue(s[i] == '\\' && s[i+1] == 'x',s + ":" + i) ;
+
+                int hex = hexToInt(s[i+2]) * 16 + hexToInt(s[i + 3]);
+                ans.Add((byte)hex);
+
+                i = i + 4;
+            }
+            return ans;
+        }
+
         private List<Byte> x(string s)
         {
+            if (s.StartsWith("\\x")) {
+                return h3(s);
+            }
             List<Byte> ans = new List<byte>();
             for(int i=0;i<s.Length; i++)
             {
@@ -454,15 +569,66 @@ printf "%-40s",  "test_data/Z4comb    ";
             dataOut.AddRange(System.Text.Encoding.ASCII.GetBytes(sOut));
             Test(title, nkfOption, dataIn, dataOut);
         }
+        private void Test(string title, string nkfOption, List<byte> dataIn, List<byte> dataOut, List<byte> dataOut2, List<byte> dataOut3, List<byte> dataOut4)
+        {
+            List<List<byte>> list = new List<List<byte>>();
+            list.Add(dataOut);
+            list.Add(dataOut2);
+            list.Add(dataOut3);
+            list.Add(dataOut4);
+
+            List<string> ngMessages = new List<string>();
+            // どれか１つが処理されればOK
+            foreach (var data in list)
+            {
+                if (data == null) continue;
+
+                var result = Test_Internal(nkfOption, dataIn, data);
+                if (result.Result == true)
+                {
+                    // oK
+                    return;
+                } else {
+                    ngMessages.Add(result.ErrorMessage);
+                }
+            }
+
+            Console.WriteLine();
+            foreach (string s in ngMessages)
+            {
+                Console.WriteLine(s);
+                Console.WriteLine();
+            }
+            Assert.Fail(title);
+        }
         private void Test(string title, string nkfOption, List<byte> dataIn, List<byte> dataOut)
         {
-            int dataSize = Math.Max(dataIn.Count,dataOut.Count) * 5;
-            byte []data = new byte[dataSize];
-            int convertLen ;
-            Nkf.Net.WrapNkf.SetNkfOption(nkfOption);
-            bool result = Nkf.Net.WrapNkf.NkfConvertSafe(data,dataSize,out convertLen,dataIn.ToArray(),dataIn.Count);
-            Assert.IsTrue(result,title);
+            var result = Test_Internal(nkfOption,dataIn,dataOut);
+            if (result.Result == false)
+            {
+                Console.WriteLine(result.ErrorMessage);
+                Assert.Fail(title);
+            }
+        }
+        private Test_Internal_Result Test_Internal(string nkfOption, List<byte> dataIn, List<byte> dataOut)
+        {
+            Test_Internal_Result result = new Test_Internal_Result()
+            {
+                ErrorMessage = "",
+            };
 
+            int dataSize = Math.Max(dataIn.Count, dataOut.Count) * 5;
+            byte[] data = new byte[dataSize];
+            int convertLen;
+            Nkf.Net.WrapNkf.SetNkfOption(nkfOption);
+            bool convResult = Nkf.Net.WrapNkf.NkfConvertSafe(data, dataSize, out convertLen, dataIn.ToArray(), dataIn.Count);
+
+            if (convResult == false)
+            {
+                result.Result = false;
+                result.ErrorMessage = "Error in NkfConvertSave()"; 
+                return result;
+            }
             int ngCount = 0;
             int ngPoint = 0;
             if (convertLen >= dataOut.Count)
@@ -470,6 +636,16 @@ printf "%-40s",  "test_data/Z4comb    ";
                 // オーバー領域は ０ であることのチェック
                 for (int i = dataOut.Count; i < convertLen; i++)
                 {
+                    if (data[i] == '\0')
+                    {
+                        // 00 が見つかったら調査終了
+                        break;
+                    }
+                    if (data[i] == '\x0a')
+                    {
+                        // 無視
+                        continue;
+                    }
                     if (data[i] != 0)
                     {
                         ngCount++;
@@ -477,38 +653,70 @@ printf "%-40s",  "test_data/Z4comb    ";
                     }
                 }
             }
-            for (int i = 0; i < Math.Min(convertLen,dataOut.Count); i++)
+            for (int i = 0; i < Math.Min(convertLen, dataOut.Count); i++)
             {
+                // 両方とも 00 だと処理を終了させる。
+                if (data[i] == '\0' && dataOut[i] == '\0')
+                {
+                    break;
+                }
+
                 if (data[i] != dataOut[i])
                 {
                     ngCount++;
                     ngPoint = i;
+                    break;
                 }
             }
             if (ngCount > 0)
             {
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.Append("NGPos:" + ngPoint);
+                sb.Append("\r\n");
+                for (int i = 0; i < ngPoint; i++)
+                {
+                    sb.Append("    ");
+                }
+                sb.Append("|\n");
+
+                sb.Append("DataIn :");
                 for (int i = 0; i < dataIn.Count; i++)
                 {
-                    Console.Write("\\x");
-                    Console.Write(((int)dataIn[i]).ToString("X2"));
+                    sb.Append("\\x");
+                    sb.Append(((int)dataIn[i]).ToString("X2"));
                 }
-                Console.WriteLine("");
+                sb.Append("\r\n");
+                sb.Append("Convert:");
                 for (int i = 0; i < convertLen; i++)
                 {
-                    Console.Write("\\x");
-                    Console.Write(((int)data[i]).ToString("X2"));
+                    sb.Append("\\x");
+                    sb.Append(((int)data[i]).ToString("X2"));
                 }
-                Console.WriteLine("");
+                sb.Append("\r\n");
+                sb.Append("DataOut:");
                 for (int i = 0; i < Math.Min(convertLen, dataOut.Count); i++)
                 {
-                    Console.Write("\\x");
-                    Console.Write(((int)dataOut[i]).ToString("X2"));
+                    sb.Append("\\x");
+                    sb.Append(((int)dataOut[i]).ToString("X2"));
                 }
-                Console.WriteLine("");
-                Assert.Fail("error in " + ngPoint);
+                sb.Append("\r\n");
+                result.ErrorMessage = sb.ToString();
+                result.Result = false;
             }
+            else
+            {
+                result.ErrorMessage = "";
+                result.Result = true;
+            }
+
+            return result;
         }
 
+        class Test_Internal_Result
+        {
+            public bool Result;
+            public string ErrorMessage;
+        }
         private void LoadTestData()
         {
             example.Clear();
@@ -532,6 +740,12 @@ printf "%-40s",  "test_data/Z4comb    ";
                             bytes.AddRange(UUDecode(s));
                             s = sr.ReadLine();
                         }
+                        // キーの重複チェック
+                        if (example.ContainsKey(key))
+                        {
+                            Console.WriteLine("NG: キーが重複しています。" + key);
+                            Assert.Fail();
+                        }
                         example[key] = bytes;
                     }
 
@@ -540,9 +754,16 @@ printf "%-40s",  "test_data/Z4comb    ";
             }
 
             // FixData: データがおかしいので修正
-            var x201sjis = example["x0201.sjis"];
-            x201sjis = x201sjis.Take(x201sjis.Count -1).ToList();
-            example["x0201.sjis"] = x201sjis;
+            example["x0201.sjis"] = TrimOne(example["x0201.sjis"],1);
+            example["test_data/long-fold-1"] = TrimOne(example["test_data/long-fold-1"],1);
+            example["test_data/long-fold"] = TrimOne(example["test_data/long-fold"], 2);
+            //example["test_data/long-fold.ans"] = TrimOne(example["test_data/long-fold.ans"], 3);
+        }
+
+        List<byte>TrimOne(List<Byte> data,int delSize)
+        {
+            List<Byte> ans = data.Take(data.Count - delSize).ToList();
+            return ans;
         }
 
         //private Dictionary<string, List<Byte>> example = new Dictionary<string, List<byte>>(StringComparer.OrdinalIgnoreCase);
@@ -552,7 +773,8 @@ printf "%-40s",  "test_data/Z4comb    ";
         {
             UUCodec.UUCodec dec = new UUCodec.UUCodec();
 
-            return dec.EncodeLine(s);
+            var data = dec.EncodeLine(s);
+            return data;
 
             List<byte> inBytes = new List<byte>();
             for (int i = 0; i < s.Length; i++)
@@ -579,6 +801,14 @@ printf "%-40s",  "test_data/Z4comb    ";
                     ans.Add((byte)b);
                 }
             return ans;
+        }
+
+        [TestMethod]
+        public void TestUUEnc1()
+        {
+            string s = "?4U0Q0V%H<V]1:4%B2D5)-V)J9WI45D5B2T5)/3\\]\"@``\\";
+            var data = UUDecode(s);
+            Assert.IsTrue(data != null);
         }
 
         private string GetTestDataFileName()
