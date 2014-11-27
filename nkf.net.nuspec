@@ -3,7 +3,7 @@
   <metadata>
     <id>Nkf.Net</id>
     <title>Nkf.Net (x86/x64)</title>
-    <version>0.3.1</version>
+    <version>0.3.2</version>
     <authors>kkato233</authors>
     <description>ものすごく古い漢字コード変換プログラムである nkf を .NET Framework から簡単に利用するためのライブラリです.</description>
     <language>ja-JP</language>
