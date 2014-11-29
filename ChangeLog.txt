@@ -2,6 +2,10 @@
 	テストコード追加
 	ほとんどのテストが成功することを確認した。(guess 以外)
 
+2014.11.27 ver 0.3.2
+	build.bat を Build から Rebuild に変更
+	nuget パッケージの更新
+	
 2014.11.21 ver 0.3.1
 	nkf32.dll の SetNkfOption にバグがあったので修正
 	nkf_test.pl のコンバート（途中）

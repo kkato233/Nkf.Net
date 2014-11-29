@@ -3,10 +3,11 @@
   <metadata>
     <id>Nkf.Net</id>
     <title>Nkf.Net (x86/x64)</title>
-    <version>0.3.1</version>
+    <version>0.3.2</version>
     <authors>kkato233</authors>
     <description>ものすごく古い漢字コード変換プログラムである nkf を .NET Framework から簡単に利用するためのライブラリです.</description>
     <language>ja-JP</language>
+	<summary>日本語テキストファイルのエンコード SJIS UTF8 EUC を自動認識して読み込むことができます。マルチスレッド対応。</summary>
     <projectUrl>https://github.com/kkato233/Nkf.Net/</projectUrl>
     <licenseUrl>https://github.com/kkato233/Nkf.Net/blob/master/MIT-Licence.txt</licenseUrl>
     <tags>text converter</tags>
