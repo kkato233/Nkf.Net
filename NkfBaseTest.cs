@@ -534,8 +534,6 @@ printf "%-40s", "MIME decode (unbuf)";
         public void TestGuessNL()
         {
             // $nkf --guess","none",      "ASCII\n";
-            Test("CR LF","-jLw","\n",        "\r\n");
-
             CheckGuess("none", "ASCII\n");
             CheckGuess("\n",        "ASCII (LF)\n");
             CheckGuess("\n\n",      "ASCII (LF)\n");
@@ -642,7 +640,10 @@ printf "%-40s", "MIME decode (unbuf)";
         private void CheckGuess(string testData, string guess)
         {
             var data = h3(testData);
-            string s = Net.WrapNkf.NkfConvert(data.ToArray(), 0, data.Count);
+            Nkf.Net.WrapNkf.SetNkfOption("--guess");
+            int len;
+            byte[] dataOut = new byte[256];
+            Net.WrapNkf.NkfConvertSafe(dataOut,dataOut.Length,out len, data.ToArray(), data.Count);
             string guessResult = Net.WrapNkf.GetGuess();
 
             Assert.AreEqual(guess.Trim(), guessResult);
