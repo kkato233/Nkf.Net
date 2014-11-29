@@ -183,7 +183,7 @@ namespace UUCodec
                 if (buffer.Length >= bytesToRead)
                 {
                     bytesDecd = DecodeLine(buffer, bytesToRead, decBuffer);
-                    for (int i = 0; i < bytesDecd; i++)
+                    for (int i = 0; i < Math.Min(bytesToRead, bytesDecd); i++)
                     {
                         ans.Add(decBuffer[i]);
                     }

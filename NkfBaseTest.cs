@@ -264,12 +264,12 @@ namespace Nkf.Net.Test
             Test("X0201 conversion: EUC  ", "-jZ ", example["x0201.euc"], example["x0201.x0208"]);
             Test("X0201 conversion: UTF8 ", "-jZ ", example["x0201.utf"], example["x0201.x0208"]);
 
-            //Test("-wZ", "-wZ", x("\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x("\xE3\x80\x80aA&\xE3\x82\xA2"));
-            //Test("-wZ0", "-wZ0", x("\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x("\xE3\x80\x80aA&\xE3\x82\xA2"));
+            Test("-wZ", "-wZ", x(@"\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x(@"\xE3\x80\x80aA&\xE3\x82\xA2"));
+            Test("-wZ0", "-wZ0", x(@"\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x(@"\xE3\x80\x80aA&\xE3\x82\xA2"));
             Test("-wZ1", "-wZ1", x("\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x(" aA&\xE3\x82\xA2"));
             Test("-wZ2", "-wZ2", x("\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x("  aA&\xE3\x82\xA2"));
-            //Test("-wZ3", "-wZ3", x("\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x("\xE3\x80\x80aA&amp;\xE3\x82\xA2"));
-            //Test("-wZ4", "-wZ4", x("\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x("\xE3\x80\x80aA&\xEF\xBD\xB1"));
+            Test("-wZ3", "-wZ3", x(@"\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x(@"\xE3\x80\x80aA&amp;\xE3\x82\xA2"));
+            Test("-wZ4", "-wZ4", x(@"\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x(@"\xE3\x80\x80aA&\xEF\xBD\xB1"));
 
             // -x means X0201 output
 
@@ -450,34 +450,208 @@ printf "%-40s", "MIME decode (unbuf)";
                 "-Mj",
                 example["test_data/forum15899"], example["test_data/forum15899.ans"]);
 
-#if false
             // test_data/bugs10904
             Test("test_data/bugs10904",
                 "-Mj",
                 example["test_data/bugs10904"], example["test_data/bugs10904.ans"]);
-#endif            
-            /*
-            
-printf "%-40s", "test_data/bugs10904";
-    &test("$nkf -Mj",$example{'test_data/bugs10904'},$example{'test_data/bugs10904.ans'});
-             */
 
+            // test_data/ruby-dev:39722
+            Test("test_data/ruby-dev:39722",
+                "-MjW",
+                h3(@"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\xE3\x81\x82"),
+                s(@"=?US-ASCII?Q?aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa?=" + "\x0a" +
+" =?US-ASCII?Q?aaaaaaaaaaaaaaaaa?= =?ISO-2022-JP?B?GyRCJCIbKEI=?="));
+
+            // test_data/bug19779
+            Test("test_data/bug19779",
+                "-Mj",
+                example["test_data/bug19779"], example["test_data/bug19779.ans"]);
+
+            Test("[nkf-forum:47327]    ",
+                "-wM",
+                h("feffd852de76d814dc45000a"), s("=?UTF-8?B?8KSptvCVgYU=?=\n"));
+
+            Test("[nkf-forum:47334]    ",
+                "-w",
+                h("feff006100620063000a"), s("abc\n"));
+
+            Test("[nkf-bug:20079]    ",
+               "-jSxM",
+               h3(@"\xBB \xBB"), s("=?ISO-2022-JP?B?GyhJOxsoQiAbKEk7GyhC?="));
+
+            Test("[nkf-bug:20079]    ",
+               "-SxMw8",
+               h3(@"\xBB \xBB"), s("=?UTF-8?B?77u/7727IO+9uw==?="));
+
+            // 変な文字が2文字多い
+            Test("[nkf-forum:48850]    ",
+                "-jSM",
+                h3(@"From: \x82\xA0\x82\xA0\x82\xA0\x82\xA0\x82\xA0\x82\xA0\x82\xA0\x82\xA0\x82\xA0 <x-xxxx@xxxxxxxxxxxx.co.jp>\n"),
+                h3(@"From: =?ISO-2022-JP?B?GyRCJCIkIiQiJCIkIiQiJCIkIiQiGyhC?= <x-xxxx@xxxxxxxxxxxx.co.jp>\n"));
+
+            Test("[nkf-bug:21393]-x    ",
+                "--ic=UTF-8 --oc=CP932",
+                h3(@"\xEF\xBD\xBC\xEF\xBE\x9E\xEF\xBD\xAC\xEF\xBD\xB0\xEF\xBE\x8F\xEF\xBE\x9D\xEF\xBD\xA5\xEF\xBE\x8E\xEF\xBE\x9F\xEF\xBE\x83\xEF\xBE\x84\xEF\xBD\xA1"),
+                h3(@"\xBC\xDE\xAC\xB0\xCF\xDD\xA5\xCE\xDF\xC3\xC4\xA1"));
+
+            Test("[nkf-bug:21393]-x    ",
+                "--ic=UTF-8 --oc=CP932 -X",
+                h3(@"\xEF\xBD\xBC\xEF\xBE\x9E\xEF\xBD\xAC\xEF\xBD\xB0\xEF\xBE\x8F\xEF\xBE\x9D\xEF\xBD\xA5\xEF\xBE\x8E\xEF\xBE\x9F\xEF\xBE\x83\xEF\xBE\x84\xEF\xBD\xA1"),
+                h3(@"\x83W\x83\x83\x81[\x83}\x83\x93\x81E\x83|\x83e\x83g\x81B"));
+
+            Test("[nkf-forum:65316]  ",
+                "-xwW -f10",
+                h3(@"\xEF\xBD\xB1\xEF\xBD\xB2\xEF\xBD\xB3\xEF\xBD\xB4\xEF\xBD\xB5\xEF\xBD\xB6\xEF\xBD\xB7\xEF\xBD\xB8\xEF\xBD\xB9\xEF\xBD\xBA\xEF\xBD\xBB\xEF\xBD\xBC\xEF\xBD\xBD\xEF\xBD\xBE\xEF\xBD\xBF\xEF\xBE\x80\xEF\xBE\x81\xEF\xBE\x82\xEF\xBE\x83\xEF\xBE\x84"),
+                h3(@"\xEF\xBD\xB1\xEF\xBD\xB2\xEF\xBD\xB3\xEF\xBD\xB4\xEF\xBD\xB5\xEF\xBD\xB6\xEF\xBD\xB7\xEF\xBD\xB8\xEF\xBD\xB9\xEF\xBD\xBA\n\xEF\xBD\xBB\xEF\xBD\xBC\xEF\xBD\xBD\xEF\xBD\xBE\xEF\xBD\xBF\xEF\xBE\x80\xEF\xBE\x81\xEF\xBE\x82\xEF\xBE\x83\xEF\xBE\x84\n"));
+
+            Test("[nkf-forum:65482]",
+                "--ic=CP50221 --oc=CP932",
+                h3(@"\x1b\x24\x42\x7f\x21\x80\x21\x1b\x28\x42\n"),
+                h3(@"\xf0\x40\xf0\x9f\x0a"));
+
+            Test("[nkf-forum:65316]",
+                "-xwW -f10",
+                h3(@"\xEF\xBD\xB1\xEF\xBD\xB2\xEF\xBD\xB3\xEF\xBD\xB4\xEF\xBD\xB5\xEF\xBD\xB6\xEF\xBD\xB7\xEF\xBD\xB8\xEF\xBD\xB9\xEF\xBD\xBA\xEF\xBD\xBB\xEF\xBD\xBC\xEF\xBD\xBD\xEF\xBD\xBE\xEF\xBD\xBF\xEF\xBE\x80\xEF\xBE\x81\xEF\xBE\x82\xEF\xBE\x83\xEF\xBE\x84"),
+                h3(@"\xEF\xBD\xB1\xEF\xBD\xB2\xEF\xBD\xB3\xEF\xBD\xB4\xEF\xBD\xB5\xEF\xBD\xB6\xEF\xBD\xB7\xEF\xBD\xB8\xEF\xBD\xB9\xEF\xBD\xBA\n\xEF\xBD\xBB\xEF\xBD\xBC\xEF\xBD\xBD\xEF\xBD\xBE\xEF\xBD\xBF\xEF\xBE\x80\xEF\xBE\x81\xEF\xBE\x82\xEF\xBE\x83\xEF\xBE\x84\n"));
+
+            Test("[nkf-forum:65482]",
+                "--ic=CP50221 --oc=CP932",
+                h3(@"\x1b\x24\x42\x7f\x21\x80\x21\x1b\x28\x42\n"),
+                h3(@"\xf0\x40\xf0\x9f\x0a"));
+
+            Test("[nkf-bug:32328] SJIS",
+                "-Sw",
+                h3(@"\x1b\x82\xa0"),
+                h3(@"\x1b\xe3\x81\x82"));
+
+            Test("[nkf-bug:32328] JIS",
+                "-Jw",
+                h3(@"\x1b\x1b$B$\x22\x1b(B"),
+                h3(@"\x1b\xe3\x81\x82"));
+        }
+
+        [TestMethod]
+        public void TestGuessNL()
+        {
+            // $nkf --guess","none",      "ASCII\n";
+            Test("CR LF","-jLw","\n",        "\r\n");
+
+            CheckGuess("none", "ASCII\n");
+            CheckGuess("\n",        "ASCII (LF)\n");
+            CheckGuess("\n\n",      "ASCII (LF)\n");
+            CheckGuess("\n\r",      "ASCII (MIXED NL)\n");
+            CheckGuess("\n\r\n",    "ASCII (MIXED NL)\n");
+            CheckGuess("\n.\n",     "ASCII (LF)\n");
+            CheckGuess("\n.\r",     "ASCII (MIXED NL)\n");
+            CheckGuess("\n.\r\n",   "ASCII (MIXED NL)\n");
+            CheckGuess("\r",        "ASCII (CR)\n");
+            CheckGuess("\r\r",      "ASCII (CR)\n");
+            CheckGuess("\r\r\n",    "ASCII (MIXED NL)\n");
+            CheckGuess("\r.\n",     "ASCII (MIXED NL)\n");
+            CheckGuess("\r.\r",     "ASCII (CR)\n");
+            CheckGuess("\r.\r\n",   "ASCII (MIXED NL)\n");
+            CheckGuess("\r\n",      "ASCII (CRLF)\n");
+            CheckGuess("\r\n\n",    "ASCII (MIXED NL)\n");
+            CheckGuess("\r\n\r",    "ASCII (MIXED NL)\n");
+            CheckGuess("\r\n\r\n",  "ASCII (CRLF)\n");
+            CheckGuess("\r\n.\n",   "ASCII (MIXED NL)\n");
+            CheckGuess("\r\n.\r",   "ASCII (MIXED NL)\n");
+            CheckGuess("\r\n.\r\n", "ASCII (CRLF)\n");
+        }
+
+        [TestMethod]
+        public void TestConvertLNtoLF()
+        {
+            Test("Convert NL to LF", "-jLu", "none", "none");
+            Test("Convert NL to LF", "-jLu", "\n", "\n");
+            Test("Convert NL to LF", "-jLu", "\n\n", "\n\n");
+            Test("Convert NL to LF", "-jLu", "\n\r", "\n\n");
+            Test("Convert NL to LF", "-jLu","\n\r",      "\n\n");
+            Test("Convert NL to LF", "-jLu","\n\r\n",    "\n\n");
+            Test("Convert NL to LF", "-jLu","\n.\n",     "\n.\n");
+            Test("Convert NL to LF", "-jLu","\n.\r",     "\n.\n");
+            Test("Convert NL to LF", "-jLu","\n.\r\n",   "\n.\n");
+            Test("Convert NL to LF", "-jLu","\r",        "\n");
+            Test("Convert NL to LF", "-jLu","\r\r",      "\n\n");
+            Test("Convert NL to LF", "-jLu","\r\r\n",    "\n\n");
+            Test("Convert NL to LF", "-jLu","\r.\n",     "\n.\n");
+            Test("Convert NL to LF", "-jLu","\r.\r",     "\n.\n");
+            Test("Convert NL to LF", "-jLu","\r.\r\n",   "\n.\n");
+            Test("Convert NL to LF", "-jLu","\r\n",      "\n");
+            Test("Convert NL to LF", "-jLu","\r\n\n",    "\n\n");
+            Test("Convert NL to LF", "-jLu","\r\n\r",    "\n\n");
+            Test("Convert NL to LF", "-jLu","\r\n\r\n",  "\n\n");
+            Test("Convert NL to LF", "-jLu","\r\n.\n",   "\n.\n");
+            Test("Convert NL to LF", "-jLu","\r\n.\r",   "\n.\n");
+            Test("Convert NL to LF", "-jLu","\r\n.\r\n", "\n.\n");
+            
+        }
+
+        [TestMethod]
+        public void TestConvertLNtoLF2()
+        {
+            Test("Convert NL to LF", "-jLm", "none", "none");
+            Test("Convert NL to LF", "-jLm", "\n", "\r");
+            Test("Convert NL to LF", "-jLm", "\n\n", "\r\r");
+            Test("Convert NL to LF", "-jLm", "\n\r", "\r\r");
+            Test("Convert NL to LF", "-jLm", "\n\r", "\r\r");
+            Test("Convert NL to LF", "-jLm", "\n\r\n", "\r\r");
+            Test("Convert NL to LF", "-jLm", "\n.\n", "\r.\r");
+            Test("Convert NL to LF", "-jLm", "\n.\r", "\r.\r");
+            Test("Convert NL to LF", "-jLm", "\n.\r\n", "\r.\r");
+            Test("Convert NL to LF", "-jLm", "\r", "\r");
+            Test("Convert NL to LF", "-jLm", "\r\r", "\r\r");
+            Test("Convert NL to LF", "-jLm", "\r\r\n", "\r\r");
+            Test("Convert NL to LF", "-jLm", "\r.\n", "\r.\r");
+            Test("Convert NL to LF", "-jLm", "\r.\r", "\r.\r");
+            Test("Convert NL to LF", "-jLm", "\r.\r\n", "\r.\r");
+            Test("Convert NL to LF", "-jLm", "\r\n", "\r");
+            Test("Convert NL to LF", "-jLm", "\r\n\n", "\r\r");
+            Test("Convert NL to LF", "-jLm", "\r\n\r", "\r\r");
+            Test("Convert NL to LF", "-jLm", "\r\n\r\n", "\r\r");
+            Test("Convert NL to LF", "-jLm", "\r\n.\n", "\r.\r");
+            Test("Convert NL to LF", "-jLm", "\r\n.\r", "\r.\r");
+            Test("Convert NL to LF", "-jLm", "\r\n.\r\n", "\r.\r");
+        }
+        [TestMethod]
+        public void TestConvertLNtoCRLF()
+        {
+            Test("Convert NL to CRLF", "-jLw", "none",      "none");
+            Test("Convert NL to CRLF", "-jLw", "\n",        "\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\n\n",      "\r\n\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\n\r",      "\r\n\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\n\r\n",    "\r\n\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\n.\n",     "\r\n.\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\n.\r",     "\r\n.\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\n.\r\n",   "\r\n.\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\r",        "\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\r\r",      "\r\n\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\r\r\n",    "\r\n\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\r.\n",     "\r\n.\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\r.\r",     "\r\n.\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\r.\r\n",   "\r\n.\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\r\n",      "\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\r\n\n",    "\r\n\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\r\n\r",    "\r\n\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\r\n\r\r\n",  "\r\n\r\n\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\r\n.\n",   "\r\n.\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\r\n.\r", "\r\n.\r\n");
+            Test("Convert NL to CRLF", "-jLw", "\r\n.\r\n", "\r\n.\r\n");
+        }
+
+        private void CheckGuess(string testData, string guess)
+        {
+            var data = h3(testData);
+            string s = Net.WrapNkf.NkfConvert(data.ToArray(), 0, data.Count);
+            string guessResult = Net.WrapNkf.GetGuess();
+
+            Assert.AreEqual(guess.Trim(), guessResult);
         }
 
         [TestMethod]
         public void TestNG1()
         {
-            LoadTestData();
-
-            Test("-wZ", "-wZ", x("\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x("\xE3\x80\x80aA&\xE3\x82\xA2"));
-            Test("-wZ0", "-wZ0", x("\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x("\xE3\x80\x80aA&\xE3\x82\xA2"));
-            Test("-wZ3", "-wZ3", x("\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x("\xE3\x80\x80aA&amp;\xE3\x82\xA2"));
-            Test("-wZ4", "-wZ4", x("\xE3\x80\x80\xEF\xBD\x81\xEF\xBC\xA1&\xE3\x82\xA2"), x("\xE3\x80\x80aA&\xEF\xBD\xB1"));
-
-            // test_data/bugs10904
-            Test("test_data/bugs10904",
-                "-Mj",
-                example["test_data/bugs10904"], example["test_data/bugs10904.ans"]);
+            
         }
 
         [TestMethod]
@@ -517,7 +691,7 @@ printf "%-40s", "test_data/bugs10904";
         {
             List<Byte> ans = new List<byte>();
             int i = 0;
-            while(i < s.Length - 3)
+            while(i < s.Length)
             {
                 if (s[i] == '\r' || s[i] == '\n')
                 {
@@ -525,12 +699,26 @@ printf "%-40s", "test_data/bugs10904";
                     i++;
                     continue;
                 }
-                Assert.IsTrue(s[i] == '\\' && s[i+1] == 'x',s + ":" + i) ;
+                if (i <= s.Length - 1 && s[i] == '\\' && (s[i + 1] == 'n'))
+                {
+                    // \n -> 0x0a に変換
+                    ans.Add((byte) 0x0a);
+                    i = i + 2;
+                }
+                else if (i < s.Length - 2 && s[i] == '\\' && s[i + 1] == 'x')
+                {
+                    Assert.IsTrue(s[i] == '\\' && s[i + 1] == 'x', s + ":" + i);
 
-                int hex = hexToInt(s[i+2]) * 16 + hexToInt(s[i + 3]);
-                ans.Add((byte)hex);
+                    int hex = hexToInt(s[i + 2]) * 16 + hexToInt(s[i + 3]);
+                    ans.Add((byte)hex);
+                    i = i + 4;
+                }
+                else
+                {
+                    ans.Add((byte)s[i]);
+                    i = i + 1;
+                }
 
-                i = i + 4;
             }
             return ans;
         }
@@ -568,6 +756,20 @@ printf "%-40s", "test_data/bugs10904";
             List<byte> dataOut = new List<byte>();
             dataOut.AddRange(System.Text.Encoding.ASCII.GetBytes(sOut));
             Test(title, nkfOption, dataIn, dataOut);
+
+            if (nkfOption == "--guess")
+            {
+                string guess = WrapNkf.GetGuess();
+                Assert.AreEqual(guess, sOut);
+            }
+        }
+
+        private List<byte> s(string sIn)
+        {
+            List<byte> data = new List<byte>();
+            data.AddRange(System.Text.Encoding.ASCII.GetBytes(sIn));
+
+            return data;
         }
         private void Test(string title, string nkfOption, List<byte> dataIn, List<byte> dataOut, List<byte> dataOut2, List<byte> dataOut3, List<byte> dataOut4)
         {
@@ -631,36 +833,17 @@ printf "%-40s", "test_data/bugs10904";
             }
             int ngCount = 0;
             int ngPoint = 0;
-            if (convertLen >= dataOut.Count)
+            
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+            if (convertLen != dataOut.Count)
             {
-                // オーバー領域は ０ であることのチェック
-                for (int i = dataOut.Count; i < convertLen; i++)
-                {
-                    if (data[i] == '\0')
-                    {
-                        // 00 が見つかったら調査終了
-                        break;
-                    }
-                    if (data[i] == '\x0a')
-                    {
-                        // 無視
-                        continue;
-                    }
-                    if (data[i] != 0)
-                    {
-                        ngCount++;
-                        ngPoint = i;
-                    }
-                }
+                ngCount++;
+                sb.Append("sizeError\r\n");
             }
+            
             for (int i = 0; i < Math.Min(convertLen, dataOut.Count); i++)
             {
-                // 両方とも 00 だと処理を終了させる。
-                if (data[i] == '\0' && dataOut[i] == '\0')
-                {
-                    break;
-                }
-
                 if (data[i] != dataOut[i])
                 {
                     ngCount++;
@@ -670,7 +853,7 @@ printf "%-40s", "test_data/bugs10904";
             }
             if (ngCount > 0)
             {
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                
                 sb.Append("NGPos:" + ngPoint);
                 sb.Append("\r\n");
                 for (int i = 0; i < ngPoint; i++)
@@ -694,7 +877,7 @@ printf "%-40s", "test_data/bugs10904";
                 }
                 sb.Append("\r\n");
                 sb.Append("DataOut:");
-                for (int i = 0; i < Math.Min(convertLen, dataOut.Count); i++)
+                for (int i = 0; i < dataOut.Count; i++)
                 {
                     sb.Append("\\x");
                     sb.Append(((int)dataOut[i]).ToString("X2"));
@@ -754,9 +937,9 @@ printf "%-40s", "test_data/bugs10904";
             }
 
             // FixData: データがおかしいので修正
-            example["x0201.sjis"] = TrimOne(example["x0201.sjis"],1);
-            example["test_data/long-fold-1"] = TrimOne(example["test_data/long-fold-1"],1);
-            example["test_data/long-fold"] = TrimOne(example["test_data/long-fold"], 2);
+            //example["x0201.sjis"] = TrimOne(example["x0201.sjis"],1);
+            //example["test_data/long-fold-1"] = TrimOne(example["test_data/long-fold-1"],1);
+            //example["test_data/long-fold"] = TrimOne(example["test_data/long-fold"], 2);
             //example["test_data/long-fold.ans"] = TrimOne(example["test_data/long-fold.ans"], 3);
         }
 
