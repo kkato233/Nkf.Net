@@ -1010,5 +1010,26 @@ printf "%-40s", "MIME decode (unbuf)";
 
             return fileName;
         }
+
+        List<byte> Join(List<byte> l1,List<byte> l2)
+        {
+            List<byte> l = new List<byte>();
+            l.AddRange(l1);
+            l.AddRange(l2);
+            return l;
+        }
+
+        // nkf-bug:36572
+        [TestMethod]
+        public void TestFix_36572()
+        {
+            Test("[nkf-bug:36572]    ",
+                "-sW --fb-html",
+                h3("\xe6\xbf\xb9\xe4\xb8\x8a"), Join(s("&#28665;"), h3("\x8f\xe3")));
+            /*&test("$nkf -sW --fb-html", 
+            +    "\xe6\xbf\xb9\xe4\xb8\x8a", 
+            +    "&#28665;\x8f\xe3"); 
+            */
+        }
     }
 }

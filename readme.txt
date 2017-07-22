@@ -10,7 +10,7 @@
 	using (var sr = new Nkf.Net.NkfTextReader(fileName))
     {
         string s = sr.ReadToEnd();
-		Console.WriteLine(s);
+        Console.WriteLine(s);
 	}
 
 【エンコードを気にせずバイト配列から文字列を取得できます。】

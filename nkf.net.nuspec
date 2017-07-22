@@ -3,7 +3,7 @@
   <metadata>
     <id>Nkf.Net</id>
     <title>Nkf.Net (x86/x64)</title>
-    <version>0.3.3</version>
+    <version>0.3.4</version>
     <authors>kkato233</authors>
     <description>ものすごく古い漢字コード変換プログラムである nkf を .NET Framework から簡単に利用するためのライブラリです.</description>
     <language>ja-JP</language>
@@ -14,9 +14,6 @@
     <copyright>MIT Licence</copyright>
   </metadata>
   <files>
-    <file src="bin_net20_Release\Nkf.Net.dll" target="lib\net20" />
-    <file src="bin_net20_Release\Nkf.Net.xml" target="lib\net20" />
-	
     <file src="bin_net40_Release\Nkf.Net.dll" target="lib\net40" />
     <file src="bin_net40_Release\Nkf.Net.xml" target="lib\net40" />
 
@@ -38,7 +35,6 @@
     <file src="shared\NativeBinaries\x86\nkf32.dll" target="build\net451\NativeBinaries\x86" />
     <file src="shared\NativeBinaries\x64\nkf32.dll" target="build\net451\NativeBinaries\x64" />
 	
-    <file src="shared\Nkf.Net.targets" target="build\net20\Nkf.Net.targets" />
     <file src="shared\Nkf.Net.targets" target="build\net40\Nkf.Net.targets" />
     <file src="shared\Nkf.Net.targets" target="build\net45\Nkf.Net.targets" />
     <file src="shared\Nkf.Net.targets" target="build\net451\Nkf.Net.targets" />
