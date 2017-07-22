@@ -3,15 +3,17 @@
 ファイルのエンコードが UTF8 なのか SJIS なのか EUC なのか気にせず
 文字列の読み込みをする事ができます。
 
+Nkf.Net NuGet パッケージをインストールすることで利用できます。
+
 
 【ファイルから読み込む例】
 
-	// どんな文字コードでも読み込みできる。
-	using (var sr = new Nkf.Net.NkfTextReader(fileName))
+    // どんな文字コードでも読み込みできる。
+    using (var sr = new Nkf.Net.NkfTextReader(fileName))
     {
         string s = sr.ReadToEnd();
         Console.WriteLine(s);
-	}
+    }
 
 【エンコードを気にせずバイト配列から文字列を取得できます。】
 
