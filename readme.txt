@@ -51,6 +51,11 @@ This software is released under the MIT License, see LICENSE.txt.
 LICENSE.txtをご覧ください。
 
 同梱の nkf32.dll は gzip ライセンスのもと公開されています。
+
+同梱の nkf32.dll はオリジナルの nkf32.dll 
 http://sourceforge.jp/projects/nkf/
+にマルチスレッド対応機能を追加したバージョンを利用しています。
+機能追加版のソース管理URL
+https://github.com/kkato233/nkf
 
 
