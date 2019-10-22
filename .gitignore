@@ -163,3 +163,4 @@ bin_net40_Debug/
 bin_net45_Debug/
 bin_net451_Debug/
 nkf*.nupkg
+.vs/
