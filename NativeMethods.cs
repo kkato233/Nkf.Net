@@ -105,26 +105,21 @@ namespace Nkf.Net
             {
                 string originalAssemblypath = new Uri(Assembly.GetExecutingAssembly().EscapedCodeBase).LocalPath;
 
-                string currentArchSubPath = "NativeBinaries/" + ProcessorArchitecture;
+                string currentArchSubPath = ProcessorArchitecture;
 
                 string path = Path.Combine(Path.GetDirectoryName(originalAssemblypath), currentArchSubPath);
 
-
-#if false
-                // PATH を指定して DLL 読み込みを行う方法
-                const string pathEnvVariable = "PATH";
-                Environment.SetEnvironmentVariable(pathEnvVariable,
-                                                    String.Format(CultureInfo.InvariantCulture, "{0}{1}{2}", path, Path.PathSeparator, Environment.GetEnvironmentVariable(pathEnvVariable)));
-#endif
                 // DLL 読み込みディレクトリを追加する方法
-                // （Win7 以降では AddDllDirectory を使うという方法もある） 
-#if true
-                SetDllDirectory(path);
-#endif         
-#if false
-                // 明示的に指定のディレクトリを読み込む その他の関連するディレクトリは読み込まない。
-                LoadLibrary(Path.Combine(path, nkfdll));
-#endif
+                // （Win7 以降では AddDllDirectory を使う） 
+                IntPtr intPtr = GetProcAddress(GetModuleHandle("kernel32.dll"), "AddDllDirectory");
+                if (intPtr == IntPtr.Zero)
+                {
+                    SetDllDirectory(path);
+                }
+                else
+                {
+                    AddDllDirectory(path);
+                }
             }
         }
 
@@ -219,9 +214,20 @@ namespace Nkf.Net
         [DllImport("kernel32", CharSet = CharSet.Auto, ExactSpelling = true, SetLastError = true)]
         static extern IntPtr GetProcAddress(IntPtr hModule, string procName);
 
+        // https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-adddlldirectory
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool SetDllDirectory(string lpPathName);
 
+        // https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-adddlldirectory
+        // DLL_DIRECTORY_COOKIE AddDllDirectory(PCWSTR NewDirectory);
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern int AddDllDirectory(string lpPathName);
+
+        // https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulehandlew
+        // HMODULE GetModuleHandleW(LPCWSTR lpModuleName);
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        static extern IntPtr GetModuleHandle(string lpModuleName);
     }
 }
