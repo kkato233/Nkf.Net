@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nkf.Net</name>
+    </assembly>
+    <members>
+        <member name="T:Nkf.Net.NativeMethods">
+            <summary>
+            nkf32.dll を呼び出すための API
+            </summary>
+        </member>
+        <member name="F:Nkf.Net.NativeMethods.nkfdll">
+            <summary>
+            nkf32.dll のファイル名
+            </summary>
+        </member>
+        <member name="M:Nkf.Net.NativeMethods.GetNkfVersionSafe(System.Text.StringBuilder,System.Int32,System.Int32@)">
+            <summary>
+            GetNkfVersionSafe のラッパ
+            </summary>
+            <param name="varStr"></param>
+            <param name="nBufferLength"></param>
+            <param name="lpTCHARsReturned"></param>
+        </member>
+        <member name="M:Nkf.Net.NativeMethods.#cctor">
+            <summary>
+            スタティックコンストラクタ。
+            このクラスが最初に利用されるタイミングで1回だけ実行される。
+            </summary>
+        </member>
+        <member name="F:Nkf.Net.NativeMethods.IntPtrSize_x64">
+            <summary>
+            IntPtr のサイズを調べることで x86 x64 を判定する。
+            </summary>
+        </member>
+        <member name="M:Nkf.Net.NativeMethods.FindInSearchPath(System.String)">
+            <summary>
+            Path の中で目的の EXE または DLL が見つかるか？判定する。
+            </summary>
+            <param name="exeOrDllName">
+            検索するディレクトリ名を指定
+            </param>
+            <remarks>
+            Win32 API Search Path を使って 目的のファイルを検索する。
+            </remarks>
+            <returns>
+            検索できたら true を返す。
+            見つからない場合は false を返す。
+            </returns>
+        </member>
+        <member name="T:Nkf.Net.NkfEncoding">
+            <summary>
+            自動的に日本語文字コードを認識して文字列に変換してくれるエンコーダー
+            任意の文字コードのバイト配列 -> 文字列 への変換は nkf32.dll を利用します。
+            文字列 -> バイト配列 の変換は UTF8 を利用します。
+            </summary>
+        </member>
+        <member name="M:Nkf.Net.NkfEncoding.SetNkfOption(System.String)">
+            <summary>
+            解析で利用する NKF のオプションを指定する。
+            ただし、出力エンコード指定 -j -e -s -w は指定しても無視される。
+            </summary>
+            <param name="nkfOption"></param>
+        </member>
+        <member name="F:Nkf.Net.NkfEncoding.defaultNkfOption">
+            <summary>
+            UCS2 の BOM なし エンコード
+            </summary>
+        </member>
+        <member name="M:Nkf.Net.NkfEncoding.GetByteCount(System.Char[],System.Int32,System.Int32)">
+            <summary>
+            指定した文字配列に格納されているすべての文字をエンコードすることによって
+            生成されるバイト数を計算します。
+            EncodingUTF8 と同じ動作をします。
+            </summary>
+            <param name="chars"></param>
+            <param name="index"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nkf.Net.NkfEncoding.GetBytes(System.Char[],System.Int32,System.Int32,System.Byte[],System.Int32)">
+            <summary>
+            指定した文字配列に格納されている文字のセットを、指定したバイト配列にエンコードします。
+            </summary>
+            <param name="chars">
+            エンコード対象の文字のセットを格納している文字配列。
+            </param>
+            <param name="charIndex">
+            エンコードする最初の文字のインデックス。
+            </param>
+            <param name="charCount">
+            エンコードする文字数。
+            </param>
+            <param name="bytes">
+            結果のバイト シーケンスを格納するバイト配列。
+            </param>
+            <param name="byteIndex">
+            結果のバイト シーケンスを書き込む開始位置のインデックス。
+            </param>
+            <returns>
+            bytes に書き込まれた実際のバイト数。
+            </returns>
+        </member>
+        <member name="M:Nkf.Net.NkfEncoding.GetCharCount(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            非推奨：内部的には文字列変換してその文字数をカウントしているので性能が良くありません。
+            
+            指定したバイト配列に格納されているバイト シーケンスをデコードすることによって生成される文字数を計算します。
+            </summary>
+            <param name="bytes">デコード対象のバイト シーケンスが格納されたバイト配列。</param>
+            <param name="index">デコードする最初のバイトのインデックス。</param>
+            <param name="count">デコードするバイト数。</param>
+            <returns>指定したバイト シーケンスをデコードすることによって生成される文字数。</returns>
+        </member>
+        <member name="M:Nkf.Net.NkfEncoding.GetChars(System.Byte[],System.Int32,System.Int32,System.Char[],System.Int32)">
+            <summary>
+            指定したバイト配列に格納されているバイト シーケンスを文字のセットにデコードします。
+            </summary>
+            <param name="bytes">デコード対象のバイト シーケンスが格納されたバイト配列。</param>
+            <param name="byteIndex">デコードする最初のバイトのインデックス。</param>
+            <param name="byteCount">デコードするバイト数。</param>
+            <param name="chars">結果の文字のセットを格納する文字配列。</param>
+            <param name="charIndex">結果の文字のセットを書き込む開始位置のインデックス。</param>
+            <returns>chars に書き込まれた実際の文字数。</returns>
+            <exception cref="T:System.ArgumentNullException">bytes は null なので、 または chars は null </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            byteIndex、byteCount、または charIndex が 0 未満です。
+            または byteindex および byteCount がbytes 内の有効な範囲を示していません。
+            または charIndex が chars の有効なインデックスではありません。
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            chars には、charIndex から配列の末尾までに十分なサイズがなく、結果の文字を格納できません。
+            </exception>
+        </member>
+        <member name="M:Nkf.Net.NkfEncoding.GetMaxByteCount(System.Int32)">
+            <summary>
+            指定した文字数をエンコードすることによって生成される最大バイト数を計算します。
+            </summary>
+            <param name="charCount">エンコードする文字数。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nkf.Net.NkfEncoding.GetMaxCharCount(System.Int32)">
+            <summary>
+            指定したバイト数をデコードすることによって生成される最大文字数を計算します。
+            </summary>
+            <param name="byteCount">デコードするバイト数。</param>
+            <returns>指定したバイト数をデコードすることによって生成される最大文字数。</returns>
+        </member>
+        <member name="T:Nkf.Net.NkfTextReader">
+            <summary>
+            NKFを呼び出す自動的にエンコード判定を行うTextReader
+            </summary>
+        </member>
+        <member name="M:Nkf.Net.NkfTextReader.#ctor(System.String)">
+            <summary>
+            ファイル名を指定して 内容のデータを取得する
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:Nkf.Net.NkfTextReader.#ctor(System.IO.Stream)">
+            <summary>
+            Stream からデータを読み取る
+            </summary>
+            <param name="st"></param>
+        </member>
+        <member name="M:Nkf.Net.NkfTextReader.SetNkfOption(System.String)">
+            <summary>
+            解析で利用する NKF のオプションを指定する。
+            ただし、出力エンコード指定 -j -e -s -w は指定しても無視される。
+            </summary>
+            <param name="nkfOption"></param>
+        </member>
+        <member name="F:Nkf.Net.NkfTextReader.Eof">
+            <summary>
+            ファイルが終了したか？
+            </summary>
+        </member>
+        <member name="M:Nkf.Net.NkfTextReader.ReadLine">
+            <summary>
+            1行のデータを取得する
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nkf.Net.NkfTextReader.ReadToEnd">
+            <summary>
+            文字列を最後まで読み込む
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Nkf.Net.WrapNkf">
+            <summary>
+            nkf32.dll の機能を .NET から利用するための簡単なラッパークラス。
+            </summary>
+            <remarks>
+            （１） 複数のスレッドからアクセスされた場合に処理が終了するまで
+                    別スレッドを待たせる必要がある。
+            （２） SetNkfOption は 最後に設定したもが
+            </remarks>
+        </member>
+        <member name="M:Nkf.Net.WrapNkf.GetNkfVersion">
+            <summary>
+            nkf32.dll のバージョン情報を取得する。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nkf.Net.WrapNkf.NkfConvertSafe(System.Byte[],System.Int32,System.Int32@,System.Byte[],System.Int32)">
+            <summary>
+            Nkf を使ったコンバート処理の呼び出し
+            </summary>
+            <param name="outStr"></param>
+            <param name="length"></param>
+            <param name="bytes"></param>
+            <param name="data"></param>
+            <param name="len"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nkf.Net.WrapNkf.NkfConvertSafeWithOption(System.Byte[],System.Int32,System.Int32@,System.Byte[],System.Int32,System.String)">
+            <summary>
+            Nkf を使ったコンバート処理の呼び出し。
+            明示的に今回だけ利用するオプションを指定できる。
+            </summary>
+            <param name="outStr"></param>
+            <param name="length"></param>
+            <param name="bytes"></param>
+            <param name="data"></param>
+            <param name="len"></param>
+            <param name="nkfOption"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nkf.Net.WrapNkf.NkfConvert(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            パラメータで指定された日本語を自動的に解析して文字列として出力する。
+            </summary>
+            <param name="buffer"></param>
+            <param name="startIndex"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nkf.Net.WrapNkf.SetNkfOption(System.String)">
+            <summary>
+            Nkf を呼び出すときに利用するオプションを設定
+            </summary>
+            <param name="option"></param>
+        </member>
+        <member name="F:Nkf.Net.WrapNkf._nkfOption">
+            <summary>
+            最後に設定された NkfOption を保存しておく。
+            (デフォルトは UTF8）
+            </summary>
+        </member>
+        <member name="M:Nkf.Net.WrapNkf.FileConvert1(System.String)">
+            <summary>
+            指定のファイルを日本語変換を行う。
+            </summary>
+            <param name="fileName">ファイル名を指定する</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nkf.Net.WrapNkf.FileConvert2(System.String,System.String)">
+            <summary>
+            入力ファイルと出力ファイルを指定してコンバート
+            </summary>
+            <param name="inFileName"></param>
+            <param name="outFileName"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

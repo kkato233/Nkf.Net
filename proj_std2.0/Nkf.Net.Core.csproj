@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Nkf.Net</AssemblyName>
+    <RootNamespace>Nkf.Net</RootNamespace>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>0.3.5</Version>
+    <Authors>kkato233</Authors>
+    <Description>ものすごく古い漢字コード変換プログラムである nkf を .NET Framework から簡単に利用するためのライブラリです.</Description>
+    <Company />
+    <Copyright>MIT Licence</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath></OutputPath>
+    <DocumentationFile>Nkf.Net.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath></OutputPath>
+    <DocumentationFile>Nkf.Net.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Nuget.Nkf.Test\**" />
+    <Compile Remove="shared\**" />
+    <Compile Remove="TestData\**" />
+    <EmbeddedResource Remove="Nuget.Nkf.Test\**" />
+    <EmbeddedResource Remove="shared\**" />
+    <EmbeddedResource Remove="TestData\**" />
+    <None Remove="Nuget.Nkf.Test\**" />
+    <None Remove="shared\**" />
+    <None Remove="TestData\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="EncodingTest.cs" />
+    <Compile Remove="NkfBaseTest.cs" />
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <Compile Remove="TestTextReader.cs" />
+    <Compile Remove="TestWrapNkf.cs" />
+    <Compile Remove="ThreadTest.cs" />
+    <Compile Remove="UUCodec.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="build.bat" />
+    <None Remove="Nkf.Net.0.3.4.nupkg" />
+    <None Remove="nkf.net.nuspec" />
+    <None Remove="Nkf.Net.xml" />
+    <None Remove="nuget.exe" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\src\NativeMethods.cs" Link="NativeMethods.cs" />
+    <Compile Include="..\src\NkfEncoding.cs" Link="NkfEncoding.cs" />
+    <Compile Include="..\src\NkfTextReader.cs" Link="NkfTextReader.cs" />
+    <Compile Include="..\src\WrapNkf.cs" Link="WrapNkf.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,1119 @@
+﻿
+@jis
+
+M1FER<W0@4W1A9V4@&R1"(3DQ(3%^2R%+?D]3&RA"(%-E8V]N9"!3=&%G92`;
+M)$)0)TU:&RA"($AI<F%G86YA(!LD0B0B)"0D)B0H)"HD;R1R)',;*$(*2V%T
+M86MA;F$@&R1")2(E)"4F)2@E*B5O)7(E<QLH0B!+:6=O=2`;)$(A)B%G(S`C
+/029!)E@G(B=!*$`;*$(*
+
+@sjis
+
+M1FER<W0@4W1A9V4@@5B)0(F>ED"6GIAR(%-E8V]N9"!3=&%G92"8I9=Y($AI
+M<F%G86YA((*@@J*"I(*F@JB"[8+P@O$*2V%T86MA;F$@@T&#0X-%@T>#28./
+>@Y*#DR!+:6=O=2"!18&'@D^"8(._@]:$081@A+X*
+
+@euc
+
+M1FER<W0@4W1A9V4@H;FQH;'^RZ'+_L_3(%-E8V]N9"!3=&%G92#0I\W:($AI
+M<F%G86YA(*2BI*2DIJ2HI*JD[Z3RI/,*2V%T86MA;F$@I:*EI*6FI:BEJJ7O
+>I?*E\R!+:6=O=2"AIJ'GH["CP:;!IMBGHJ?!J,`*
+
+
+@utf8
+
+M[[N_1FER<W0@4W1A9V4@XX"%Z9FBY;^<YK.5YKJ`Z(65(%-E8V]N9"!3=&%G
+M92#DN+SI@:4@2&ER86=A;F$@XX&"XX&$XX&&XX&(XX&*XX*/XX*2XX*3"DMA
+M=&%K86YA(.."HN."I.."IN."J.."JN.#K^.#LN.#LR!+:6=O=2#C@[OBB)[O
+1O)#OO*'.L<^)T)'0K^*5@@H`
+
+@utf8N
+
+M1FER<W0@4W1A9V4@XX"%Z9FBY;^<YK.5YKJ`Z(65(%-E8V]N9"!3=&%G92#D
+MN+SI@:4@2&ER86=A;F$@XX&"XX&$XX&&XX&(XX&*XX*/XX*2XX*3"DMA=&%K
+M86YA(.."HN."I.."IN."J.."JN.#K^.#LN.#LR!+:6=O=2#C@[OBB)[OO)#O
+.O*'.L<^)T)'0K^*5@@H`
+
+@u16L
+
+M__Y&`&D`<@!S`'0`(`!3`'0`80!G`&4`(``%,&*6W%_5;(!N58$@`%,`90!C
+M`&\`;@!D`"``4P!T`&$`9P!E`"``/$YED"``2`!I`'(`80!G`&$`;@!A`"``
+M0C!$,$8P2#!*,(\PDC"3,`H`2P!A`'0`80!K`&$`;@!A`"``HC"D,*8PJ#"J
+I,.\P\C#S,"``2P!I`&<`;P!U`"``^S`>(A#_(?^Q`\D#$00O!$(E"@``
+
+
+@u16L0
+
+M1@!I`'(`<P!T`"``4P!T`&$`9P!E`"``!3!BEMQ?U6R`;E6!(`!3`&4`8P!O
+M`&X`9``@`%,`=`!A`&<`90`@`#Q.99`@`$@`:0!R`&$`9P!A`&X`80`@`$(P
+M1#!&,$@P2C"/,)(PDS`*`$L`80!T`&$`:P!A`&X`80`@`*(PI#"F,*@PJC#O
+G,/(P\S`@`$L`:0!G`&\`=0`@`/LP'B(0_R'_L0/)`Q$$+P1")0H`
+
+@u16B
+
+M_O\`1@!I`'(`<P!T`"``4P!T`&$`9P!E`"`P!99B7]QLU6Z`@54`(`!3`&4`
+M8P!O`&X`9``@`%,`=`!A`&<`90`@3CR090`@`$@`:0!R`&$`9P!A`&X`80`@
+M,$(P1#!&,$@P2C"/,)(PDP`*`$L`80!T`&$`:P!A`&X`80`@,*(PI#"F,*@P
+IJC#O,/(P\P`@`$L`:0!G`&\`=0`@,/LB'O\0_R$#L0/)!!$$+R5"``H`
+
+@u16B0
+
+M`$8`:0!R`',`=``@`%,`=`!A`&<`90`@,`668E_<;-5N@(%5`"``4P!E`&,`
+M;P!N`&0`(`!3`'0`80!G`&4`($X\D&4`(`!(`&D`<@!A`&<`80!N`&$`(#!"
+M,$0P1C!(,$HPCS"2,),`"@!+`&$`=`!A`&L`80!N`&$`(#"B,*0PIC"H,*HP
+G[S#R,/,`(`!+`&D`9P!O`'4`(##[(A[_$/\A`[$#R001!"\E0@`*
+
+@jis1
+
+M&R1";3%Q<$$L&RA""ALD0F4Z3F\;*$(*&R1"<FT;*$()&R1"/F5.3D]+&RA"
+#"0D*
+
+@sjis1
+
+8YU#ID)%+"N-9E^T*Z>L)C^.7S)AJ"0D*
+
+
+@euc1
+
+8[;'Q\,&L"N6ZSN\*\NT)ON7.SL_+"0D*
+
+@utf1
+
+AZ+J%Z:N/Z8JM"N>VNNFZEPKIM(D)Y+B*Z:"8Y+J8"0D*
+
+
+@jis2
+
++&R1".EA&(QLH0@H`
+
+@sjis2
+
+%C=:3H0H`
+
+@euc2
+
+%NMC&HPH`
+
+@utf2
+
+'YI:.Z)>D"@``
+
+
+@amb
+
+MI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&E
+MPK"QI<*PL:7"L+&EPK"QI<(*I<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*P
+ML:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<(*I<*PL:7"L+&E
+MPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"
+ML+&EPK"QI<(*I<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"Q
+MI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<(*I<*PL:7"L+&EPK"QI<*PL:7"
+ML+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<*PL:7"L+&EPK"QI<(*
+
+@amb.euc
+
+M&R1")4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25"
+M,#$E0C`Q)4(P,25",#$E0C`Q)4(;*$(*&R1")4(P,25",#$E0C`Q)4(P,25"
+M,#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(;
+M*$(*&R1")4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P
+M,25",#$E0C`Q)4(P,25",#$E0C`Q)4(;*$(*&R1")4(P,25",#$E0C`Q)4(P
+M,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q
+M)4(;*$(*&R1")4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q
+>)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(;*$(*
+
+@amb.sjis
+
+M&RA))4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25"
+M,#$E0C`Q)4(P,25",#$E0C`Q)4(;*$(*&RA))4(P,25",#$E0C`Q)4(P,25"
+M,#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(;
+M*$(*&RA))4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P
+M,25",#$E0C`Q)4(P,25",#$E0C`Q)4(;*$(*&RA))4(P,25",#$E0C`Q)4(P
+M,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q
+M)4(;*$(*&RA))4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q
+>)4(P,25",#$E0C`Q)4(P,25",#$E0C`Q)4(;*$(*
+
+
+# test_data/cp932
+
+@test_data/cp932
+
+%^D`@_$L`
+
+@test_data/cp932.ans
+
+%_/$@_.X`
+
+
+# test_data/no-cp932inv
+
+@test_data/no-cp932inv.ans
+
+%[N\@[NP`
+
+
+# JIS X 0213
+
+@jisx0213_sjis
+
+0@:V(G9ATF)WJIN_W\$#\]```
+
+
+@jisx0213_euc
+
+2HJ^O_<_5S_WTJ/[YCZ&AC_[V
+
+@jisx0213_jis2000
+
+;&R0H3R(O+WU/54]]="A^>1LD*%`A(7YV&RA"
+
+@jisx0213_jis2004
+
+;&R0H42(O+WU/54]]="A^>1LD*%`A(7YV&RA"
+
+
+@jisx0213_utf8
+
+:[[R'Y:REY:V!Y;>+Y;>BZ;ZB\*""B?"JFK(`
+
+
+
+# test_data/jisx0213nonbmp
+
+@test_data/jisx0213nonbmp
+
+MKJ*OPJ_,K^"O^\_4S^//[O6Z]?+VJ?:R]N#W[/C^^:GYQ_G4^>[ZW?NS^\G[
+M[/S)_-'^YH^AH8^AJX^AKH^AMH^AQH^A\(^A]X^A^8^CHH^CI8^CIX^CL8^C
+MLH^CN(^COX^CP8^CRH^CTH^CTX^CV8^CW(^C]X^DJH^DL8^DLH^DNH^DO8^D
+MV8^DW(^DWH^DXX^DZH^DZX^D\H^D](^D]8^EI8^ELH^EOH^EQ(^EQX^EU8^E
+MUH^E_H^HL(^HMX^HN(^HNH^HNX^HOX^HP(^HQ8^HR(^HRH^HRX^HVX^HYH^H
+M[(^LHH^LJX^LL(^LT(^LY8^L[8^L\H^MI(^MJ8^MJH^MLH^MM(^MM8^MN8^M
+MUH^M_8^NHX^NI(^NNH^NO(^NO8^NPH^NPX^NQ(^NQX^NR8^NU8^NUH^NUX^N
+MVX^N]X^N^(^OJH^OOX^OP(^OPH^OPX^OSH^OV8^OX8^OZ8^OZH^O\(^O]8_N
+MHX_NM(_NR8_NW(_NWH_NWX_NX(_OLH_OQX_OS8_OX8_OY(_PHH_PLX_PN8_P
+MTX_P^X_QKH_QL(_QM8_QQ(_QW8_QX8_QYH_QZ8_Q]8_Q]X_Q^H_RH8_RHX_R
+MI(_RJ(_RK(_RO8_RR(_RVX_R]8_R]H_SLH_SO8_SOH_SP(_STH_SW8_SWH_S
+M\X_S](_S]8_S]X_S^X_S_8_THH_TI(_TIX_TKH_TKX_TM(_TM8_TO8_TPH_T
+MSX_TZ8_TZX_T\H_T]8_T^8_UM8_UNH_UQH_UUH_UV(_UVH_UW8_UWX_UXX_U
+MZH_U\(_U\X_VQ(_VSH_VW8_V]8_V_H_WH8_WHH_WLX_WMH_WY(_WY8_WZX_W
+M[H_W\X_XJ8_XJH_XK(_XM(_XO(_XOH_XPH_XUH_XXX_X]X_X^8_X^H_YI8_Y
+MKX_YLH_YN8_YPH_YR(_YV8_YWH_YYH_YZX_Y^H_Y_H_ZH8_ZK(_ZKX_ZSX_Z
+MT(_ZUX_ZY8_ZYH_Z\8_Z\H_Z_H_[H8_[K(_[K8_[MH_[MX_[O8_[OH_[SH_[
+MSX_[UX_[VH_[W(_[W8_[X8_[Y8_[YX_[Z8_[\8_\HH_\HX_\N(_\PH_\S(_\
+MUH_\V8_\W8_\]H_]K(_]RX_]S(_]V8_]VX_]W8_]YX_][8_]\(_^I8_^J8_^
+=JX_^LH_^M8_^TX_^V(_^VH_^[H_^\(_^\H_^]@H`
+
+
+@test_data/jisx0213nonbmp.ans
+
+M\*"`B_"AB+WPH8R;\*&1KO"AHKWPH*Z?\*&:M/"AN+3PHX>$\*.7A/"CG+_P
+MHYVC\*.SOO"DG['PI9*.\*64CO"EG;'PI:>$\*6VH?"FJ[_PIKF`\*>#M/"G
+MFH3PJ(FW\*B/C?"JAI#PH(*)\*""HO"@@J3PH(:B\*"(D_"@C*OPH(Z!\*"-
+ML?"@C[GPH)&*\*"4B?"@EY;PH)BH\*"=C_"@H(?PH*"Z\*"BN?"@I;SPH*:=
+M\*"KD_"@K)WPH+6%\*"WH?"@NI7PH+FM\*"YI/"@O9_PH8B!\*&)E?"AB;OP
+MH8FT\*&+I/"ABY?PH8N]\*&,MO"AC83PH8^$\*&1K?"AEY?PIK"I\*&9A_"A
+MG(;PH9V"\*&G@_"AL9;PH;2M\*&UA?"AM;CPH;6B\*&VH?"AMISPH;:2\*&V
+MM_"AMZ#PH;BS\*&\GO"AO;;PH;^Z\**%N_"BC)[PHHZM\**;L_"BH9OPHJ*K
+M\**FC_"BJKCPHJV/\**MD/"BK8;PHK"=\**NIO"BL*3PHK>A\*.'@_"CA[7P
+MHX:V\*.-LO"CCY/PHX^2\*./D/"CCZ3PHX^5\*./FO"CCY_PHY&*\*.1D?"C
+MD8OPHY&E\*.3I/"CE9KPHY:4\*.8N?"CF8?PHYBX\*.8NO"CG)SPHYR,\*.=
+MI/"CG[_PHY^G\*.@I/"CH+WPHZJ8\*.QO_"CM(#PH[6`\*.WNO"CM[GPH[>3
+M\*.]OO"D@I;PI(2#\*2'AO"DA[[PI(Z\\*28J?"DFJ7PI**6\*2IC?"DK9;P
+MI*VO\*2PEO"DM)3PI+B.\*2XM_"DN:KPI+J+\*6!BO"E@97PI82B\*6&J?"E
+MAZ7PI8>-\*6(GO"EB8SPI9"N\*63F?"EEJ?PI9ZI\*6>M/"EIY3PI:ND\*6K
+MH_"EJ['PI:ZR\*6QB_"EL:3PI;BN\*6YEO"EN:7PI;FB\*6[F/"ENX+PI;NH
+M\*6\H_"EO9SPI;^@\*6_E/"F@(SPI;^[\*:`E_"F@:#PIH.M\*:)L/"FBH;P
+MIHV,\*.TCO"FD(+PIIF^\*::L/"FG)WPIJ.=\*:CJO"FI9'PIJ6O\*:GG?"F
+MJ)[PIJF8\*:JC/"FJK?PIK&S\*:SG?"FN:7PIKZ4\*:_N/"FO[;PIK^W\*>$
+MC?"GA+GPIX^;\*>/FO"GC[[PIY"0\*>1B?"GF)7PIYB4\*>8L?"GFI/PIYR.
+M\*><H_"GG9+PIZ:%\*>JA/"GKK/PIZZ^\*>OA_"GLKCPI[:@\*>XD/"GOK?P
+MJ(**\*B"N_"HBH+PJ(NS\*B0C/"HD97PJ)6K\*B7B/"HEXGPJ)N7\*B;NO"H
+MI8GPJ*6&\*BEJ_"HIH?PJ*:(\*BFNO"HIKOPJ*B>\*BHJ?"HJ;'PJ*F#\*BJ
+MF?"HJXWPJ*ND\*BKG?"HKX'PJ*^O\*BTD/"HM;'PJ+>[\*BXG_"HN+;PJ+J)
+M\*B[J_"HO++PJ+^X\*F*H/"IBK'PJ9*0\*F7C_"IF;_PJ9NP\*F<F?"IG9#P
+MJ:.&\*FILO"IMYOPJ;B]\*FXE?"INHKPJ;F)\*F[A/"INZGPJ;N;\*F_CO"J
+K@*_PJH":\*J#N?"J@H+PHHB8\*J.C/"JD+?PJI>Q\*J8@O"JF)KPJIJR"@``
+
+
+# test_data/jisx0213needx0213_f
+
+@test_data/jisx0213needx0213_f
+
+MXH*LPKS#B<.?P['%C<6"Q)C$C<6OR:[%B\63RJ+)FLN0RZ;+GN*=O^*%M^*3
+MFN.+DN.+G^*8GO"@@(OE@(+EA(OCDYOEC:'EC:/EEH;OJ+CEG+/EHJGEI9WE
+MB9WFD[?FF8CFFJ#FGKOFH;+CKK;GI(#OJ8WGIKCOJ97GKYGGL:WGM9SGN8?H
+M@+?PIJN_Z(VBZ(ZGZ(^1Z)2CZ)F;Z)FLZ*"?[ZFA[ZFB[ZFD\*B)M^F"F>F$
+ME>F$I^>J@N>JN>>MI.>ML^>OL.>RIN>SM>2+G>>VI^>ZD>>]DO"CM([H@([P
+MIIJPZ(2>\*:CG>B)B^^IG>B*M.B.E.B0C^B1O.B4F^B5D?"FO[;HF:_HFZ;H
+MG+KHG;+HH(OPIYB4Z*.2Z*6%Y)JAZ*BUY)R,\*>NOO"GMJ#HM(GHN:SDH8[H
+MOK;HO['I@K#IA8;IA9GIB9'PJ*:(Z8N&Z8N[Z8V:Z9")Z96XZ9J]Z9N:Z9Z6
+MZ:"EZ:*\Z:.QZ:6`Z:B@Z:BQZ:NE\*FXO>FOKO"INZGIL:GPJH":Z;:9Z;B"
+-\**(F/"JE['PJIJR"@``
+
+@test_data/jisx0213needx0213_f.ans
+
+MJ:&ILZG`J=6IYZG^JJZJOJK,JM6JZZKZJZJKO:O#J]6KX:OQK*JLO*S+K-VL
+MZJW^KJ*NO*[,KMNN[Z[PKZJOMJ_%K]^OZ:_^]:3UN/7$]=CUX_7^^:WYM/G$
+M^='YYOGP^J3ZM/K(^MWZ[?KY^Z'[MOO.^]+[Y_OY_*_\N/S)_-W\[/SPC_.M
+MC_.TC_/.C_/1C_/CC_/VC_2HC_2[C_3$C_3>C_3JC_3UC_6EC_6ZC_7!C_76
+MC_7KC_7TC_:BC_:WC_;!C_;2C_;FC_;PC_>AC_>[C_?.C_?:C_?BC_?\C_BJ
+MC_BSC_C`C_C.C_C8C_CKC_CYC_FOC_FSC_G/C_G<C_GJC_GTC_JHC_J^C_K!
+MC_K=C_KFC_KVC_NDC_NQC_O%C_O2C_OOC_OSC_RDC_R\C_S&C_S2C_SDC_S^
+EC_VAC_VTC_W,C_W8C_WMC_WVC_ZKC_Z\C_[-C_[3C_[NC_[V"@``
+
+
+# test_data/shift_jisx0213-utf8-need-no-cp932
+
+@test_data/shift_jisx0213-utf8-need-no-cp932
+
+M[4#M3NU/[5/M7NU?[6;M;>UO[7#M=^U][7[MA.V-[8_MGNV?[:OMKNVO[;[M
+MO^W"[<[MS^W0[=[MW^WL[>[M[^W[[?SN1>Y.[D_N4>Y>[E_N;>YO[GWN?NZ'
+F[HWNC^Z0[I[NG^ZF[J[NK^ZV[K_NQ^[.[L_NT.[?[NSN[^[[[OP`
+
+@test_data/shift_jisx0213-utf8-need-no-cp932.ans
+
+MYZ&#YZ2<YZ2N[ZF-[ZF2[ZF3\*6=L>>HN>>IK>^IE>>KJ^>MCN>MH.^IEN2)
+MI.>QF>>TL>>U@>>WH^>XB.>XD>>_G^>_K.^IF^B%H.B%I^B%J.B*H^B*I.B,
+MHNB,NNB-@^B/A^B/C^B0BNB2M.B2NNB3@NB6HNB6L.B9F^B9HNB>K>B>M>B@
+MG^BCM>^IH.BDF.BHE>BHHNBIN>^IH^BMAN^II.BWCO"HB;?HO93PJ(^-Z+ZF
+/Z8*^Z82BZ82OZ8>[Z8>D
+
+@test_data/jisx0213utf8comb
+
+MI/>D^*3YI/JD^Z7WI?BE^:7ZI?NE_*7]I?ZF^*O$J\BKR:O*J\NKS*O-J\ZK
+.SZOEJ^:KVJO<J^"KY`H`
+
+@test_data/jisx0213utf8comb.ans
+
+MXX&+XX*:XX&-XX*:XX&/XX*:XX&1XX*:XX&3XX*:XX*KXX*:XX*MXX*:XX*O
+MXX*:XX*QXX*:XX*SXX*:XX*[XX*:XX.$XX*:XX.(XX*:XX>WXX*:PZ;,@,F4
+MS(#)E,R!RHS,@,J,S(')F<R`R9G,@<F:S(#)FLR!RZG+I<NERZG,@<R`RZ7+
+"J0H`
+
+
+
+@test_data/jisx0213utf8combr.ans
+
+MI/>D^*3YI/JD^Z7WI?BE^:7ZI?NE_*7]I?ZF^*O$J\BKR:O*J\NKS*O-J\ZK
+,SZOEJ^:KVJO<J^8*
+
+
+
+# test_data/jisx0213comb
+
+@test_data/jisx0213comb
+
+MXX&+XX*:XX&-XX*:XX&/XX*:XX&1XX*:XX&3XX*:XX*KXX*:XX*MXX*:XX*O
+MXX*:XX*QXX*:XX*SXX*:XX*[XX*:XX.$XX*:XX.(XX*:XX>WXX*:PZ;,@,F4
+MS(#)E,R!RHS,@,J,S(')F<R`R9G,@<F:S(#)FLR!RZG+I<NERZG,@<R`RZ7+
+"J0H`
+
+
+@test_data/jisx0213comb.ans
+
+M,$LPFC!-,)HP3S":,%$PFC!3,)HPJS":,*TPFC"O,)HPL3":,+,PFC"[,)HP
+MQ#":,,@PFC'W,)H`Y@,``E0#``)4`P$"C`,``HP#`0)9`P`"60,!`EH#``):
+4`P$"Z0+E`N4"Z0,!`P`"Y0+I``H`
+
+
+# test_data/no_best_fit_chars
+
+@test_data/no_best_fit_chars
+
+;XH"5XHBE[[R-[[^@[[^A[[^B[[^C[[^D[[^E
+
+
+@test_data/no_best_fit_chars_ms
+
+9PJ+"H\*EPJ;"K.*`E.*`EN*`ON*(DN.`G```
+
+
+@test_data/no_best_fit_chars_cp932
+
+MPJ'"HL*CPJ7"IL*IPJK"J\*LPJW"KL*OPK+"L\*UPK?"N,*YPKK"N\.`PX'#
+M@L.#PX3#A<.&PX?#B,.)PXK#B\.,PXW#CL./PY##D<.2PY/#E,.5PY;#F,.9
+MPYK#F\.<PYW#GL.?PZ##H<.BPZ/#I,.EPZ;#I\.HPZG#JL.KPZS#K<.NPZ_#
+@L,.QP[+#L\.TP[7#ML.XP[G#NL.[P[S#O<.^P[_C@I0`
+
+# test_data/irv
+
+# $example{'test_data/irv'} = unpack('u',<<'eofeof');
+# %#B`/(!L`
+# eofeof
+# 
+# $example{'test_data/irv.ans'} = unpack('u',<<'eofeof');
+# %#B`/(!L`
+# eofeof
+# 
+# printf "%-40s", "test_data/irv";
+#    &test("$nkf -wE",$example{'test_data/irv'},$example{'test_data/irv.ans'});
+
+
+# UCS Mapping Test
+
+print "Shift_JIS to UTF-16\n";
+$example{'ms_ucs_map_1_sjis'} = "\x81\x60\x81\x61\x81\x7C\x81\x91\x81\x92\x81\xCA";
+$example{'ms_ucs_map_1_utf16'} = "\x30\x1C\x20\x16\x22\x12\x00\xA2\x00\xA3\x00\xAC";
+$example{'ms_ucs_map_1_utf16_ms'} = "\xFF\x5E\x22\x25\xFF\x0D\xFF\xE0\xFF\xE1\xFF\xE2";
+
+
+# X0201 仮名
+# X0201->X0208 conversion
+# X0208 aphabet -> ASCII
+# X0201 相互変換
+
+print "\nX0201 test\n\n";
+
+@x0201.sjis
+
+MD5.*<(-*@TR#3H-0@U*#2X--@T^#48-3"I%3B7""8()A@F*"8X)D@F6"9H*!
+M@H*"@X*$@H6"AH*'"I%3BTR-AH%)@9>!E(&0@9.!3X&5@9:!:8%J@7R!>X&!
+M@6V!;H%O@7"!CPJ4O(IPMK>X/;FZMMZWWKC>N=ZZWH+&"I2\BG#*W\O?S-_-
+MW\[?M]^QW@K*W\O?S`IH86YK86MU(,K?R]_,I`K*W\O?S-VA"I2\BG""S(SC
+!"@!"
+
+
+@x0201.euc
+
+MP;2ST:6KI:VEKZ6QI;.EK*6NI;"ELJ6T"L&TL=&CP:/"H\.CQ*/%H\:CQZ/A
+MH^*CXZ/DH^6CYJ/G"L&TM:VYYJ&JH?>A]*'PH?.AL*'UH?:ARJ'+H=VAW*'A
+MH<ZASZ'0H=&A[PK(OK/1CK:.MXZX/8ZYCKJ.MH[>CK>.WHZXCMZ.N8[>CKJ.
+MWJ3("LB^L]&.RH[?CLN.WX[,CM^.S8[?CLZ.WXZWCM^.L8[>"H[*CM^.RX[?
+MCLP*:&%N:V%K=2".RH[?CLN.WX[,CJ0*CLJ.WX[+CM^.S([=CJ$*R+ZST:3.
+#N.4*
+
+
+@x0201.utf
+
+MY86HZ*>2XX*KXX*MXX*OXX*QXX*SXX*LXX*NXX*PXX*RXX*T"N6%J.B+L>^\
+MH>^\HN^\H^^\I.^\I>^\IN^\I^^]@>^]@N^]@^^]A.^]A>^]AN^]APKEA:CH
+MJ)CEC[?OO('OO*#OO(/OO(3OO(7OO+[OO(;OO(KOO(COO(GBB)+OO(OOO)WO
+MO+OOO+WOO9OOO9W"I0KEC8KHIY+OO;;OO;?OO;@][[VY[[VZ[[VV[[Z>[[VW
+M[[Z>[[VX[[Z>[[VY[[Z>[[VZ[[Z>XX&H"N6-BNBGDN^^BN^^G^^^B^^^G^^^
+MC.^^G^^^C>^^G^^^CN^^G^^]M^^^G^^]L>^^G@KOOHKOOI_OOHOOOI_OOHP*
+M:&%N:V%K=2#OOHKOOI_OOHOOOI_OOHSOO:0*[[Z*[[Z?[[Z+[[Z?[[Z,[[Z=
+1[[VA"N6-BNBGDN.!KN6^C`H`
+
+
+@x0201.jis
+
+M&R1"030S424K)2TE+R4Q)3,E+"4N)3`E,B4T&RA""ALD0D$T,5$C02-"(T,C
+M1"-%(T8C1R-A(V(C8R-D(V4C9B-G&RA""ALD0D$T-2TY9B$J(7<A="%P(7,A
+M,"%U(78A2B%+(5TA7"%A(4XA3R%0(5$A;QLH0@H;)$)(/C-1&RA)-C<X&RA"
+M/1LH23DZ-EXW7CA>.5XZ7ALD0B1(&RA""ALD0D@^,U$;*$E*7TM?3%]-7TY?
+M-U\Q7ALH0@H;*$E*7TM?3!LH0@IH86YK86MU(!LH24I?2U],)!LH0@H;*$E*
+97TM?3%TA&RA""ALD0D@^,U$D3CAE&RA""@``
+
+
+
+@x0201.sosi
+
+M&R1"030S424K)2TE+R4Q)3,E+"4N)3`E,B4T&RA*"ALD0D$T,5$C02-"(T,C
+M1"-%(T8C1R-A(V(C8R-D(V4C9B-G&RA*"ALD0D$T-2TY9B$J(7<A="%P(7,A
+M,"%U(78A2B%+(5TA7"%A(4XA3R%0(5$A;QLH2@H;)$)(/C-1&RA*#C8W.`\;
+M*$H]#CDZ-EXW7CA>.5XZ7@\;)$(D2!LH2@H;)$)(/C-1&RA*#DI?2U],7TU?
+M3E\W7S%>#PH.2E]+7TP/&RA*"FAA;FMA:W4@#DI?2U],)`\;*$H*#DI?2U],
+672$/&RA*"ALD0D@^,U$D3CAE&RA""@``
+
+
+@x0201.x0208
+
+M&R1"030S424K)2TE+R4Q)3,E+"4N)3`E,B4T&RA""ALD0D$T,5$;*$)!0D-$
+M149'86)C9&5F9PH;)$)!-#4M.68;*$(A0",D)5XF*B@I+2L]6UU[?1LD0B%O
+M&RA""ALD0D@^,U$E*R4M)2\;*$(]&R1")3$E,R4L)2XE,"4R)30D2!LH0@H;
+M)$)(/C-1)5$E5"57)5HE724M(2PE(B$K&RA""ALD0B51)50E51LH0@IH86YK
+M86MU(!LD0B51)50E52$B&RA""ALD0B51)50E525S(2,;*$(*&R1"2#XS421.
+&.&4;*$(*
+
+
+
+# test_data/x0201jis=
+
+@test_data/x0201jis=.ans
+
+MH:*CI*6FIZBIJJNLK:ZOL+&RL[2UMK>XN;J[O+V^O\#!PL/$Q<;'R,G*R\S-
+2SL_0T=+3U-76U]C9VMO<W=[?
+
+
+# test_data/Xx0213
+
+@test_data/Xx0213
+
+M[[VV[[Z?[[VW[[Z?[[VX[[Z?[[VY[[Z?[[VZ[[Z?[[V^[[Z?[[Z"[[Z?[[Z$
+*[[Z?XX>WXX*:"@``
+
+@test_data/Xx0213.ans
+
+3I?>E^*7YI?JE^Z7\I?VE_J;X"@``
+
+
+# test_data/xx0213
+
+@test_data/xx0213
+
+M[[VV[[Z?[[VW[[Z?[[VX[[Z?[[VY[[Z?[[VZ[[Z?[[V^[[Z?[[Z"[[Z?[[Z$
+*[[Z?XX>WXX*:"@``
+
+
+@test_data/xx0213.ans
+
+CCK:.WXZWCM^.N([?CKF.WXZZCM^.OH[?CL*.WX[$CM^F^`H`
+
+
+
+# test_data/Z4x0213
+
+@test_data/Z4x0213
+
+3I?>E^*7YI?JE^Z7\I?VE_J;X"@``
+
+
+@test_data/Z4x0213.ans
+
+M[[VV[[Z?[[VW[[Z?[[VX[[Z?[[VY[[Z?[[VZ[[Z?[[V^[[Z?[[Z"[[Z?[[Z$
+*[[Z?XX>WXX*:"@``
+
+# test_data/Z4comb
+
+@test_data/Z4comb
+
+MXX""XX",XX"-XX"!XX.[XX.\XX*;XX*<XX*AXX*BXX*CXX*DXX*EXX*FXX*G
+MXX*HXX*IXX*JXX*KXX*LXX*MXX*NXX*OXX*PXX*QXX*RXX*SXX*TXX*UXX*V
+MXX*WXX*XXX*YXX*ZXX*[XX*\XX*]XX*^XX*_XX.`XX.!XX."XX.#XX.$XX.%
+MXX.&XX.'XX.(XX.)XX.*XX.+XX.,XX.-XX..XX./XX.0XX.1XX.2XX.3XX.4
+MXX.5XX.6XX.7XX.8XX.9XX.:XX.;XX.<XX.=XX.>XX.?XX.@XX.AXX.BXX.C
+MXX.DXX.EXX.FXX.GXX.HXX.IXX.JXX.KXX.LXX.MXX.OXX.RXX.SXX.TXX*K
+MXX*:XX*MXX*:XX*OXX*:XX*QXX*:XX*SXX*:XX*[XX*:XX.$XX*:XX.(XX*:
+-XX>WXX*:XX*BXX*9"@``
+
+@test_data/Z4comb.ans
+
+MCJ&.HHZCCJ2.I8ZPCMZ.WXZGCK&.J(ZRCJF.LXZJCK2.JXZUCK:.MH[>CK>.
+MMX[>CKB.N([>CKF.N8[>CKJ.NH[>CKN.NX[>CKR.O([>CKV.O8[>CKZ.OH[>
+MCK^.OX[>CL".P([>CL&.P8[>CJ^.PH["CMZ.PX[#CMZ.Q([$CMZ.Q8[&CL>.
+MR([)CLJ.RH[>CLJ.WX[+CLN.WH[+CM^.S([,CMZ.S([?CLV.S8[>CLV.WX[.
+MCLZ.WH[.CM^.SX[0CM&.TH[3CJR.U(ZMCM6.KH[6CM>.V([9CMJ.VX[<CJ:.
+LW8ZSCMZ.MH[?CK>.WXZXCM^.N8[?CKJ.WXZ^CM^.PH[?CL2.WZ;XCK&.W@H`
+
+
+
+# MIME decode
+
+print "\nMIME test\n\n";
+
+# MIME ISO-2022-JP
+
+@mime.iso2022
+
+M/3])4T\M,C`R,BU*4#]"/T=Y4D%.144W96E23TI566Q/4U9)1WEH2S\]"CT_
+M:7-O+3(P,C(M2E`_0C]'>5)!3D5%-V5I4D]*55EL3U-624=Y:$L_/0H]/VES
+M;RTR,#(R+4I0/U$_/3%")$(D1B11/3%"*$)?96YD/ST*&R1`)#TD)B0K)$H;
+M*$H@/3])4T\M,C`R,BU*4#]"/T=Y4D%.144W96E23U!Y:S=D:'-O4V<]/3\]
+M(&5N9"!O9B!L:6YE"CT_25-/+3(P,C(M2E`_0C]'>5)!3D5%-V5I4D]0>6LW
+M9&AS;U-G/3T_/2`]/TE33RTR,#(R+4I0/T(_1WE204Y%13=E:5)/4'EK-V1H
+M<V]39ST]/ST*0G)O:V5N(&-A<V4*/3])4T\M,C`R,BU*4#]"/T=Y4D%.144W
+M96E23U!Y:S=D"FAS;U-G/3T_/2`]/TE33RTR,`HR,BU*4#]"/T=Y4D%.144W
+M96E23U!Y:S=D:'-O4V<]/3\]"CT_25-/+3(P,C(M2E`_0C]'>5)!3D5%-V5I
+44D]*55EL3QM;2U-624=Y:$L_/0H_
+
+@mime.ans.strict
+
+M&R1"-$$[>B1.)48E.25(&RA""ALD0C1!.WHD3B5&)3DE2!LH0@H;)$(D1B11
+M&RA"(&5N9`H;)$(D/20F)"LD2ALH0B`;)$(T03MZ)$X_*3MV&RA"96YD(&]F
+M(&QI;F4*&R1"-$$[>B1./RD[=C1!.WHD3C\I.W8;*$(*0G)O:V5N(&-A<V4*
+M/3])4T\M,C`R,BU*4#]"/T=Y4D%.144W96E23U!Y:S=D"FAS;U-G/3T_/2`]
+M/TE33RTR,`HR,BU*4#]"/T=Y4D%.144W96E23U!Y:S=D:'-O4V<]/3\]"CT_
+L25-/+3(P,C(M2E`_0C]'>5)!3D5%-V5I4D]*55EL3QM;2U-624=Y:$L_/0H_
+
+@mime.unbuf.strict
+
+M&R1"-$$[>B1.)48E.25(&RA""ALD0C1!.WHD3B5&)3DE2!LH0@H;)$(D1B11
+M&RA"(&5N9`H;)$(D/20F)"LD2ALH0B`;)$(T03MZ)$X_*3MV&RA"96YD(&]F
+M(&QI;F4*&R1"-$$[>B1./RD[=C1!.WHD3C\I.W8;*$(*0G)O:V5N(&-A<V4*
+M&R1"-$$[>B1./RD;*$)H<V]39ST]/ST@/3])4T\M,C`*,C(M2E`_0C]'>5)!
+M3D5%-V5I4D]0>6LW9&AS;U-G/3T_/0H;)$(T03MZ)$XE1ALH0EM+4U9)1WEH
+$2S\]"F5I
+
+
+@mime.ans
+
+M&R1"-$$[>B1.)48E.25(&RA""ALD0C1!.WHD3B5&)3DE2!LH0@H;)$(D1B11
+M&RA"(&5N9`H;)$(D/20F)"LD2ALH0B`;)$(T03MZ)$X_*3MV&RA"96YD(&]F
+M(&QI;F4*&R1"-$$[>B1./RD[=C1!.WHD3C\I.W8;*$(*0G)O:V5N(&-A<V4*
+M&R1"-$$[>B1./RD;*$)H<V]39ST]/ST@&R1"-$$[>B1./RD[=ALH0@H;)$(T
+603MZ)$XE1ALH0EM+4U9)1WEH2S\]"@`*
+
+@mime.unbuf
+
+M&R1"-$$[>B1.)48E.25(&RA""ALD0C1!.WHD3B5&)3DE2!LH0@H;)$(D1B11
+M&RA"(&5N9`H;)$(D/20F)"LD2ALH0B`;)$(T03MZ)$X_*3MV&RA"96YD(&]F
+M(&QI;F4*&R1"-$$[>B1./RD[=C1!.WHD3C\I.W8;*$(*0G)O:V5N(&-A<V4*
+M&R1"-$$[>B1./RD;*$)H<V]39ST]/ST@&R1"-$$[>B1./RD[=ALH0@H;)$(T
+603MZ)$XE1ALH0EM+4U9)1WEH2S\]"@`*
+
+
+@mime.base64
+
+M9W-M5"])3&YG<FU#>$I+-&=Q=4,S24LS9W%Q0E%:3TUI-39,,S0Q-&=S5T)1
+M43!+9VUA1%9O3T@*9S)+1%1O3'=K8C)1;$E+;V=Q2T-X24MG9W5M0W%*3EEG
+<<T=#>$E+9V=U;4,X64Q&9W)70S592VMG<6U""F=Q
+
+
+@mime.base64.ans
+
+M&R1")$M&?B1I)#LD1D0Z)"TD7B0Y)"PA(D5L-7XV83E9)$<A(ALH0@T*&R1"
+M(T<E-R5G)4,E+R1R0C\_="0J)"0D1B0B)&LD*D4Y)$,D1B0B)&LD<R1')#<D
+(9R0F)"L;*$(E
+
+
+# printf "%-40s", "Next test is expected to Fail.\n";
+printf "%-40s", "MIME decode (strict)";
+    $tmp = &test("$nkf -jmS",$example{'mime.iso2022'},$example{'mime.ans.strict'});
+
+@mime.ans.alt
+
+M&R1"-$$[>B1.)48E.25(&RA""ALD0C1!.WHD3B5&)3DE2!LH0@H;)$(D1B11
+M&RA"96YD"ALD0B0])"8D*R1*&RA"&R1"-$$[>B1./RD[=ALH0F5N9&]F;&EN
+M90H;)$(T03MZ)$X_*3MV-$$[>B1./RD[=ALH0@I"<F]K96YC87-E"ALD0C1!
+H.WHD3C\I.W8T03MZ)$X_*3MV&RA""ALD0C1!.WHD3B5&)3DE)!LH0@``
+
+@mime.unbuf.alt
+
+M&R1"-$$[>B1.)48E.25(&RA""ALD0C1!.WHD3B5&)3DE2!LH0@H;)$(D1B11
+M&RA"96YD"ALD0B0])"8D*R1*&RA"&R1"-$$[>B1./RD[=ALH0F5N9&]F;&EN
+M90H;)$(T03MZ)$X_*3MV-$$[>B1./RD[=ALH0@I"<F]K96YC87-E"ALD0C1!
+H.WHD3C\I.W8T03MZ)$X_*3MV&RA""ALD0C1!.WHD3B5&)3DE)!LH0@``
+
+printf "%-40s", "MIME decode (nonstrict)";
+    $tmp = &test("$nkf -jmN",$example{'mime.iso2022'},$example{'mime.ans'},$example{'mime.ans.alt'});
+    # open(OUT,">tmp1");printf "%-40s", OUT pack('u',$tmp);close(OUT);
+# unbuf mode implies more pessimistic decode
+printf "%-40s", "MIME decode (unbuf)";
+    $tmp = &test("$nkf -jmNu",$example{'mime.iso2022'},$example{'mime.unbuf'},$example{'mime.unbuf.alt'});
+    # open(OUT,">tmp2");printf "%-40s", OUT pack('u',$tmp);close(OUT);
+printf "%-40s", "MIME decode (base64)";
+    &test("$nkf -jmB",$example{'mime.base64'},$example{'mime.base64.ans'});
+#MIME BASE64 must be LF?
+
+# MIME ISO-8859-1
+
+@mime.is8859
+
+M/3])4T\M.#@U.2TQ/U$_*CU#-V%V83\_/2`*4&5E<B!4]G)N9W)E;@I,87-S
+M92!(:6QL97+X92!0971E<G-E;B`@7"`B36EN(&MA97!H97-T(&AA<B!F86%E
+M="!E="!F;V5L(2(*06%R:'5S(%5N:79E<G-I='DL($1%3DU!4DL@(%P@(DUI
+<;B!KYG!H97-T(&AA<B!FY65T(&5T(&;X;"$B"@!K
+
+
+@mime.is8859.ans
+
+M*L=A=F$_(`I0965R(%3V<FYG<F5N"DQA<W-E($AI;&QE<OAE(%!E=&5R<V5N
+M("!<(")-:6X@:V%E<&AE<W0@:&%R(&9A865T(&5T(&9O96PA(@I!87)H=7,@
+M56YI=F5R<VET>2P@1$5.34%22R`@7"`B36EN(&OF<&AE<W0@:&%R(&;E970@
+)970@9OAL(2(*
+
+# Without -l, ISO-8859-1 was handled as X0201.
+
+# test for -f is not so simple.
+
+print "\nBug Fixes\n\n";
+
+# test_data/cr
+
+@test_data/cr
+
+1I,:DN:3(#71E<W0-=&5S=`T`
+
+@test_data/cr.ans
+
+7&R1")$8D.21(&RA""G1E<W0*=&5S=`H`
+
+# test_data/fixed-qencode
+
+@test_data/fixed-qencode
+
+M("`@("`@("`],4(D0CYE/STS1#TQ0BA""B`@("`@("`@/3%")$(^93TS1CTS
+'1#TQ0BA""@``
+
+@test_data/fixed-qencode.ans
+
+F("`@("`@("`;)$(^93\]&RA""B`@("`@("`@&R1"/F4_/1LH0@H`
+
+
+# test_data/long-fold-1
+
+@test_data/long-fold-1
+
+MI,JDK*2DI,JDK*2DI,JDK*'!I*2DKJ3GI*:DK*2BI.JDWJ2WI,:AHJ2SI.RD
+M\J2]I,ZDWJ3>I**DQ*2KI*:DR*&BI,FDIJ3BI-^DT*2HI*RD[Z3KI*2DMZ&B
+MI,BDP:3EI*:DQZ3!I.>D\Z2NI.RDZZ2KI.*DMZ3SI,JDI*&C"J2SI+.DSR!#
+M4B],1B"DSKG4H:,-"J2SI+.DSR!#4B"DSKG4H:,-I+.DLZ3/($Q&+T-2(*3.
+9N=2AHPH-"J2SI+.DSR!,1B"DSKG4H:,*"@``
+
+
+@test_data/long-fold-1.ans
+
+M&R1")$HD+"0D)$HD+"0D)$HD+"%!)"0D+B1G)"8D+"0B)&HD7B0W)$8A(B0S
+M)&PD<B0])$XD7B1>)"(D1"0K&RA""ALD0B0F)$@A(B1))"8D8B1?)%`D*"0L
+M)&\D:R0D)#<A(B1()$$D920F)$<D021G)',D+B1L)&LD*R1B)#<D<QLH0@H;
+M)$(D2B0D(2,;*$(*&R1")#,D,R1/&RA"($-2+TQ&(!LD0B1..50A(QLH0@H;
+M)$(D,R0S)$\;*$(@0U(@&R1")$XY5"$C&RA""ALD0B0S)#,D3QLH0B!,1B]#
+M4B`;)$(D3CE4(2,;*$(*"ALD0B0S)#,D3QLH0B!,1B`;)$(D3CE4(2,;*$(*
+!"@``
+
+
+# test_data/long-fold
+
+@test_data/long-fold
+
+MI,JDK*2DI,JDK*2DI,JDK*'!I*2DKJ3GI*:DK*2BI.JDWJ2WI,:AHJ2SI.RD
+M\J2]I,ZDWJ3>I**DQ*2KI*:DR*&BI,FDIJ3BI-^DT*2HI*RD[Z3KI*2DMZ&B
+MI,BDP:3EI*:DQZ3!I.>D\Z2NI.RDZZ2KI.*DMZ3SI,JDI*&C"J2SI+.DS\.[
+'I*2YU*&C"@``
+
+
+@test_data/long-fold.ans
+
+M&R1")$HD+"0D)$HD+"0D)$HD+"%!)"0D+B1G)"8D+"0B)&HD7B0W)$8A(B0S
+M)&PD<B0])$XD7B1>)"(D1"0K&RA""ALD0B0F)$@A(B1))"8D8B1?)%`D*"0L
+M)&\D:R0D)#<A(B1()$$D920F)$<D021G)',D+B1L)&LD*R1B)#<D<QLH0@H;
+:)$(D2B0D(2,D,R0S)$]#.R0D.50A(QLH0@H`
+
+# test_data/mime_out
+
+@test_data/mime_out
+
+M"BTM+2T*4W5B:F5C=#H@86%A82!A86%A(&%A86$@86%A82!A86%A(&%A86$@
+M86%A82!A86%A(&%A86$@86%A82!A86%A(&%A86$@86%A82!A86%A"BTM+2T*
+M4W5B:F5C=#H@I**DI*2FI*BDJJ2KI*VDKZ2QI+.DM:2WI+FDNZ2]I+^DP:3$
+MI,:DR*3*I,NDS*3-I,ZDSZ32I-6DV*3;I-ZDWZ3@I.&DXJ3DI*2DYJ2HI.@*
+M+2TM+0I3=6)J96-T.B!A86%A(&%A86$@86%A82!A86%A(&%A86$@86%A82!A
+I86%A(*2BI*2DIJ2HI*H@86%A82!A86%A(&%A86$@86%A80HM+2TM"@H`
+
+@test_data/mime_out.ans
+
+M"BTM+2T*4W5B:F5C=#H@86%A82!A86%A(&%A86$@86%A82!A86%A(&%A86$@
+M86%A82!A86%A(&%A86$@86%A82!A86%A(&%A86$@86%A80H@86%A80HM+2TM
+M"E-U8FIE8W0Z(#T_25-/+3(P,C(M2E`_0C]'>5)#2D-):TI#46U*0V=K2VE1
+M<DI#,&M,>5%X2D1-:TY343-*1&MB2T5)/3\]"B`]/TE33RTR,#(R+4I0/T(_
+M1WE20TI$<VM04U$O2D5%:U)#4D=*16=K4VE23$I%=VM44U)/2D4X:U5I4E9*
+M1F=B2T5)/3\]"B`]/TE33RTR,#(R+4I0/T(_1WE20TI&<VM8:5)F2D=!:UE3
+M4FE*1U%K2D-2;4I#9VMA0G-O46<]/3\]"BTM+2T*4W5B:F5C=#H@86%A82!A
+M86%A(&%A86$@86%A82!A86%A(&%A86$@86%A80H@/3])4T\M,C`R,BU*4#]"
+M/T=Y4D-*0TEK2D-1;4I#9VM+:'-O46<]/3\](&%A86$@86%A82!A86%A(&%A
+)86$*+2TM+0H*
+
+@test_data/mime_out.ans.alt
+
+M"BTM+2T*4W5B:F5C=#H@86%A82!A86%A(&%A86$@86%A82!A86%A(&%A86$@
+M86%A82!A86%A(&%A86$*(&%A86$@86%A82!A86%A(&%A86$@86%A80HM+2TM
+M"E-U8FIE8W0Z(#T_25-/+3(P,C(M2E`_0C]'>5)#2D-):TI#46U*0V=K2VE1
+M<DI#,&M,>5%X2D1-:TY343-'>6A#/ST*(#T_25-/+3(P,C(M2E`_0C]'>5)#
+M2D1K:T]Y43E*1#AK45-214I%66M30U)+2D5S:U1#4DY*131K5'E24TI&56M7
+M0U)B1WEH0S\]"B`]/TE33RTR,#(R+4I0/T(_1WE20TI&-&M8>5)G2D=%:UEI
+M4FM*0U%K6FE1;TI'9V)+14D]/ST*+2TM+0I3=6)J96-T.B!A86%A(&%A86$@
+M86%A82!A86%A(&%A86$@86%A82!A86%A"B`]/TE33RTR,#(R+4I0/T(_1WE2
+M0TI#26M*0U%M2D-G:TMH<V]19ST]/ST@86%A82!A86%A(&%A86$*(&%A86$*
+&+2TM+0H*
+
+
+@test_data/mime_out.ans.alt2
+
+M"BTM+2T*4W5B:F5C=#H@86%A82!A86%A(&%A86$@86%A82!A86%A(&%A86$@
+M86%A82!A86%A(&%A86$@86%A82!A86%A(&%A86$@86%A80H@86%A80HM+2TM
+M"E-U8FIE8W0Z(#T_25-/+3(P,C(M2E`_0C]'>5)#2D-):TI#46U*0V=K2VE1
+M<DI#,&M,>5%X2D1-:TY343-*1&MK3WE1.4=Y:$,_/0H@/3])4T\M,C`R,BU*
+M4#]"/T=Y4D-*1#AK45-214I%66M30U)+2D5S:U1#4DY*131K5'E24TI&56M7
+M0U)B2D8T:UAY4F='>6A#/ST*(#T_25-/+3(P,C(M2E`_0C]'>5)#2D=%:UEI
+M4FM*0U%K6FE1;TI'9V)+14D]/ST*+2TM+0I3=6)J96-T.B!A86%A(&%A86$@
+M86%A82!A86%A(&%A86$@86%A82!A86%A(#T_25-/+3(P,C(M2E`_0C]'>5)#
+M2D-):TI"<V]19ST]/ST*(#T_25-/+3(P,C(M2E`_0C]'>5)#2D-9:TM#47%'
+@>6A#/ST@86%A82!A86%A(&%A86$@86%A80HM+2TM"@H`
+
+
+@test_data/mime_out.ans.alt3
+
+M"BTM+2T*4W5B:F5C=#H@86%A82!A86%A(&%A86$@86%A82!A86%A(&%A86$@
+M86%A82!A86%A(&%A86$@86%A82!A86%A(&%A86$@86%A80H@86%A80HM+2TM
+M"E-U8FIE8W0Z(#T_25-/+3(P,C(M2E`_0C]'>5)#2D-):TI#46U*0V=K2VE1
+M<DI#,&M,>5%X2D1-:TY343-*1&MK3WE1.4=Y:$,_/0H@/3])4T\M,C`R,BU*
+M4#]"/T=Y4D-*1#AK45-214I%66M30U)+2D5S:U1#4DY*131K5'E24TI&56M7
+M0U)B2D8T:UAX<V]19ST]/ST*(#T_25-/+3(P,C(M2E`_0C]'>5)#2D=!:UE3
+M4FE*1U%K2D-2;4I#9VMA0G-O46<]/3\]"BTM+2T*4W5B:F5C=#H@86%A82!A
+M86%A(&%A86$@86%A82!A86%A(&%A86$@86%A82`]/TE33RTR,#(R+4I0/T(_
+M1WE20TI#26M*0G-O46<]/3\]"B`]/TE33RTR,#(R+4I0/T(_1WE20TI#66M+
+D0U%Q1WEH0S\](&%A86$@86%A82!A86%A(&%A86$*+2TM+0H*1
+
+# test_data/mime_out3
+
+# test_data/multi-line
+
+@test_data/multi-line
+
+MI,JDK*2DI,JDK*2DI,JDK*'!I*2DKJ3GI*:DK*2BI.JDWJ2WI,:AH@"DLZ3L
+MI/*DO:3.I-ZDWJ2BI,2DJZ2FI,BAHJ3)I*:DXJ3?I-"DJ*2LI.^DZZ2DI+>A
+MHJ3(I,&DY:2FI,>DP:3GI/.DKJ3LI.NDJZ3BI+>D\Z3*I*2AHPJDLZ2SI,_#
+8NZ2DN=2AHP`*I+.DLZ3/P[NDI+G4H:,*
+
+@test_data/multi-line.ans
+
+MI,JDK*2DI,JDK*2DI,JDK*'!I*2DKJ3GI*:DK*2BI.JDWJ2WI,:AH@"DLZ3L
+MI/*DO:3.I-ZDWJ2BI,2DJZ2FI,BAHJ3)I*:DXJ3?I-"DJ*2LI.^DZZ2DI+>A
+MHJ3(I,&DY:2FI,>DP:3GI/.DKJ3LI.NDJZ3BI+>D\Z3*I*2AHPJDLZ2SI,_#
+8NZ2DN=2AHP`*I+.DLZ3/P[NDI+G4H:,*
+
+# test_data/-Z4
+
+@test_data/-Z4
+
+MH:.AUJ'7H:*AIJ&\H:NAK*6AI:*EHZ6DI:6EIJ6GI:BEJ:6JI:NEK*6MI:ZE
+MKZ6PI;&ELJ6SI;2EM:6VI;>EN*6YI;JENZ6\I;VEOJ6_I<"EP:7"I<.EQ*7%
+MI<:EQZ7(I<FERJ7+I<RES:7.I<^ET*71I=*ETZ74I=6EUJ77I=BEV:7:I=NE
+KW*7=I=ZEWZ7@I>&EXJ7CI>2EY:7FI>>EZ*7II>JEZZ7LI>VE[Z7RI?.E]```
+
+@test_data/-Z4.ans
+
+MCJ&.HHZCCJ2.I8ZPCMZ.WXZGCK&.J(ZRCJF.LXZJCK2.JXZUCK:.MH[>CK>.
+MMX[>CKB.N([>CKF.N8[>CKJ.NH[>CKN.NX[>CKR.O([>CKV.O8[>CKZ.OH[>
+MCK^.OX[>CL".P([>CL&.P8[>CJ^.PH["CMZ.PX[#CMZ.Q([$CMZ.Q8[&CL>.
+MR([)CLJ.RH[>CLJ.WX[+CLN.WH[+CM^.S([,CMZ.S([?CLV.S8[>CLV.WX[.
+MCLZ.WH[.CM^.SX[0CM&.TH[3CJR.U(ZMCM6.KH[6CM>.V([9CMJ.VX[<CJ:.
+%W8ZSCMX`
+
+# test_data/nkf-19-bug-1
+
+@test_data/nkf-19-bug-1
+
+,I*:DJZ2D"KK8QJ,*
+
+@test_data/nkf-19-bug-1.ans
+
+8&R1")"8D*R0D&RA""ALD0CI81B,;*$(*
+
+# test_data/nkf-19-bug-2
+
+@test_data/nkf-19-bug-2
+
+%I-NDL@H`
+
+@test_data/nkf-19-bug-2.ans
+
+%I-NDL@H`
+
+# test_data/nkf-19-bug-3
+
+@test_data/nkf-19-bug-3
+
+8[;'Q\,&L"N6ZSN\*\NT)ON7.SL_+"0D*
+
+@test_data/nkf-19-bug-3.ans
+
+8[;'Q\,&L"N6ZSN\*\NT)ON7.SL_+"0D*
+
+# test_data/non-strict-mime
+
+@test_data/non-strict-mime
+
+M/3])4T\M,C`R,BU*4#]"/PIG<U-#;V]+.6=R-D-O;TQ%9W1Y0W0T1D-$46].
+M0V\V16=S,D]N;T999S1Y1%=)3$IG=4-0:UD*2W!G<FU#>$E+:6=R,D-V;TMI
+,9W-30V]O3&,*/ST*
+
+@test_data/non-strict-mime.ans
+
+M&R1")$8D)"0_)$`D)"1&)%XD.2$C&RA"#0H-"ALD0CMD)$\[?B$Y)6PE.21+
+<)&(]<20K)#LD1B0D)#\D0"0D)$8D)"1>&RA""@``
+
+# test_data/q-encode-softrap
+
+@test_data/q-encode-softrap
+
+H/3%")$(T03MZ)3T*,R$\)4DD3CTQ0BA""CTQ0B1"2E$T.3TQ0BA""@``
+
+@test_data/q-encode-softrap.ans
+
+>&R1"-$$[>B4S(3PE221.&RA""ALD0DI1-#D;*$(*
+
+
+
+# test_data/rot13
+
+@test_data/rot13
+
+MI+.D\Z3+I,&DSZ&BS:W"]*3(I*2DI*3>I+FAHPH*;FMF('9E<BXQ+CDR(*3R
+MS?C-T:2UI+NDQJ2DI+^DP*2DI,:DI*3>I+FDK*&B05-#24D@I,O"T*2WI,8@
+M4D]4,3,@I*P*P+6DMZ2OQK"DI*3&I*2DRJ2DI.BDIJ3'H:*PRK*\I,ZDZ*2F
+MI,O*T;2YI+6D[*3>I+ND\Z&C"@HE(&5C:&\@)VAO9V4G('P@;FMF("UR"FAO
+#9V4*
+
+
+@test_data/rot13.ans
+
+M&R1"4V)31%-Z4W!3?E!1?%QQ15-W4U-34U,O4VA04ALH0@H*87AS(&ER92XQ
+M+CDR(!LD0E-#?$E\(E-D4VI3=5-34VY3;U-34W534U,O4VA36U!1&RA"3D90
+M5E8@&R1"4WIQ(5-F4W4;*$(@14)',3,@&R1"4UL;*$(*&R1";V139E->=5]3
+M4U-U4U-3>5-34SE355-V4%%?>6%K4WU3.5-54WIY(F-H4V13/5,O4VI31%!2
+A&RA""@HE(')P=6(@)W5B='(G('P@87AS("UE"G5B='(*
+
+
+# test_data/slash
+
+@test_data/slash
+
+7("`]/U8\5"U5.5=%2RTK.U<U32LE+PH`
+
+@test_data/slash.ans
+
+7("`]/U8\5"U5.5=%2RTK.U<U32LE+PH`
+
+# test_data/z1space-0
+
+@test_data/z1space-0
+
+"H:$`
+
+
+@test_data/z1space-0.ans
+
+"H:$`
+
+
+# test_data/z1space-1
+
+@test_data/z1space-1
+
+"H:$`
+
+
+@test_data/z1space-1.ans
+
+!(```
+
+
+# test_data/z1space-2
+
+@test_data/z1space-2
+
+"H:$`
+
+
+@test_data/z1space-2.ans
+
+"("``
+
+
+# test_data/bug2273
+
+@test_data/bug2273
+
+M/3]I<V\M,C`R,BUJ<#]Q/STY-CU!,CTX1CU",STY,3U&.#TX1$P].$0].3`]
+M.#$]038*:'1T<#HO+V5X86UP;&4N8V]M+S]O<&4]<V5L"FAT='`Z+R]E>&UA
+,<&QE+FIP+PHN+BX*
+
+
+@test_data/bug2273.ans
+
+MS*2^M<+ZN:VY\**H"FAT='`Z+R]E>&%M<&QE+F-O;2\_;W!E/7-E;`IH='1P
+3.B\O97AM87!L92YJ<"\*+BXN"@``
+
+
+# test_data/forum15899
+
+@test_data/forum15899
+
+I6#H@XX&"XX&$XX&&XX&(XX&*XX&+XX&-XX&/XX&1XX&3XX&5(..!EPH`
+
+
+@test_data/forum15899.ans
+
+M6#H@/3])4T\M,C`R,BU*4#]"/T=Y4D-*0TEK2D-1;4I#9VM+:5%R2D,P:TQY
+=47A*1$UK3E)S;U%I06)*14EK3GAS;U%G/3T_/0H`
+
+# test_data/bugs10904
+
+@test_data/bugs10904
+
+M4W5B:F5C=#H@Z*FFZ:B3YY2HXX.AXX.\XX.KZ*&HZ:&,(.BIINFHD^>4J..#
+MH>.#O..#J^BAJ.FAC"#HJ:;IJ)/GE*CC@Z'C@[SC@ZOHH:CIH8P@Z*FFZ:B3
+3YY2HXX.AXX.\XX.KZ*&HZ:&,"@``
+
+@test_data/bugs10904.ans
+
+M4W5B:F5C=#H@/3])4T\M,C`R,BU*4#]"/T=Y4D-/,C0T33`Q4DI716A00U9R
+?4U0Q0V%H<V]1:4%B2D5)-V)J9WI45D5B2T5)/3\]"@``
+M(#T_25-/+3(P,C(M2E`_0C]'>5)#2E=%:%!#5G)35#%#86AS;U%I06)*14DW
+?8FIG>E1616Q94T4X2E=T2E!52G%'>6A#24$]/3\]"@``
+M(#T_25-/+3(P,C(M2E`_0C]'>5)#3S(T-$TP,5)*5T5H4$-6<E-4,4-A:'-O
+'46<]/3\]"@``
+
+
+printf "%-40s", "test_data/ruby-dev:39722";
+    &test("$nkf -MjW",<<eom,<<eom);
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\xE3\x81\x82
+eom
+=?US-ASCII?Q?aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa?=
+ =?US-ASCII?Q?aaaaaaaaaaaaaaaaa?= =?ISO-2022-JP?B?GyRCJCIbKEI=?=
+eom
+# test_data/bug19779
+
+@test_data/bug19779
+
+2&R1","$;*$(*&R1"7V8;*$(*
+
+@test_data/bug19779.ans
+
+M/3])4T\M,C`R,BU*4#]"/T=Y4D--0T5B2T5)/3\]"CT_25-/+3(P,C(M2E`_
+10C]'>5)#6#)98DM%23T_/0H`
+
+printf "%-40s",  "test_data/bug19779    ";
+    &test("$nkf -jM",$example{'test_data/bug19779'},$example{'test_data/bug19779.ans'});
+
+printf "%-40s",  "[nkf-forum:47327]    ";
+    &test("$nkf -wM",pack('H*','feffd852de76d814dc45000a'),"=?UTF-8?B?8KSptvCVgYU=?=\n");
+
+printf "%-40s",  "[nkf-forum:47334]    ";
+    &test("$nkf -w",pack('H*','feff006100620063000a'),"abc\n");
+
+printf "%-40s",  "[nkf-bug:20079]    ";
+    &test("$nkf -jSxM","\xBB \xBB","=?ISO-2022-JP?B?GyhJOxsoQiAbKEk7GyhC?=");
+
+printf "%-40s",  "[nkf-bug:20079]    ";
+    &test("$nkf -SxMw8","\xBB \xBB","=?UTF-8?B?77u/7727IO+9uw==?=");
+
+printf "%-40s",  "[nkf-forum:48850]    ";
+    &test("$nkf -jSM",
+	"From: \x82\xA0\x82\xA0\x82\xA0\x82\xA0\x82\xA0\x82\xA0\x82\xA0\x82\xA0\x82\xA0" .
+	" <x-xxxx@xxxxxxxxxxxx.co.jp>\n",
+	"From: =?ISO-2022-JP?B?GyRCJCIkIiQiJCIkIiQiJCIkIiQiGyhC?=" .
+	" <x-xxxx@xxxxxxxxxxxx.co.jp>\n");
+
+printf "%-40s",  "[nkf-bug:21393]-x  ";
+    &test("$nkf --ic=UTF-8 --oc=CP932",
+    "\xEF\xBD\xBC\xEF\xBE\x9E\xEF\xBD\xAC\xEF\xBD\xB0\xEF\xBE\x8F\xEF\xBE\x9D\xEF\xBD\xA5\xEF\xBE\x8E\xEF\xBE\x9F\xEF\xBE\x83\xEF\xBE\x84\xEF\xBD\xA1",
+    "\xBC\xDE\xAC\xB0\xCF\xDD\xA5\xCE\xDF\xC3\xC4\xA1");
+
+printf "%-40s",  "[nkf-bug:21393]-X  ";
+    &test("$nkf --ic=UTF-8 --oc=CP932 -X",
+    "\xEF\xBD\xBC\xEF\xBE\x9E\xEF\xBD\xAC\xEF\xBD\xB0\xEF\xBE\x8F\xEF\xBE\x9D\xEF\xBD\xA5\xEF\xBE\x8E\xEF\xBE\x9F\xEF\xBE\x83\xEF\xBE\x84\xEF\xBD\xA1",
+    "\x83W\x83\x83\x81[\x83}\x83\x93\x81E\x83|\x83e\x83g\x81B");
+
+printf "%-40s",  "[nkf-forum:65316]  ";
+    &test("$nkf -xwW -f10",
+    "\xEF\xBD\xB1\xEF\xBD\xB2\xEF\xBD\xB3\xEF\xBD\xB4\xEF\xBD\xB5\xEF\xBD\xB6\xEF\xBD\xB7\xEF\xBD\xB8\xEF\xBD\xB9\xEF\xBD\xBA\xEF\xBD\xBB\xEF\xBD\xBC\xEF\xBD\xBD\xEF\xBD\xBE\xEF\xBD\xBF\xEF\xBE\x80\xEF\xBE\x81\xEF\xBE\x82\xEF\xBE\x83\xEF\xBE\x84",
+    "\xEF\xBD\xB1\xEF\xBD\xB2\xEF\xBD\xB3\xEF\xBD\xB4\xEF\xBD\xB5\xEF\xBD\xB6\xEF\xBD\xB7\xEF\xBD\xB8\xEF\xBD\xB9\xEF\xBD\xBA\n\xEF\xBD\xBB\xEF\xBD\xBC\xEF\xBD\xBD\xEF\xBD\xBE\xEF\xBD\xBF\xEF\xBE\x80\xEF\xBE\x81\xEF\xBE\x82\xEF\xBE\x83\xEF\xBE\x84\n");
+
+printf "%-40s",  "[nkf-forum:65482]  ";
+    &test("$nkf --ic=CP50221 --oc=CP932",
+    "\x1b\x24\x42\x7f\x21\x80\x21\x1b\x28\x42\n",
+    "\xf0\x40\xf0\x9f\x0a");
+
+# [KNOWNBUG]
+# printf "%-40s",  "[ruby-dev:47057]  ";
+#     &test("$nkf -jW -M --cp932",
+#     "\xe3\x80\x8c\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82 by \xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x81\x82\xe3\x80\x8d\xe3\x81\xae\xe3\x83\xac\xe3\x82\xb7\xe3\x83\x94",
+#     "=?ISO-2022-JP?B?GyRCIVYkIiQiJCIkIiQiJCIkIiQiJCIkIiQiGyhC?= by\n =?ISO-2022-JP?B?GyRCJCIkIiQiJCIkIiQiJCIkIiQiJCIhVyROJWwlNyVUGyhC?=");
+
+printf "%-40s",  "[nkf-bug:32328] SJIS";
+    &test("$nkf -Sw",
+    "\x1b\x82\xa0",
+    "\x1b\xe3\x81\x82");
+
+printf "%-40s",  "[nkf-bug:32328] JIS";
+    &test("$nkf -Jw",
+    "\x1b\x1b\$B\$\x22\x1b(B",
+    "\x1b\xe3\x81\x82");
+
+    if (!NKF) {
+printf "%-40s", "Guess NL";
+&command_tests(
+	"$nkf --guess","none",      "ASCII\n",
+	"$nkf --guess","\n",        "ASCII (LF)\n",
+	"$nkf --guess","\n\n",      "ASCII (LF)\n",
+	"$nkf --guess","\n\r",      "ASCII (MIXED NL)\n",
+	"$nkf --guess","\n\r\n",    "ASCII (MIXED NL)\n",
+	"$nkf --guess","\n.\n",     "ASCII (LF)\n",
+	"$nkf --guess","\n.\r",     "ASCII (MIXED NL)\n",
+	"$nkf --guess","\n.\r\n",   "ASCII (MIXED NL)\n",
+	"$nkf --guess","\r",        "ASCII (CR)\n",
+	"$nkf --guess","\r\r",      "ASCII (CR)\n",
+	"$nkf --guess","\r\r\n",    "ASCII (MIXED NL)\n",
+	"$nkf --guess","\r.\n",     "ASCII (MIXED NL)\n",
+	"$nkf --guess","\r.\r",     "ASCII (CR)\n",
+	"$nkf --guess","\r.\r\n",   "ASCII (MIXED NL)\n",
+	"$nkf --guess","\r\n",      "ASCII (CRLF)\n",
+	"$nkf --guess","\r\n\n",    "ASCII (MIXED NL)\n",
+	"$nkf --guess","\r\n\r",    "ASCII (MIXED NL)\n",
+	"$nkf --guess","\r\n\r\n",  "ASCII (CRLF)\n",
+	"$nkf --guess","\r\n.\n",   "ASCII (MIXED NL)\n",
+	"$nkf --guess","\r\n.\r",   "ASCII (MIXED NL)\n",
+	"$nkf --guess","\r\n.\r\n", "ASCII (CRLF)\n");
+    }
+
+printf "%-40s", "Convert NL to LF";
+&command_tests(
+	"$nkf -jLu","none",      "none",
+	"$nkf -jLu","\n",        "\n",
+	"$nkf -jLu","\n\n",      "\n\n",
+	"$nkf -jLu","\n\r",      "\n\n",
+	"$nkf -jLu","\n\r\n",    "\n\n",
+	"$nkf -jLu","\n.\n",     "\n.\n",
+	"$nkf -jLu","\n.\r",     "\n.\n",
+	"$nkf -jLu","\n.\r\n",   "\n.\n",
+	"$nkf -jLu","\r",        "\n",
+	"$nkf -jLu","\r\r",      "\n\n",
+	"$nkf -jLu","\r\r\n",    "\n\n",
+	"$nkf -jLu","\r.\n",     "\n.\n",
+	"$nkf -jLu","\r.\r",     "\n.\n",
+	"$nkf -jLu","\r.\r\n",   "\n.\n",
+	"$nkf -jLu","\r\n",      "\n",
+	"$nkf -jLu","\r\n\n",    "\n\n",
+	"$nkf -jLu","\r\n\r",    "\n\n",
+	"$nkf -jLu","\r\n\r\n",  "\n\n",
+	"$nkf -jLu","\r\n.\n",   "\n.\n",
+	"$nkf -jLu","\r\n.\r",   "\n.\n",
+	"$nkf -jLu","\r\n.\r\n", "\n.\n");
+
+printf "%-40s", "Convert NL to LF";
+&command_tests(
+	"$nkf -jLm","none",      "none",
+	"$nkf -jLm","\n",        "\r",
+	"$nkf -jLm","\n\n",      "\r\r",
+	"$nkf -jLm","\n\r",      "\r\r",
+	"$nkf -jLm","\n\r\n",    "\r\r",
+	"$nkf -jLm","\n.\n",     "\r.\r",
+	"$nkf -jLm","\n.\r",     "\r.\r",
+	"$nkf -jLm","\n.\r\n",   "\r.\r",
+	"$nkf -jLm","\r",        "\r",
+	"$nkf -jLm","\r\r",      "\r\r",
+	"$nkf -jLm","\r\r\n",    "\r\r",
+	"$nkf -jLm","\r.\n",     "\r.\r",
+	"$nkf -jLm","\r.\r",     "\r.\r",
+	"$nkf -jLm","\r.\r\n",   "\r.\r",
+	"$nkf -jLm","\r\n",      "\r",
+	"$nkf -jLm","\r\n\n",    "\r\r",
+	"$nkf -jLm","\r\n\r",    "\r\r",
+	"$nkf -jLm","\r\n\r\n",  "\r\r",
+	"$nkf -jLm","\r\n.\n",   "\r.\r",
+	"$nkf -jLm","\r\n.\r",   "\r.\r",
+	"$nkf -jLm","\r\n.\r\n", "\r.\r");
+
+printf "%-40s", "Convert NL to CRLF";
+&command_tests(
+	"$nkf -jLw","none",      "none",
+	"$nkf -jLw","\n",        "\r\n",
+	"$nkf -jLw","\n\n",      "\r\n\r\n",
+	"$nkf -jLw","\n\r",      "\r\n\r\n",
+	"$nkf -jLw","\n\r\n",    "\r\n\r\n",
+	"$nkf -jLw","\n.\n",     "\r\n.\r\n",
+	"$nkf -jLw","\n.\r",     "\r\n.\r\n",
+	"$nkf -jLw","\n.\r\n",   "\r\n.\r\n",
+	"$nkf -jLw","\r",        "\r\n",
+	"$nkf -jLw","\r\r",      "\r\n\r\n",
+	"$nkf -jLw","\r\r\n",    "\r\n\r\n",
+	"$nkf -jLw","\r.\n",     "\r\n.\r\n",
+	"$nkf -jLw","\r.\r",     "\r\n.\r\n",
+	"$nkf -jLw","\r.\r\n",   "\r\n.\r\n",
+	"$nkf -jLw","\r\n",      "\r\n",
+	"$nkf -jLw","\r\n\n",    "\r\n\r\n",
+	"$nkf -jLw","\r\n\r",    "\r\n\r\n",
+	"$nkf -jLw","\r\n\r\r\n",  "\r\n\r\n\r\n",
+	"$nkf -jLw","\r\n.\n",   "\r\n.\r\n",
+	"$nkf -jLw","\r\n.\r",   "\r\n.\r\n",
+	"$nkf -jLw","\r\n.\r\n", "\r\n.\r\n");
+# end
