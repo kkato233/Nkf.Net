@@ -5,6 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Runtime.Versioning;
 
 namespace Nkf.Net
 {
@@ -16,7 +17,7 @@ namespace Nkf.Net
         /// <summary>
         /// nkf32.dll のファイル名
         /// </summary>
-        private const string nkfdll = "nkf32.dll";
+        private const string nkfdll = "nkf32";
 
         //LPWSTR verStr,DWORD nBufferLength /*in TCHARs*/,LPDWORD lpTCHARsReturned /*in TCHARs*/
 
@@ -93,35 +94,40 @@ namespace Nkf.Net
             int fInBufferLength /*in TCHARs*/,
             string fOutName,
             int fOutBufferLength /*in TCHARs*/
-            );       
-        
+            );
+
         /// <summary>
         /// スタティックコンストラクタ。
         /// このクラスが最初に利用されるタイミングで1回だけ実行される。
         /// </summary>
+#pragma warning disable CA1416 // プラットフォームの互換性を検証
         static NativeMethods()
         {
-            if (FindInSearchPath(nkfdll) == false)
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
             {
-                string originalAssemblypath = new Uri(Assembly.GetExecutingAssembly().EscapedCodeBase).LocalPath;
-
-                string currentArchSubPath = ProcessorArchitecture;
-
-                string path = Path.Combine(Path.GetDirectoryName(originalAssemblypath), currentArchSubPath);
-
-                // DLL 読み込みディレクトリを追加する方法
-                // （Win7 以降では AddDllDirectory を使う） 
-                IntPtr intPtr = GetProcAddress(GetModuleHandle("kernel32.dll"), "AddDllDirectory");
-                if (intPtr == IntPtr.Zero)
+                if (FindInSearchPath(nkfdll) == false)
                 {
-                    SetDllDirectory(path);
-                }
-                else
-                {
-                    AddDllDirectory(path);
+                    string originalAssemblypath = new Uri(Assembly.GetExecutingAssembly().EscapedCodeBase).LocalPath;
+
+                    string currentArchSubPath = ProcessorArchitecture;
+
+                    string path = Path.Combine(Path.GetDirectoryName(originalAssemblypath), currentArchSubPath);
+
+                    // DLL 読み込みディレクトリを追加する方法
+                    // （Win7 以降では AddDllDirectory を使う） 
+                    IntPtr intPtr = GetProcAddress(GetModuleHandle("kernel32.dll"), "AddDllDirectory");
+                    if (intPtr == IntPtr.Zero)
+                    {
+                        SetDllDirectory(path);
+                    }
+                    else
+                    {
+                        AddDllDirectory(path);
+                    }
                 }
             }
         }
+#pragma warning restore CA1416 // プラットフォームの互換性を検証
 
         /// <summary>
         /// IntPtr のサイズを調べることで x86 x64 を判定する。
@@ -161,6 +167,9 @@ namespace Nkf.Net
         /// 検索できたら true を返す。
         /// 見つからない場合は false を返す。
         /// </returns>
+#if NET5_0_OR_GREATER
+        [SupportedOSPlatform("windows")]
+#endif
         private static bool FindInSearchPath(string exeOrDllName)
         {
             string findFileName = exeOrDllName;
@@ -169,11 +178,11 @@ namespace Nkf.Net
             IntPtr ptr = new IntPtr();
 
             uint getStrLength = SearchPath(null,
-                 findFileName,
-                 null,
-                 sb.Capacity,
-                 sb,
-                 out ptr);
+                    findFileName,
+                    null,
+                    sb.Capacity,
+                    sb,
+                    out ptr);
 
             if (getStrLength > 0)
             {
@@ -185,6 +194,9 @@ namespace Nkf.Net
             }
         }
 
+#if NET5_0_OR_GREATER
+        [SupportedOSPlatform("windows")]
+#endif
         // http://msdn.microsoft.com/en-us/library/windows/desktop/ms684175(v=vs.85).aspx
         [DllImport("kernel32",
           CallingConvention = CallingConvention.Winapi, CharSet = CharSet.Auto,
@@ -193,12 +205,14 @@ namespace Nkf.Net
           SetLastError = true)]
         private static extern IntPtr LoadLibrary(
             [MarshalAs(UnmanagedType.LPStr)]string lpFileName);
-        
+
         /*
         [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Ansi)]
         static extern IntPtr LoadLibrary([MarshalAs(UnmanagedType.LPStr)]string lpFileName);
         */
-
+#if NET5_0_OR_GREATER
+        [SupportedOSPlatform("windows")]
+#endif
         // http://msdn.microsoft.com/en-us/library/windows/desktop/aa365527(v=vs.85).aspx
         [DllImport("kernel32.dll",
             SetLastError = true,
@@ -210,21 +224,32 @@ namespace Nkf.Net
                             int nBufferLength,
                             [MarshalAs(UnmanagedType.LPTStr)]StringBuilder lpBuffer,
                             out IntPtr lpFilePart);
-
+#if NET5_0_OR_GREATER
+        [SupportedOSPlatform("windows")]
+#endif
         [DllImport("kernel32", CharSet = CharSet.Auto, ExactSpelling = true, SetLastError = true)]
         static extern IntPtr GetProcAddress(IntPtr hModule, string procName);
 
+#if NET5_0_OR_GREATER
+        [SupportedOSPlatform("windows")]
+#endif
         // https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-adddlldirectory
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool SetDllDirectory(string lpPathName);
 
+#if NET5_0_OR_GREATER
+        [SupportedOSPlatform("windows")]
+#endif
         // https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-adddlldirectory
         // DLL_DIRECTORY_COOKIE AddDllDirectory(PCWSTR NewDirectory);
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern int AddDllDirectory(string lpPathName);
 
+#if NET5_0_OR_GREATER
+        [SupportedOSPlatform("windows")]
+#endif
         // https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulehandlew
         // HMODULE GetModuleHandleW(LPCWSTR lpModuleName);
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]

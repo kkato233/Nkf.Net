@@ -61,11 +61,11 @@
     <Compile Include="UUCodec.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\shared\NativeBinaries\x64\nkf32.dll">
+    <Content Include="..\shared\NativeBinaries\win-x64\nkf32.dll">
       <Link>x64\nkf32.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\shared\NativeBinaries\x86\nkf32.dll">
+    <Content Include="..\shared\NativeBinaries\win-x86\nkf32.dll">
       <Link>x86\nkf32.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -93,6 +93,12 @@
       <Project>{2b3e9aee-a038-45f2-868e-4c080a7af3fd}</Project>
       <Name>Nkf.Net-4.0</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\shared\NativeBinaries\linux-x64\libnkf32.so">
+      <Link>libnkf32.so</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

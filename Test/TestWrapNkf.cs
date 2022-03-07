@@ -30,7 +30,9 @@ namespace Nkf.Net.Test
         {
             Nkf.Net.NkfEncoding enc = new NkfEncoding();
             string s = "漢字テスト";
-
+#if NET5_0_OR_GREATER
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+#endif
             byte[] bUTF8 = System.Text.Encoding.UTF8.GetBytes(s);
             byte[] bSJIS = System.Text.Encoding.GetEncoding("SJIS").GetBytes(s);
             byte[] bEUC = System.Text.Encoding.GetEncoding("EUC-JP").GetBytes(s);

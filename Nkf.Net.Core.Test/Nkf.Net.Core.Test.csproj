@@ -1,0 +1,66 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Test\EncodingTest.cs" Link="EncodingTest.cs" />
+    <Compile Include="..\Test\NkfBaseTest.cs" Link="NkfBaseTest.cs" />
+    <Compile Include="..\Test\TestTextReader.cs" Link="TestTextReader.cs" />
+    <Compile Include="..\Test\TestWrapNkf.cs" Link="TestWrapNkf.cs" />
+    <Compile Include="..\Test\ThreadTest.cs" Link="ThreadTest.cs" />
+    <Compile Include="..\Test\UUCodec.cs" Link="UUCodec.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\Test\TestData\euc.txt" Link="TestData\euc.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Test\TestData\mini1.txt" Link="TestData\mini1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Test\TestData\nkfTestData.txt" Link="TestData\nkfTestData.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Test\TestData\sjis-big.txt" Link="TestData\sjis-big.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Test\TestData\sjis.txt" Link="TestData\sjis.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.7" />
+    <PackageReference Include="coverlet.collector" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\proj_std2.0\Nkf.Net.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="x64\" />
+    <Folder Include="x86\" />
+    <Folder Include="TestData\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\shared\NativeBinaries\linux-x64\libnkf32.so" Link="libnkf32.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\shared\NativeBinaries\win-x64\nkf32.dll" Link="x64\nkf32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\shared\NativeBinaries\win-x86\nkf32.dll" Link="x86\nkf32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
