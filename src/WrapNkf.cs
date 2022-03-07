@@ -221,6 +221,11 @@ namespace Nkf.Net
             int len;
             NativeMethods.GetNkfGuess(sb, sb.Capacity, out len);
             len = Math.Min(len, sb.Length);
+            
+            if (sb[len - 1] == '\0')
+            {
+                len = len - 1;
+            }
 
             return sb.ToString(0, len);
         }
