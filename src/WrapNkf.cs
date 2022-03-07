@@ -222,7 +222,7 @@ namespace Nkf.Net
             NativeMethods.GetNkfGuess(sb, sb.Capacity, out len);
             len = Math.Min(len, sb.Length);
 
-            return sb.ToString(0, len);
+            return sb.ToString();
         }
 
         public static string GetSupportFunctions()
