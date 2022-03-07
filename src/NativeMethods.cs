@@ -101,6 +101,52 @@ namespace Nkf.Net
         internal static extern void Init();
 
         /// <summary>
+        /// 任意のバイト配列を文字列に変換する
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="startIndex"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        internal static string NkfConvert(byte[] data, int startIndex, int length)
+        {
+            // 最低限のチェック
+            if (data == null || startIndex > data.Length)
+            {
+                return null;
+            }
+            if (data.Length == 0 || length == 0)
+            {
+                return "";
+            }
+
+            // 領域オーバーする場合は事前にカット
+            if (length + startIndex > data.Length)
+            {
+                length = data.Length - startIndex;
+            }
+
+            // 配列の指定の位置を取得
+            IntPtr inStrPtr = Marshal.UnsafeAddrOfPinnedArrayElement(data, startIndex);
+            // GC されないように ピン を押す
+            GCHandle gchpointData = GCHandle.FromIntPtr(inStrPtr);
+
+            SetNkfOption("-w"); // UTF8出力
+
+            // 戻りの領域を確保 入力の4倍の領域
+            int dataLen = data.Length * 4;
+            IntPtr outStrPtr = Marshal.AllocHGlobal(dataLen + 1);
+
+            int lpBytesReturned;
+            bool result = NkfConvertSafe(outStrPtr, dataLen, out lpBytesReturned, inStrPtr, length);
+
+            // 変換結果を 文字列に変換する
+            String sAns = Marshal.PtrToStringUTF8(outStrPtr);
+            Marshal.FreeHGlobal(outStrPtr);
+
+            return sAns;
+        }
+
+        /// <summary>
         /// スタティックコンストラクタ。
         /// このクラスが最初に利用されるタイミングで1回だけ実行される。
         /// </summary>

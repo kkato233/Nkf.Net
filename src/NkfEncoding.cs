@@ -81,6 +81,19 @@ namespace Nkf.Net
         private string currentNkfOption = "";
 
         /// <summary>
+        /// バイト配列を文字列に変換する
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="startIndex"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string NkfConvert(byte[] data, int startIndex, int length)
+        {
+            string s = NativeMethods.NkfConvert(data, startIndex, length);
+
+            return s;
+        }
+        /// <summary>
         /// 指定した文字配列に格納されているすべての文字をエンコードすることによって
         /// 生成されるバイト数を計算します。
         /// EncodingUTF8 と同じ動作をします。
