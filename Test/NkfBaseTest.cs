@@ -998,7 +998,7 @@ printf "%-40s", "MIME decode (unbuf)";
         private string GetTestDataFileName()
         {
             string file = "nkfTestData.txt";
-            string fileName = "TestData\\" + file;
+            string fileName = "TestData" + System.IO.Path.DirectorySeparatorChar + file;
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(System.Environment.CurrentDirectory);
             if (System.IO.File.Exists(fileName) == false)
             {
