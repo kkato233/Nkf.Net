@@ -96,6 +96,10 @@ namespace Nkf.Net
             int fOutBufferLength /*in TCHARs*/
             );
 
+        // Linux 用初期化関数
+        [DllImport(nkfdll)]
+        internal static extern void Init();
+
         /// <summary>
         /// スタティックコンストラクタ。
         /// このクラスが最初に利用されるタイミングで1回だけ実行される。
@@ -125,6 +129,11 @@ namespace Nkf.Net
                         AddDllDirectory(path);
                     }
                 }
+            } 
+            else if (Environment.OSVersion.Platform == PlatformID.Unix)
+            {
+                // 初期化
+                Init();
             }
         }
 #pragma warning restore CA1416 // プラットフォームの互換性を検証
