@@ -140,7 +140,17 @@ namespace Nkf.Net
             bool result = NkfConvertSafe(outStrPtr, dataLen, out lpBytesReturned, inStrPtr, length);
 
             // 変換結果を 文字列に変換する
-            String sAns = Marshal.PtrToStringUTF8(outStrPtr);
+
+            String sAns;
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+            {
+                sAns = Marshal.PtrToStringUTF8(outStrPtr);
+            }
+            else
+            {
+                sAns = Marshal.PtrToStringAuto(outStrPtr);
+            }
+            
             Marshal.FreeHGlobal(outStrPtr);
 
             return sAns;
