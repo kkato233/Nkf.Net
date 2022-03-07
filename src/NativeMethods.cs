@@ -119,8 +119,11 @@ namespace Nkf.Net
                 return "";
             }
 
-            // モジュール初期化
-            Init();
+            if (Environment.OSVersion.Platform == PlatformID.Unix)
+            {
+                // モジュール初期化
+                Init();
+            }
 
             // 領域オーバーする場合は事前にカット
             if (length + startIndex > data.Length)
