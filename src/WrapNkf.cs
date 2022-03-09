@@ -212,7 +212,7 @@ namespace Nkf.Net
         {
             SetNkfOptionAtLast();
 
-            return NativeMethods.NkfFileConvert2SafeW(inFileName, inFileName.Length + 1, outFileName, outFileName.Length + 1);
+            return NativeMethods.NkfFileConvert2Safe(inFileName, inFileName.Length + 1, outFileName, outFileName.Length + 1);
         }
 
         public static string GetGuess()

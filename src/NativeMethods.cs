@@ -89,7 +89,7 @@ namespace Nkf.Net
         
         //BOOL WINAPI NkfFileConvert2SafeA(LPCSTR fInName,DWORD fInBufferLength /*in TCHARs*/,LPCSTR fOutName,DWORD fOutBufferLength /*in TCHARs*/)
         [DllImport(nkfdll, CharSet = CharSet.Unicode)]
-        internal static extern bool NkfFileConvert2SafeW(
+        internal static extern bool NkfFileConvert2Safe(
             string fInName,
             int fInBufferLength /*in TCHARs*/,
             string fOutName,
