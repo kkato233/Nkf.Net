@@ -53,7 +53,7 @@ namespace Nkf.Net
         internal static extern bool SetNkfOption(string option);
 
         // LPCWSTR fName,DWORD nBufferLength 
-        [DllImport(nkfdll, CharSet = CharSet.Unicode)]
+        [DllImport(nkfdll, CharSet = CharSet.Auto)]
         internal static extern bool NkfFileConvert1Safe(String fName,int nBufferLength);
 
         [DllImport(nkfdll, CharSet = CharSet.Auto)]
