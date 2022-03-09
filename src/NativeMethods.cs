@@ -88,7 +88,7 @@ namespace Nkf.Net
             out int lpBytesReturned);
         
         //BOOL WINAPI NkfFileConvert2SafeA(LPCSTR fInName,DWORD fInBufferLength /*in TCHARs*/,LPCSTR fOutName,DWORD fOutBufferLength /*in TCHARs*/)
-        [DllImport(nkfdll, CharSet = CharSet.Unicode)]
+        [DllImport(nkfdll, CharSet = CharSet.Auto)]
         internal static extern bool NkfFileConvert2Safe(
             string fInName,
             int fInBufferLength /*in TCHARs*/,
