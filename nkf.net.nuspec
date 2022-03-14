@@ -1,15 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Nkf.Net</id>
     <title>Nkf.Net (x86/x64)</title>
     <version>0.9.5</version>
     <authors>kkato233</authors>
-    <description>ものすごく古い漢字コード変換プログラムである nkf を .NET から簡単に利用するためのライブラリです.</description>
+    <description>
+		ものすごく古い漢字コード変換プログラムである nkf を .NET から簡単に利用するためのライブラリです.
+		日本語テキストファイルのエンコード SJIS UTF8 EUC を自動認識して読み込むことができます。マルチスレッド対応。nkf ver 2.1.5 相当
+	</description>
     <language>ja-JP</language>
-	<summary>日本語テキストファイルのエンコード SJIS UTF8 EUC を自動認識して読み込むことができます。マルチスレッド対応。nkf ver 2.1.5 相当</summary>
     <projectUrl>https://github.com/kkato233/Nkf.Net/</projectUrl>
-    <licenseUrl>https://github.com/kkato233/Nkf.Net/blob/master/MIT-Licence.txt</licenseUrl>
+    <license type="file">license\MIT-Licence.txt</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>text converter</tags>
     <dependencies>
@@ -19,6 +21,10 @@
       </group>
     </dependencies>
     <copyright>MIT Licence</copyright>
+    <readme>docs\readme.md</readme>
+	  <repository type="git" url="https://github.com/kkato233/Nkf.Net.git" 
+				  branch="master"
+				  commit="cab5ab28fac507d6ad1db849de84fe50a0dab40e" />
   </metadata>
   <files>
 
@@ -36,8 +42,8 @@
     <file src="shared\NativeBinaries\win-x64\nkf32.dll" target="runtimes\win10-x64\nativeassets\uap10.0" />
     <file src="shared\NativeBinaries\linux-x64\libnkf32.so" target="runtimes\linux-x64\native" />
 
-	<file src="MIT-Licence.txt" target="" />
-	<file src="readme.md" target="" />
+	<file src="MIT-Licence.txt" target="license" />
+	<file src="readme.md" target="docs" />
 	
   </files>
 </package>
