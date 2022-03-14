@@ -23,8 +23,7 @@
     <copyright>MIT Licence</copyright>
     <readme>docs\readme.md</readme>
 	  <repository type="git" url="https://github.com/kkato233/Nkf.Net.git" 
-				  branch="master"
-				  commit="cab5ab28fac507d6ad1db849de84fe50a0dab40e" />
+				  commit="ed2dff5cd5f24cf2aed18bc4ccb289c8612f31e1" />
   </metadata>
   <files>
 
