@@ -37,7 +37,7 @@
     <file src="shared\NativeBinaries\linux-x64\libnkf32.so" target="runtimes\linux-x64\native" />
 
 	<file src="MIT-Licence.txt" target="" />
-	<file src="readme.txt" target="" />
+	<file src="readme.md" target="" />
 	
   </files>
 </package>

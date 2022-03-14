@@ -11,13 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		ChangeLog.txt = ChangeLog.txt
 		nkf.net.nuspec = nkf.net.nuspec
-		readme.txt = readme.txt
 		ToDo.txt = ToDo.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nkf.Net.Test", "Test\Nkf.Net.Test.csproj", "{534DC36A-287D-439A-88AE-C24D65DFF8B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nkf.Net.Core.Test", "Nkf.Net.Core.Test\Nkf.Net.Core.Test.csproj", "{E7C936C4-BD55-4FD8-BE87-8D0E71D5A107}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nkf.Net.Core.Test", "Nkf.Net.Core.Test\Nkf.Net.Core.Test.csproj", "{E7C936C4-BD55-4FD8-BE87-8D0E71D5A107}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
