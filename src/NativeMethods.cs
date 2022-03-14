@@ -150,7 +150,13 @@ namespace Nkf.Net
             String sAns;
             if (Environment.OSVersion.Platform == PlatformID.Win32NT)
             {
+#if NETCOREAPP
                 sAns = Marshal.PtrToStringUTF8(outStrPtr);
+#else
+                byte[] strData = new byte[lpBytesReturned];
+                Marshal.Copy(outStrPtr, strData, 0, lpBytesReturned);
+                sAns = System.Text.Encoding.UTF8.GetString(strData, 0, lpBytesReturned);
+#endif
             }
             else
             {
