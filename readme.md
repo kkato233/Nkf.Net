@@ -1,23 +1,23 @@
 ## Nkf.Net 
 
-���̂������Â������R�[�h�ϊ��v���O�����ł��� nkf �� .NET ����ȒP�ɗ��p���邽�߂̃��C�u�����ł�.
+ものすごく古い漢字コード変換プログラムである nkf を .NET から簡単に利用するためのライブラリです.
 
-## �@�\
+## 機能
 
-Windows  x86/x64 / Linux x64 ���� ���삵�܂��B
+Windows  x86/x64 / Linux x64 環境で 動作します。
 
-���͂��ꂽ���{��e�L�X�g�� JIS SJIS EUC UTF-8 ���� �����I�ɔF�����ēǂݎ�肷�鎖���ł��܂��B
+入力された日本語テキストが JIS SJIS EUC UTF-8 等を 自動的に認識して読み取りする事ができます。
 
-�v���O�����̒��� ���̃t�@�C���� �G���R�[�h���C�ɂ��鎖�Ȃ� ���{��t�@�C����ǂݍ��ގ����ł��܂��B
+プログラムの中で そのファイルの エンコードを気にする事なく 日本語ファイルを読み込む事ができます。
 
-## �R�[�h��
+## コード例
 
-### ���O����
+### 事前準備
 
-`Nkf.Net` nuget �p�b�P�[�W��ǉ����Ă��������B
+`Nkf.Net` nuget パッケージを追加してください。
 
 
-### �t�@�C������ǂݍ���
+### ファイルから読み込み
 
 ``` C#
 using (var sr = new Nkf.Net.NkfTextReader(fileName))
@@ -30,17 +30,17 @@ using (var sr = new Nkf.Net.NkfTextReader(fileName))
 }
 ```
 
-### �G���R�[�h���C�ɂ��� �o�C�g�z��� ���{��ɕϊ����܂�
+### エンコードを気にせず バイト配列を 日本語に変換します
 
 ``` C#
 
-string s = "�����e�X�g";
+string s = "漢字テスト";
 
 byte[] bUTF8 = System.Text.Encoding.UTF8.GetBytes(s);
 byte[] bSJIS = System.Text.Encoding.GetEncoding("SJIS").GetBytes(s);
 byte[] bEUC = System.Text.Encoding.GetEncoding("EUC-JP").GetBytes(s);
 
-// �ǂ�ȃG���R�[�h�̃o�C�g�z��ł������F�����ĕ������擾�ł��܂��B
+// どんなエンコードのバイト配列でも自動認識して文字を取得できます。
 Nkf.Net.NkfEncoding enc = new Nkf.Net.NkfEncoding();
 
 string s1 = enc.GetString(bUTF8);
@@ -52,29 +52,29 @@ Console.WriteLine(s2);
 Console.WriteLine(s3);
 ```
 
-### nkf �̋@�\�𒼐ڗ��p���ăt�@�C���ϊ�����
+### nkf の機能を直接利用してファイル変換する
 
 ``` C#
-// �t�@�C����UTF8 �ϊ��i���̓t�@�C���̃G���R�[�h�͖��w��j
-WrapNkf.SetNkfOption("-w");	// UTF-8
-WrapNkf.FileConvert2(inFile, outFile);
+// ファイルをUTF8 変換（入力ファイルのエンコードは未指定）
+Nkf.Net.WrapNkf.SetNkfOption("-w");	// UTF-8
+Nkf.Net.WrapNkf.FileConvert2(inFile, outFile);
 ```
 
-## ���C�Z���X
+## ライセンス
 
 This software is released under the MIT License, see LICENSE.txt.
-���̃\�t�g�E�F�A�́AMIT���C�Z���X�̂��ƂŌ��J����Ă��܂��B
+このソフトウェアは、MITライセンスのもとで公開されています。
 
-LICENSE.txt���������������B
+LICENSE.txtをご覧ください。
 
-������ nkf32.dll �� gzip ���C�Z���X�̂��ƌ��J����Ă��܂��B
+同梱の nkf32.dll は gzip ライセンスのもと公開されています。
 
-������ nkf32.dll �̓I���W�i���� nkf32.dll 
+同梱の nkf32.dll はオリジナルの nkf32.dll 
 
 http://sourceforge.jp/projects/nkf/
 
-�Ɂu�}���`�X���b�h�Ή��v�ux86/x64�ǂ���ł�����\�v�̋@�\��ǉ������o�[�W�����𗘗p���Ă��܂��B
+に「マルチスレッド対応」「x86/x64どちらでも動作可能」の機能を追加したバージョンを利用しています。
 
-�@�\�ǉ��ł̃\�[�X�Ǘ�URL
+機能追加版のソース管理URL
 
 https://github.com/kkato233/nkf
