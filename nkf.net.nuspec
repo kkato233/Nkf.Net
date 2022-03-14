@@ -3,7 +3,7 @@
   <metadata>
     <id>Nkf.Net</id>
     <title>Nkf.Net (x86/x64)</title>
-    <version>0.9.5</version>
+    <version>0.9.6</version>
     <authors>kkato233</authors>
     <description>
 		ものすごく古い漢字コード変換プログラムである nkf を .NET から簡単に利用するためのライブラリです.
@@ -36,10 +36,8 @@
     <file src="proj_std2.0\bin\Release\netstandard2.0\Nkf.Net.xml" target="lib\netstandard2.0" />
 
 	<!-- Native ライブラリ : https://github.com/kkato233/nkf/releases より -->
-    <file src="shared\NativeBinaries\win-x86\nkf32.dll" target="runtimes\win7-x86\native" />
-    <file src="shared\NativeBinaries\win-x64\nkf32.dll" target="runtimes\win7-x64\native" />
-    <file src="shared\NativeBinaries\win-x86\nkf32.dll" target="runtimes\win10-x86\nativeassets\uap10.0" />
-    <file src="shared\NativeBinaries\win-x64\nkf32.dll" target="runtimes\win10-x64\nativeassets\uap10.0" />
+    <file src="shared\NativeBinaries\win-x86\nkf32.dll" target="runtimes\win-x86\native" />
+    <file src="shared\NativeBinaries\win-x64\nkf32.dll" target="runtimes\win-x64\native" />
     <file src="shared\NativeBinaries\linux-x64\libnkf32.so" target="runtimes\linux-x64\native" />
 
 	<file src="MIT-Licence.txt" target="license" />
