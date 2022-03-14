@@ -13,16 +13,30 @@
   **                    Native DLL                                            **
   ******************************************************************************
   -->
+  <!-- Detect OS platform -->
+  <PropertyGroup>
+    <NkfNetPlatform Condition=" '$(NkfNetPlatform)' == '' And '$(RuntimeIdentifier.StartsWith(&quot;win&quot;))'=='True' ">win32</NkfNetPlatform>
+    <NkfNetPlatform Condition=" '$(NkfNetPlatform)' == '' And '$(RuntimeIdentifier.StartsWith(&quot;osx&quot;))'=='True' ">mac64</NkfNetPlatform>
+    <NkfNetPlatform Condition=" '$(NkfNetPlatform)' == '' And '$(RuntimeIdentifier.StartsWith(&quot;linux&quot;))'=='True' ">linux64</NkfNetPlatform>
+    <NkfNetPlatform Condition=" '$(NkfNetPlatform)' == '' And '$(OS)' == 'Windows_NT' ">win-x64</NkfNetPlatform>
+    <NkfNetPlatform Condition=" '$(NkfNetPlatform)' == '' And '$(OS)' == 'Unix' And Exists ('/Applications') ">mac64</NkfNetPlatform>
+    <NkfNetPlatform Condition=" '$(NkfNetPlatform)' == '' And '$(OS)' == 'Unix' ">linux-x64</NkfNetPlatform>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <NkfNetLibraryName Condition="'$(NkfNetLibraryName)' == '' And '$(NkfNetPlatform)' == 'win32'">nkf32.dll</NkfNetLibraryName>
+    <NkfNetLibraryName Condition="'$(NkfNetLibraryName)' == ''">libnkf32.so</NkfNetLibraryName>
+  </PropertyGroup>
 
   <ItemGroup>
     <NativeFiles Condition="'$(MSBuildThisFileDirectory)' != '' And
                                    HasTrailingSlash('$(MSBuildThisFileDirectory)')"
-                        Include="$(MSBuildThisFileDirectory)**\nkf32.dll" />
+                        Include="$(MSBuildThisFileDirectory)**\$(NkfNetLibraryName)" />
   </ItemGroup>
 
   <!--
   ******************************************************************************
-  **                   SQLite Interop Library Build Targets                   **
+  **                          Interop Library Build Targets                   **
   ******************************************************************************
   -->
 
