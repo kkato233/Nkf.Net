@@ -32,21 +32,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Visible>False</Visible>
     </Content>
-    <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\linux-x86\native\*">
-      <Link>x86\%(Filename)%(Extension)</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Visible>False</Visible>
-    </Content>
   </ItemGroup>
   <ItemGroup Condition=" (Exists('packages.config') Or Exists('packages.$(MSBuildProjectName).config')) And '$(Platform)' == 'x64' And '$(OS)' == 'Unix'">
     <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\linux-x64\native\*">
-      <Link>%(Filename)%(Extension)</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Visible>False</Visible>
-    </Content>
-  </ItemGroup>
-  <ItemGroup Condition=" (Exists('packages.config') Or Exists('packages.$(MSBuildProjectName).config')) And '$(Platform)' == 'x86' And '$(OS)' == 'Unix'">
-    <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\linux-x86\native\*">
       <Link>%(Filename)%(Extension)</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Visible>False</Visible>
