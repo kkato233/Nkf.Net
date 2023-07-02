@@ -29,6 +29,12 @@
     <Content Include="..\Test\TestData\sjis-big.txt" Link="TestData\sjis-big.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\Test\TestData\sjis-CR.txt" Link="TestData\sjis-CR.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Test\TestData\sjis-LF.txt" Link="TestData\sjis-LF.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\Test\TestData\sjis.txt" Link="TestData\sjis.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

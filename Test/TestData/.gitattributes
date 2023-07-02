@@ -1,0 +1,4 @@
+sjis-CR.txt	binary 
+sjis-LF.txt	text eol=lf
+sjis.txt	text eol=crlf
+
