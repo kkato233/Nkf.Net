@@ -111,7 +111,6 @@ namespace Nkf.Net.Test
         public void TestMiniText()
         {
 
-            // 文字列が途中で泣き別れている部分の動作確認
             List<string> files = new List<string>()
             {
                 "mini1.txt"
@@ -143,7 +142,6 @@ namespace Nkf.Net.Test
         [TestMethod]
         public void TestNKFFileRead3B()
         {
-            // 文字列が途中で泣き別れている部分の動作確認
             List<string> files = new List<string>()
             {
                 "sjis-big.txt"
@@ -181,7 +179,6 @@ namespace Nkf.Net.Test
         [TestMethod]
         public void TestNKFFileRead4()
         {
-            // 文字列が途中で泣き別れている部分の動作確認
             List<string> files = new List<string>()
             {
                 "sjis-big.txt"
@@ -212,7 +209,6 @@ namespace Nkf.Net.Test
         [TestMethod]
         public void TestNKFFileRead4B()
         {
-            // 文字列が途中で泣き別れている部分の動作確認
             List<string> files = new List<string>()
             {
                 "sjis-big.txt"
