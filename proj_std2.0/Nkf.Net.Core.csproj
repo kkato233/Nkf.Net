@@ -5,11 +5,14 @@
     <AssemblyName>Nkf.Net</AssemblyName>
     <RootNamespace>Nkf.Net</RootNamespace>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>0.3.5</Version>
+    <Version>1.0.0</Version>
     <Authors>kkato233</Authors>
     <Description>ものすごく古い漢字コード変換プログラムである nkf を .NET Framework から簡単に利用するためのライブラリです.</Description>
     <Company />
     <Copyright>MIT Licence</Copyright>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -20,6 +23,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath></OutputPath>
     <DocumentationFile>Nkf.Net.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
