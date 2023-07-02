@@ -22,6 +22,15 @@
             <param name="nBufferLength"></param>
             <param name="lpTCHARsReturned"></param>
         </member>
+        <member name="M:Nkf.Net.NativeMethods.NkfConvert(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            任意のバイト配列を文字列に変換する
+            </summary>
+            <param name="data"></param>
+            <param name="startIndex"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
         <member name="M:Nkf.Net.NativeMethods.#cctor">
             <summary>
             スタティックコンストラクタ。
@@ -66,6 +75,15 @@
             <summary>
             UCS2 の BOM なし エンコード
             </summary>
+        </member>
+        <member name="M:Nkf.Net.NkfEncoding.NkfConvert(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            バイト配列を文字列に変換する
+            </summary>
+            <param name="data"></param>
+            <param name="startIndex"></param>
+            <param name="length"></param>
+            <returns></returns>
         </member>
         <member name="M:Nkf.Net.NkfEncoding.GetByteCount(System.Char[],System.Int32,System.Int32)">
             <summary>
@@ -151,6 +169,25 @@
             NKFを呼び出す自動的にエンコード判定を行うTextReader
             </summary>
         </member>
+        <member name="P:Nkf.Net.NkfTextReader.ReadLineMaxBufferSize">
+            <summary>
+            ReadLine で利用する最大バッファーサイズ
+            </summary>
+            <remarks>
+            文書の中に 改行コードが 存在しない場合 無限にメモリーを消費しないように
+            一定のバイト数で１行を切り取るためのバイト数。
+            </remarks>
+        </member>
+        <member name="P:Nkf.Net.NkfTextReader.LastEOL">
+            <summary>
+            最後の ReadLine で利用した 改行コードの文字コード
+            </summary>
+            <remarks>
+            CR LF  (Windows で主に使われる改行コード）
+            LF     (Linux で主に使われる改行コード）
+            CR     (Mac で主に使われる改行コード）
+            </remarks>
+        </member>
         <member name="M:Nkf.Net.NkfTextReader.#ctor(System.String)">
             <summary>
             ファイル名を指定して 内容のデータを取得する
@@ -174,6 +211,24 @@
             <summary>
             ファイルが終了したか？
             </summary>
+        </member>
+        <member name="F:Nkf.Net.NkfTextReader.lineBuffer">
+            <summary>
+            行データバッファ
+            </summary>
+        </member>
+        <member name="F:Nkf.Net.NkfTextReader.eolBuffer">
+            <summary>
+            改行コードバッファ
+            </summary>
+        </member>
+        <member name="F:Nkf.Net.NkfTextReader.dataBuffer">
+            <summary>
+            次に変換するデータを保持するバッファ。
+            </summary>
+            <remarks>
+            改行コード単位で変換するため 前回未変換の文字が格納されている
+            </remarks>
         </member>
         <member name="M:Nkf.Net.NkfTextReader.ReadLine">
             <summary>
