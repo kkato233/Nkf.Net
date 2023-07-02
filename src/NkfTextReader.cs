@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Nkf.Net
@@ -9,6 +10,26 @@ namespace Nkf.Net
     /// </summary>
     public class NkfTextReader : System.IO.TextReader
     {
+        /// <summary>
+        /// ReadLine で利用する最大バッファーサイズ
+        /// </summary>
+        /// <remarks>
+        /// 文書の中に 改行コードが 存在しない場合 無限にメモリーを消費しないように
+        /// 一定のバイト数で１行を切り取るためのバイト数。
+        /// </remarks>
+        public int ReadLineMaxBufferSize { get; set; } = 64 * 1024;
+
+        /// <summary>
+        /// 最後の ReadLine で利用した 改行コードの文字コード
+        /// </summary>
+        /// <remarks>
+        /// CR LF  (Windows で主に使われる改行コード）
+        /// LF     (Linux で主に使われる改行コード）
+        /// CR     (Mac で主に使われる改行コード）
+        /// </remarks>
+        public string LastEOL { get; private set; } = string.Empty;
+
+
         System.IO.Stream _disposeStream = null;
         System.IO.Stream _st = null;
         /// <summary>
@@ -76,7 +97,20 @@ namespace Nkf.Net
         /// </summary>
         bool Eof = false;
 
+        /// <summary>
+        /// 行データバッファ
+        /// </summary>
         Queue<string> lineBuffer = new Queue<string>();
+        /// <summary>
+        /// 改行コードバッファ
+        /// </summary>
+        Queue<string> eolBuffer = new Queue<string>();
+        /// <summary>
+        /// 次に変換するデータを保持するバッファ。
+        /// </summary>
+        /// <remarks>
+        /// 改行コード単位で変換するため 前回未変換の文字が格納されている
+        /// </remarks>
         List<byte> dataBuffer = new List<byte>();
         /// <summary>
         /// 1行のデータを取得する
@@ -84,9 +118,14 @@ namespace Nkf.Net
         /// <returns></returns>
         public override string ReadLine()
         {
+            // 前回 解析分の行データが残っている場合
             if (lineBuffer.Count > 0)
             {
                 string s = lineBuffer.Dequeue();
+                if (eolBuffer.Any())
+                {
+                    LastEOL = eolBuffer.Dequeue();
+                }
                 return s;
             }
 
@@ -96,32 +135,97 @@ namespace Nkf.Net
                 return null;
             }
 
-            byte[] buffer = new byte[4096];
-            int read_n = _st.Read(buffer, 0, buffer.Length);
-            if (read_n == 0 && dataBuffer.Count == 0)
-            {
-                // ファイルが終わり
-                Eof = true;
-                return null;
-            }
-
-            // データの中の最後の \n の場所を見つける
+            // データの中の 改行 の場所を見つける
 
             List<byte> tmpBuffer = new List<byte>();
-            int find_ln_count = 0;
-            for (int i = 0; i < read_n; i++)
+            
+            // 前回までの解析結果保持
+            if (dataBuffer.Count > 0)
             {
-                tmpBuffer.Add(buffer[i]);
-                if (buffer[i] == '\n') { 
+                tmpBuffer.AddRange(dataBuffer);
+                dataBuffer.Clear();
+            }
+
+            int buffer_size = 4096;
+            byte[] buffer = new byte[buffer_size+1];
+            int read_n = _st.Read(buffer, 0, buffer_size);
+
+            // 改行コードまたは 文書終了まで繰り返す
+            while(true)
+            {
+                // ファイルの読み込み終了判定
+                if (read_n == 0)
+                {
+                    if (tmpBuffer.Count == 0)
+                    {
+                        // ファイルが終わり
+                        Eof = true;
+                        return null;
+                    } 
+                    else
+                    {
+                        // ファイル読み込みを終了して文字列解析に行く
+                        dataBuffer.AddRange(tmpBuffer);
+                        tmpBuffer.Clear();
+                        break;
+                    }
+                }
+                buffer[read_n] = 0; // 文字列区切りを意図的に挿入
+                int find_ln_count = 0;
+                // 改行コードの場所検索
+                for (int i = 0; i < read_n; i++)
+                {
+                    string last_eol = null;
+                    if (buffer[i] == '\r' && buffer[i+1] == '\n')
+                    {
+                        last_eol = "\r\n"; // CR LF 改行
+                        tmpBuffer.Add(buffer[i]);
+                        tmpBuffer.Add(buffer[i+1]);
+                        i++; // １文字読み込み SKIP
+                    }
+                    else if(buffer[i] == '\n')
+                    {
+                        last_eol = "\n"; // LF 改行
+                        tmpBuffer.Add(buffer[i]);
+                    }
+                    else if (buffer[i] == '\r')
+                    {
+                        last_eol = "\r"; // CR 改行
+                        tmpBuffer.Add(buffer[i]);
+                    }
+                    else
+                    {
+                        // 改行以外の文字を蓄積
+                        tmpBuffer.Add(buffer[i]);
+                    }
+
+                    if (last_eol != null)
+                    {
+                        dataBuffer.AddRange(tmpBuffer);
+                        tmpBuffer.Clear();
+                        find_ln_count++;
+                        eolBuffer.Enqueue(last_eol);
+                    }
+                }
+
+                // dataBuffer : 改行コードまでの文字が格納
+                // tmpBuffer : 改行コード以降の 未処理文字が格納
+
+                if (find_ln_count > 0) {
+                    // 今回の buffer の中に改行コードが含まれている場合
+                    break;
+                } 
+                else if (tmpBuffer.Count > ReadLineMaxBufferSize)
+                {
+                    // 今回の buffer の中には 改行コードが含まれていないが あきらめて変換する場合
                     dataBuffer.AddRange(tmpBuffer);
                     tmpBuffer.Clear();
-                    find_ln_count++;
-                }
-            }
-            if (find_ln_count == 0 && tmpBuffer.Count > 0)
-            {
-                dataBuffer.AddRange(tmpBuffer);
-                tmpBuffer.Clear();
+                    LastEOL = String.Empty;
+                    break;
+                } 
+
+                // 続きの読み込み
+                read_n = _st.Read(buffer, 0, buffer_size);
             }
 
             // dataBuffer にあるデータを文字列に変換する
@@ -145,6 +249,10 @@ namespace Nkf.Net
             // バッファーから1行だけ返す
             if (lineBuffer.Count > 0)
             {
+                if (eolBuffer.Any())
+                {
+                    LastEOL = eolBuffer.Dequeue();
+                }
                 return lineBuffer.Dequeue();
             }
             else
