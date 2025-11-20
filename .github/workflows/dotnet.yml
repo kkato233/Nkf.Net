@@ -28,4 +28,4 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       working-directory: ./Nkf.Net.Core.Test 
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity m
