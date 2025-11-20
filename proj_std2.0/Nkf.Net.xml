@@ -188,6 +188,14 @@
             CR     (Mac で主に使われる改行コード）
             </remarks>
         </member>
+        <member name="P:Nkf.Net.NkfTextReader.EOL">
+            <summary>
+            改行コードを取得する。
+            </summary>
+            <remarks>
+            最後に使われた改行コードを取得する。
+            </remarks>
+        </member>
         <member name="M:Nkf.Net.NkfTextReader.#ctor(System.String)">
             <summary>
             ファイル名を指定して 内容のデータを取得する

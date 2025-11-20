@@ -29,6 +29,43 @@ namespace Nkf.Net
         /// </remarks>
         public string LastEOL { get; private set; } = string.Empty;
 
+        /// <summary>
+        /// 改行コードを取得する。
+        /// </summary>
+        /// <remarks>
+        /// 最後に使われた改行コードを取得する。
+        /// </remarks>
+        public string EOL
+        {
+            get
+            {
+                // 最も多く使われた改行コードを返す
+                string _eol = Environment.NewLine;
+                int max = -1;
+                for(int i=0; i < _eol_count.Length; i++)
+                {
+                    if (_eol_count[i] > max)
+                    {
+                        max = _eol_count[i];
+                        _eol = _eol_strs[i];
+                    }
+                }
+                return _eol;
+            }
+            private set
+            {
+                for(int i=0; i < _eol_strs.Length; i++)
+                {
+                    if (_eol_strs[i] == value)
+                    {
+                        _eol_count[i]++;
+                    }
+                }
+            }
+        }
+        readonly int[] _eol_count = new int[3] { 0, 0, 0 }; // CRLF, LF, CR
+        static readonly string[] _eol_strs = new string[3] { "\r\n", "\n", "\r" };
+
 
         System.IO.Stream _disposeStream = null;
         System.IO.Stream _st = null;
@@ -205,6 +242,8 @@ namespace Nkf.Net
                         tmpBuffer.Clear();
                         find_ln_count++;
                         eolBuffer.Enqueue(last_eol);
+
+                        this.EOL = last_eol; // 最後に使われた改行コードを更新
                     }
                 }
 
@@ -275,7 +314,7 @@ namespace Nkf.Net
                 s = ReadLine();
             }
 
-            return string.Join("\r\n", line.ToArray());
+            return string.Join(this.EOL, line.ToArray());
         }
 
         public override int Peek()
