@@ -1,0 +1,44 @@
+# This workflow will build a .NET Framework project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET Framework 4.8
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+    
+    - name: Setup NuGet
+      uses: nuget/setup-nuget@v2
+    
+    - name: Restore NuGet packages
+      run: nuget restore proj_4.0/Nkf.Net-4.0.sln
+    
+    - name: Restore NuGet packages (Test)
+      run: nuget restore Test/Nkf.Net.Test.sln
+    
+    - name: Build
+      run: msbuild proj_4.0/Nkf.Net-4.0.sln /p:Configuration=Release /p:Platform="Any CPU"
+    
+    - name: Build Test
+      run: msbuild Test/Nkf.Net.Test.sln /p:Configuration=Release /p:Platform="Any CPU"
+    
+    - name: Setup VSTest
+      uses: darenm/Setup-VSTest@v1.2
+    
+    - name: Test
+      dir: Test
+      run: vstest.console.exe bin\Release\Nkf.Net.Test.dll
+  
