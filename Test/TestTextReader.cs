@@ -18,15 +18,7 @@ namespace Nkf.Net.Test
 
             foreach (string file in files)
             {
-                string fileName = "TestData" + System.IO.Path.DirectorySeparatorChar + file;
-                System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(System.Environment.CurrentDirectory);
-                if (System.IO.File.Exists(fileName) == false)
-                {
-                    dir = dir.Parent.Parent;
-                    dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(dir.FullName, "TestData"));
-
-                    fileName = System.IO.Path.Combine(dir.FullName, file);
-                }
+                string fileName = GetTestFileName(file);
 
                 string s = LoadFromFileByNKF(fileName);
 
@@ -45,15 +37,7 @@ namespace Nkf.Net.Test
 
             foreach (string file in files)
             {
-                string fileName = "TestData" + System.IO.Path.DirectorySeparatorChar + file;
-                System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(System.Environment.CurrentDirectory);
-                if (System.IO.File.Exists(fileName) == false)
-                {
-                    dir = dir.Parent.Parent;
-                    dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(dir.FullName, "TestData"));
-
-                    fileName = System.IO.Path.Combine(dir.FullName, file);
-                }
+                string fileName = GetTestFileName(file);
                 using (var sr = new NkfTextReader(fileName))
                 {
                     string s1 = sr.ReadLine();
@@ -81,15 +65,7 @@ namespace Nkf.Net.Test
 
             foreach (string file in files)
             {
-                string fileName = "TestData" + System.IO.Path.DirectorySeparatorChar + file;
-                System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(System.Environment.CurrentDirectory);
-                if (System.IO.File.Exists(fileName) == false)
-                {
-                    dir = dir.Parent.Parent;
-                    dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(dir.FullName, "TestData"));
-
-                    fileName = System.IO.Path.Combine(dir.FullName, file);
-                }
+                string fileName = GetTestFileName(file);
                 using (var sr = new NkfTextReader(fileName))
                 {
                     for (; ; )
@@ -118,15 +94,7 @@ namespace Nkf.Net.Test
 
             foreach (string file in files)
             {
-                string fileName = "TestData" + System.IO.Path.DirectorySeparatorChar + file;
-                System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(System.Environment.CurrentDirectory);
-                if (System.IO.File.Exists(fileName) == false)
-                {
-                    dir = dir.Parent.Parent;
-                    dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(dir.FullName, "TestData"));
-
-                    fileName = System.IO.Path.Combine(dir.FullName, file);
-                }
+                string fileName = GetTestFileName(file);
                 using (var sr = new NkfTextReader(fileName))
                 {
                     for (; ; )
@@ -156,15 +124,7 @@ namespace Nkf.Net.Test
 
             foreach (string file in files)
             {
-                string fileName = "TestData" + System.IO.Path.DirectorySeparatorChar + file;
-                System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(System.Environment.CurrentDirectory);
-                if (System.IO.File.Exists(fileName) == false)
-                {
-                    dir = dir.Parent.Parent;
-                    dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(dir.FullName, "TestData"));
-
-                    fileName = System.IO.Path.Combine(dir.FullName, file);
-                }
+                string fileName = GetTestFileName(file);
                 using (var sr = new NkfTextReader(fileName))
                 {
                     for (; ; )
@@ -196,15 +156,7 @@ namespace Nkf.Net.Test
 
             foreach (string file in files)
             {
-                string fileName = "TestData" + System.IO.Path.DirectorySeparatorChar + file;
-                System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(System.Environment.CurrentDirectory);
-                if (System.IO.File.Exists(fileName) == false)
-                {
-                    dir = dir.Parent.Parent;
-                    dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(dir.FullName, "TestData"));
-
-                    fileName = System.IO.Path.Combine(dir.FullName, file);
-                }
+                string fileName = GetTestFileName(file);
                 using (var sr = new Nkf.Net.NkfTextReader(fileName))
                 {
                     string s = sr.ReadLine();
@@ -228,15 +180,7 @@ namespace Nkf.Net.Test
 
             foreach (string file in files)
             {
-                string fileName = "TestData" + System.IO.Path.DirectorySeparatorChar + file;
-                System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(System.Environment.CurrentDirectory);
-                if (System.IO.File.Exists(fileName) == false)
-                {
-                    dir = dir.Parent.Parent;
-                    dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(dir.FullName, "TestData"));
-
-                    fileName = System.IO.Path.Combine(dir.FullName, file);
-                }
+                string fileName = GetTestFileName(file);
                 using (var sr = new Nkf.Net.NkfTextReader(fileName))
                 {
                     for (; ; )
@@ -265,15 +209,7 @@ namespace Nkf.Net.Test
 
             foreach (string file in files)
             {
-                string fileName = "TestData" + System.IO.Path.DirectorySeparatorChar + file;
-                System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(System.Environment.CurrentDirectory);
-                if (System.IO.File.Exists(fileName) == false)
-                {
-                    dir = dir.Parent.Parent;
-                    dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(dir.FullName, "TestData"));
-
-                    fileName = System.IO.Path.Combine(dir.FullName, file);
-                }
+                string fileName = GetTestFileName(file);
                 using (var sr = new NkfTextReader(fileName))
                 {
                     string s = sr.ReadToEnd();
@@ -283,6 +219,24 @@ namespace Nkf.Net.Test
 
                 }
             }
+        }
+
+        private string GetTestFileName(string file)
+        {
+            string fileName = "TestData" + System.IO.Path.DirectorySeparatorChar + file;
+            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(System.Environment.CurrentDirectory);
+            if (dir != null && System.IO.File.Exists(fileName) == false)
+            {
+                dir = dir?.Parent?.Parent;
+                if (dir == null)
+                {
+                    throw new Exception($"Test file not found.{file}");
+                }
+                dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(dir.FullName, "TestData"));
+                fileName = System.IO.Path.Combine(dir.FullName, file);
+            }
+            return fileName;
+
         }
 
         [TestMethod]
@@ -295,15 +249,7 @@ namespace Nkf.Net.Test
 
             foreach (string file in files)
             {
-                string fileName = "TestData" + System.IO.Path.DirectorySeparatorChar + file;
-                System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(System.Environment.CurrentDirectory);
-                if (System.IO.File.Exists(fileName) == false)
-                {
-                    dir = dir.Parent.Parent;
-                    dir = new System.IO.DirectoryInfo(System.IO.Path.Combine(dir.FullName, "TestData"));
-
-                    fileName = System.IO.Path.Combine(dir.FullName, file);
-                }
+                string fileName = GetTestFileName(file);
                 using (var sr = new Nkf.Net.NkfTextReader(fileName))
                 {
                     string s = sr.ReadToEnd();
@@ -343,6 +289,31 @@ namespace Nkf.Net.Test
             }
 
             return sb.ToString();
+        }
+
+        [TestMethod]
+        public void TestEOLType()
+        {
+            // CR
+            using (var sr = new NkfTextReader(GetTestFileName("sjis-CR.txt")))
+            {
+                string txt = sr.ReadToEnd();
+                Assert.IsTrue(txt.Contains("Wikipedia\rCP51932"));
+            }
+
+            // LF
+            using (var sr = new NkfTextReader(GetTestFileName("sjis-LF.txt")))
+            {
+                string txt = sr.ReadToEnd();
+                Assert.IsTrue(txt.Contains("Wikipedia\nCP51932"));
+            }
+
+            // CR LF
+            using (var sr = new NkfTextReader(GetTestFileName("sjis.txt")))
+            {
+                string txt = sr.ReadToEnd();
+                Assert.IsTrue(txt.Contains("Wikipedia\r\nCP51932"));
+            }
         }
     }
 }

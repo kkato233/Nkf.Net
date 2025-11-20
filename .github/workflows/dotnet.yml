@@ -21,11 +21,11 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      dir: ./proj_std2.0  
+      working-directory: ./proj_std2.0  
       run: dotnet restore
     - name: Build
-      dir: ./proj_std2.0  
+      working-directory: ./proj_std2.0  
       run: dotnet build --no-restore
     - name: Test
-      dir: ./Nkf.Net.Core.Test 
-      run: dotnet test --no-build --verbosity normal
+      working-directory: ./Nkf.Net.Core.Test 
+      run: dotnet test --no-build --verbosity m
