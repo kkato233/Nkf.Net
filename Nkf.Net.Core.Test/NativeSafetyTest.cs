@@ -208,6 +208,34 @@ namespace Nkf.Net.Core.Test
         }
 
         [TestMethod]
+        public void FileConversionReturnsFalseWhenFilesCannotBeOpened()
+        {
+            string dir = Path.Combine(Path.GetTempPath(), "nkfnet_" + Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(dir);
+            try
+            {
+                string input = Path.Combine(dir, "in.txt");
+                string output = Path.Combine(dir, "out.txt");
+                File.WriteAllBytes(input, new byte[] { 0x82, 0xA0 });
+                string missingDirOutput = Path.Combine(dir, "missing", "out.txt");
+
+                Assert.IsFalse(WrapNkf.FileConvert2(input, missingDirOutput));
+                Assert.IsFalse(WrapNkf.FileConvert2(Path.Combine(dir, "missing.txt"), output));
+                Assert.IsFalse(WrapNkf.FileConvert1(Path.Combine(dir, "missing.txt")));
+
+                Assert.IsTrue(WrapNkf.FileConvert2(input, output));
+                CollectionAssert.AreEqual(Encoding.UTF8.GetBytes("\u3042"), File.ReadAllBytes(output));
+
+                Assert.IsTrue(WrapNkf.FileConvert1(input));
+                CollectionAssert.AreEqual(Encoding.UTF8.GetBytes("\u3042"), File.ReadAllBytes(input));
+            }
+            finally
+            {
+                Directory.Delete(dir, true);
+            }
+        }
+
+        [TestMethod]
         public void NativeQueriesAndConversionsRemainConsistentAcrossThreads()
         {
             Task[] workers = new Task[4];

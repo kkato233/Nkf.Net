@@ -194,6 +194,8 @@ namespace Nkf.Net
                 }
             }
 
+            // nkf no longer exits on -v/-V/--help/--version, but it still writes their text through the
+            // output buffer left over from a previous NkfUsage call on the same thread, so keep rejecting them.
             // SetNkfOption adds one leading dash; options() skips up to the first dash in each token.
             string nativeOption = option.StartsWith("-", StringComparison.Ordinal) ? option : "-" + option;
             foreach (string token in nativeOption.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries))

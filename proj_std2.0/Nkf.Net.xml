@@ -14,7 +14,7 @@
             nkf32.dll のファイル名
             </summary>
         </member>
-        <member name="M:Nkf.Net.NativeMethods.GetNkfVersionSafeNative(System.Text.StringBuilder,System.Int32,System.Int32@)">
+        <member name="M:Nkf.Net.NativeMethods.GetNkfVersionSafe(System.Text.StringBuilder,System.Int32,System.Int32@)">
             <summary>
             GetNkfVersionSafe のラッパ
             </summary>
