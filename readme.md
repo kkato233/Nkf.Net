@@ -60,6 +60,18 @@ Console.WriteLine(s3);
 `null` の配列には `ArgumentNullException`、負数や配列の範囲外を指定した場合には `ArgumentOutOfRangeException` を送出します。従来の `NkfEncoding.NkfConvert` による範囲の自動切り詰めは行いません。内部のバッファーサイズ計算で整数オーバーフローが発生する場合は `OverflowException` を送出します。
 ネイティブ関数に渡す配列は呼び出し中に固定し、例外発生時も固定と一時領域を解放します。
 
+出力容量が不足した場合、`WrapNkf.NkfConvertSafe` / `NkfConvertSafeWithOption` は `false` を返し、`bytes` には必要な出力バイト数を設定します。`bytes` は書き込み済みの長さではありません。不足時にはそのサイズの配列を確保して再実行してください。
+`WrapNkf.NkfConvert` と `NkfTextReader` は内部の出力配列を必要量に拡張して再試行します。`NkfEncoding.GetCharCount` は実際の変換後の文字数を計算し、`GetChars` は出力配列が不足していれば `ArgumentException` を送出します。
+
+### オプションと並列呼び出しの安全性
+
+変換オプションには、半角スペースで区切った表示可能なASCII文字を指定してください。NUL、タブ、改行、非ASCII文字は `ArgumentException` で拒否します。
+プロセスを終了する `-v` / `-V` / `--help` / `--version` は利用できません。`-Swv` のような複合指定も拒否します。情報取得には `WrapNkf.GetNkfVersion()` / `WrapNkf.Usage()` を利用してください。
+短いオプション内のハイフンは `-f60-10` のような数値引数に限ります。`--fb-java` などの長いオプションは利用できます。
+
+`WrapNkf.SetNkfOption` の設定はスレッドごとに保持されます。未設定時、または `null` でリセットした場合はUTF-8出力です。
+同じ Nkf.Net アセンブリを経由する共有ライブラリ呼び出しは、情報取得・初期化・ファイル変換も含めて共通のロックで直列化します。オプション設定と変換も同じロック内で実行します。別のコードや別のロードコンテキストから同じネイティブライブラリを直接呼び出す場合の競合までは防げません。
+
 ### nkf の機能を直接利用してファイル変換する
 
 ``` C#
@@ -67,6 +79,8 @@ Console.WriteLine(s3);
 Nkf.Net.WrapNkf.SetNkfOption("-w");	// UTF-8
 Nkf.Net.WrapNkf.FileConvert2(inFile, outFile);
 ```
+
+**ファイル変換APIの既知の問題:** 同梱のネイティブライブラリには、Linuxの `FileConvert1` で固定の一時ファイルを使用する問題と、ファイル変換で出力ファイルを開けない場合にプロセスが異常終了する問題が残っています。上記の排他制御では解消しないため、これらは nkf 側の修正・ネイティブバイナリの更新が必要です。
 
 ## ライセンス
 

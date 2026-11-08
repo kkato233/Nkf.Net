@@ -19,6 +19,9 @@ namespace Nkf.Net
         /// </summary>
         private const string nkfdll = "nkf32";
 
+        // Some Linux native state is shared even though conversion options are thread-local.
+        private static readonly object SyncRoot = new object();
+
         //LPWSTR verStr,DWORD nBufferLength /*in TCHARs*/,LPDWORD lpTCHARsReturned /*in TCHARs*/
 
         /// <summary>
@@ -27,40 +30,90 @@ namespace Nkf.Net
         /// <param name="varStr"></param>
         /// <param name="nBufferLength"></param>
         /// <param name="lpTCHARsReturned"></param>
-        [DllImport(nkfdll,
+        [DllImport(nkfdll, EntryPoint = "GetNkfVersionSafe",
             CallingConvention = CallingConvention.Winapi,
             CharSet = CharSet.Auto,
             BestFitMapping = true,
             ThrowOnUnmappableChar = false)]
-        internal static extern void GetNkfVersionSafe(
+        private static extern void GetNkfVersionSafeNative(
             StringBuilder varStr,
             int nBufferLength,
             out int lpTCHARsReturned);
 
+        internal static void GetNkfVersionSafe(StringBuilder verStr, int length, out int returned)
+        {
+            lock (SyncRoot)
+            {
+                GetNkfVersionSafeNative(verStr, length, out returned);
+            }
+        }
+
         // LPSTR outStr,DWORD nOutBufferLength /*in Bytes*/,LPDWORD lpBytesReturned /*in Bytes*/, LPCSTR inStr,DWORD nInBufferLength /*in Bytes*/);
-        [DllImport(nkfdll)]
-        internal static extern bool NkfConvertSafe(
+        [DllImport(nkfdll, EntryPoint = "NkfConvertSafe")]
+        private static extern bool NkfConvertSafeNative(
             IntPtr outStr, 
             int nOutBufferLength,
             out int lpBytesReturned,
             IntPtr inStr, 
             int nInBufferLength);
 
-        [DllImport(nkfdll)]
-        internal static extern int NkfGetKanjiCode();
+        internal static bool NkfConvertSafe(
+            IntPtr output, int capacity, out int returned, IntPtr input, int length, string option)
+        {
+            WrapNkf.ValidateNkfOption(option, "nkfOption");
+            lock (SyncRoot)
+            {
+                SetNkfOptionNative(option);
+                bool result = NkfConvertSafeNative(output, capacity, out returned, input, length);
+                if (returned < 0)
+                {
+                    throw new InvalidOperationException("Native nkf conversion returned an invalid output length.");
+                }
+                return result;
+            }
+        }
 
-        [DllImport(nkfdll, CharSet = CharSet.Ansi)]
-        internal static extern bool SetNkfOption(string option);
+        [DllImport(nkfdll, EntryPoint = "NkfGetKanjiCode")]
+        private static extern int NkfGetKanjiCodeNative();
+
+        internal static int NkfGetKanjiCode()
+        {
+            lock (SyncRoot)
+            {
+                return NkfGetKanjiCodeNative();
+            }
+        }
+
+        [DllImport(nkfdll, EntryPoint = "SetNkfOption", CharSet = CharSet.Ansi)]
+        private static extern int SetNkfOptionNative(string option);
 
         // LPCWSTR fName,DWORD nBufferLength 
-        [DllImport(nkfdll, CharSet = CharSet.Auto)]
-        internal static extern bool NkfFileConvert1Safe(String fName,int nBufferLength);
+        [DllImport(nkfdll, EntryPoint = "NkfFileConvert1Safe", CharSet = CharSet.Auto)]
+        private static extern bool NkfFileConvert1SafeNative(String fName,int nBufferLength);
 
-        [DllImport(nkfdll, CharSet = CharSet.Auto)]
-        internal static extern bool GetNkfGuess(
+        internal static bool NkfFileConvert1Safe(string fileName, int length, string option)
+        {
+            WrapNkf.ValidateNkfOption(option, "nkfOption");
+            lock (SyncRoot)
+            {
+                SetNkfOptionNative(option);
+                return NkfFileConvert1SafeNative(fileName, length);
+            }
+        }
+
+        [DllImport(nkfdll, EntryPoint = "GetNkfGuess", CharSet = CharSet.Auto)]
+        private static extern bool GetNkfGuessNative(
             StringBuilder outStr,
             int nBufferLength/*in TCHARs*/,
             out int lpTCHARsReturned);
+
+        internal static bool GetNkfGuess(StringBuilder output, int length, out int returned)
+        {
+            lock (SyncRoot)
+            {
+                return GetNkfGuessNative(output, length, out returned);
+            }
+        }
 
         //        BOOL WINAPI GetNkfGuessW(LPWSTR outStr,DWORD nBufferLength /*in TCHARs*/,LPDWORD lpTCHARsReturned /*in TCHARs*/)
 
@@ -73,32 +126,67 @@ namespace Nkf.Net
             public int functions;
         };
 
-        [DllImport(nkfdll, CharSet = CharSet.Ansi)]
-        internal static extern bool GetNkfSupportFunctions(
+        [DllImport(nkfdll, EntryPoint = "GetNkfSupportFunctions", CharSet = CharSet.Ansi)]
+        private static extern bool GetNkfSupportFunctionsNative(
             ref MLocation outMLocation,
             int nBufferLength ,
             out int lpBytesReturned);
 
+        internal static bool GetNkfSupportFunctions(ref MLocation output, int length, out int returned)
+        {
+            lock (SyncRoot)
+            {
+                return GetNkfSupportFunctionsNative(ref output, length, out returned);
+            }
+        }
+
         //NkfUsage(LPSTR outStr,DWORD nBufferLength /*in Bytes*/,LPDWORD lpBytesReturned /*in Bytes*/)
 
-        [DllImport(nkfdll, CharSet = CharSet.Ansi)]
-        internal static extern bool NkfUsage(
+        [DllImport(nkfdll, EntryPoint = "NkfUsage", CharSet = CharSet.Ansi)]
+        private static extern bool NkfUsageNative(
             StringBuilder outStr,
             int nBufferLength/*in Bytes*/,
             out int lpBytesReturned);
+
+        internal static bool NkfUsage(StringBuilder output, int length, out int returned)
+        {
+            lock (SyncRoot)
+            {
+                return NkfUsageNative(output, length, out returned);
+            }
+        }
         
         //BOOL WINAPI NkfFileConvert2SafeA(LPCSTR fInName,DWORD fInBufferLength /*in TCHARs*/,LPCSTR fOutName,DWORD fOutBufferLength /*in TCHARs*/)
-        [DllImport(nkfdll, CharSet = CharSet.Auto)]
-        internal static extern bool NkfFileConvert2Safe(
+        [DllImport(nkfdll, EntryPoint = "NkfFileConvert2Safe", CharSet = CharSet.Auto)]
+        private static extern bool NkfFileConvert2SafeNative(
             string fInName,
             int fInBufferLength /*in TCHARs*/,
             string fOutName,
             int fOutBufferLength /*in TCHARs*/
             );
 
+        internal static bool NkfFileConvert2Safe(
+            string input, int inputLength, string output, int outputLength, string option)
+        {
+            WrapNkf.ValidateNkfOption(option, "nkfOption");
+            lock (SyncRoot)
+            {
+                SetNkfOptionNative(option);
+                return NkfFileConvert2SafeNative(input, inputLength, output, outputLength);
+            }
+        }
+
         // Linux 用初期化関数
-        [DllImport(nkfdll)]
-        internal static extern void Init();
+        [DllImport(nkfdll, EntryPoint = "Init")]
+        private static extern void InitNative();
+
+        private static void Init()
+        {
+            lock (SyncRoot)
+            {
+                InitNative();
+            }
+        }
 
         /// <summary>
         /// 任意のバイト配列を文字列に変換する
@@ -134,11 +222,10 @@ namespace Nkf.Net
                 gcData = GCHandle.Alloc(data, GCHandleType.Pinned);
                 IntPtr inStrPtr = IntPtr.Add(gcData.AddrOfPinnedObject(), startIndex);
 
-                SetNkfOption("-w"); // UTF8出力
                 outStrPtr = Marshal.AllocHGlobal(allocationSize);
 
                 int lpBytesReturned;
-                bool result = NkfConvertSafe(outStrPtr, dataLen, out lpBytesReturned, inStrPtr, length);
+                bool result = NkfConvertSafe(outStrPtr, dataLen, out lpBytesReturned, inStrPtr, length, "-w");
                 if (!result)
                 {
                     throw new InvalidOperationException("Native nkf conversion failed.");

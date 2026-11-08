@@ -39,10 +39,10 @@ namespace Nkf.Net
         /// </summary>
         /// <param name="outStr"></param>
         /// <param name="length"></param>
-        /// <param name="bytes"></param>
+        /// <param name="bytes">必要な出力バイト数。length を超える場合があります。</param>
         /// <param name="data"></param>
         /// <param name="len"></param>
-        /// <returns></returns>
+        /// <returns>変換に成功し、出力が指定領域に収まった場合は true。</returns>
         public static bool NkfConvertSafe(byte[] outStr, int length, out int bytes, byte[] data, int len)
         {
             return NkfConvertSafeWithOption(outStr, length, out bytes, data, len, null);
@@ -54,42 +54,14 @@ namespace Nkf.Net
         /// </summary>
         /// <param name="outStr"></param>
         /// <param name="length"></param>
-        /// <param name="bytes"></param>
+        /// <param name="bytes">必要な出力バイト数。length を超える場合があります。</param>
         /// <param name="data"></param>
         /// <param name="len"></param>
         /// <param name="nkfOption"></param>
-        /// <returns></returns>
+        /// <returns>変換に成功し、出力が指定領域に収まった場合は true。</returns>
         public static bool NkfConvertSafeWithOption(byte[] outStr, int length, out int bytes, byte[] data, int len,string nkfOption)
         {
             return NkfConvertSafeByGCHandle(outStr, length, out bytes, data, len, nkfOption);
-            //return NkfConvertSafeByAllocHGlobal(outStr, length, out bytes, data, len, nkfOption);
-        }
-
-        private static bool NkfConvertSafeByAllocHGlobal(byte[] outStr, int length, out int bytes, byte[] data, int len, string nkfOption)
-        {
-            // 最後に設定された SetNkfOption の値を利用する
-            if (nkfOption != null)
-            {
-                NativeMethods.SetNkfOption(nkfOption);
-            }
-            else
-            {
-                SetNkfOptionAtLast();
-            }
-
-            // 指定した情報を使ってコンバート実行
-            IntPtr p = Marshal.AllocHGlobal(length);
-            IntPtr pData = Marshal.AllocHGlobal(len);
-            Marshal.Copy(data, 0, pData, len);
-
-            bool result = NativeMethods.NkfConvertSafe(p, length, out bytes, pData, len);
-
-            Marshal.Copy(p, outStr, 0, bytes);
-
-            Marshal.FreeHGlobal(p);
-            Marshal.FreeHGlobal(pData);
-
-            return result;
         }
 
         private static bool NkfConvertSafeByGCHandle(byte[] outStr, int length, out int bytes, byte[] data, int len, string nkfOption)
@@ -99,15 +71,8 @@ namespace Nkf.Net
             if (length < 0 || length > outStr.Length) throw new ArgumentOutOfRangeException("length");
             if (len < 0 || len > data.Length) throw new ArgumentOutOfRangeException("len");
 
-            // 最後に設定された SetNkfOption の値を利用する
-            if (nkfOption != null)
-            {
-                NativeMethods.SetNkfOption(nkfOption);
-            }
-            else
-            {
-                SetNkfOptionAtLast();
-            }
+            string option = nkfOption ?? CurrentNkfOption;
+            ValidateNkfOption(option, "nkfOption");
 
             // 指定した情報を使ってコンバート実行
             GCHandle gcBytes = default(GCHandle);
@@ -120,11 +85,11 @@ namespace Nkf.Net
                 IntPtr outBuffer = gcOutStr.AddrOfPinnedObject();
 
                 int convertBytes;
-                bool result = NativeMethods.NkfConvertSafe(outBuffer, length, out convertBytes, inBuffer, len);
+                bool result = NativeMethods.NkfConvertSafe(outBuffer, length, out convertBytes, inBuffer, len, option);
 
                 bytes = convertBytes;
 
-                return result;
+                return result && convertBytes <= length;
             }
             finally
             {
@@ -179,6 +144,15 @@ namespace Nkf.Net
                 nkfOption = nkfOption + " -w";
             }
             bool result = NkfConvertSafeWithOption(data, data.Length, out convertBytes, inData, length, nkfOption);
+            if (!result && convertBytes > data.Length)
+            {
+                data = new byte[convertBytes];
+                result = NkfConvertSafeWithOption(data, data.Length, out convertBytes, inData, length, nkfOption);
+            }
+            if (!result)
+            {
+                throw new InvalidOperationException("Native nkf conversion failed or the output size changed during conversion.");
+            }
 
             string s = System.Text.Encoding.UTF8.GetString(data, 0, convertBytes);
 
@@ -191,6 +165,10 @@ namespace Nkf.Net
         /// <param name="option"></param>
         public static void SetNkfOption(string option)
         {
+            if (option != null)
+            {
+                ValidateNkfOption(option, "option");
+            }
             _nkfOption = option;
         }
         /// <summary>
@@ -198,14 +176,54 @@ namespace Nkf.Net
         /// (デフォルトは UTF8）
         /// </summary>
         [ThreadStatic]
-        static string _nkfOption = "-w";
+        static string _nkfOption;
 
-        private static void SetNkfOptionAtLast()
+        private static string CurrentNkfOption
         {
-            if (_nkfOption != null)
+            get { return _nkfOption ?? "-w"; }
+        }
+
+        internal static void ValidateNkfOption(string option, string parameterName)
+        {
+            if (option == null) throw new ArgumentNullException(parameterName);
+            foreach (char c in option)
             {
-                Console.WriteLine("Option:" + _nkfOption);
-                NativeMethods.SetNkfOption(_nkfOption);
+                if (c < ' ' || c > '~')
+                {
+                    throw new ArgumentException("Nkf options must contain only printable ASCII characters.", parameterName);
+                }
+            }
+
+            // SetNkfOption adds one leading dash; options() skips up to the first dash in each token.
+            string nativeOption = option.StartsWith("-", StringComparison.Ordinal) ? option : "-" + option;
+            foreach (string token in nativeOption.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                int start = token.IndexOf('-');
+                if (start < 0) continue;
+
+                string flags = token.Substring(start + 1);
+                if (flags.StartsWith("-", StringComparison.Ordinal))
+                {
+                    string name = flags.Substring(1).Split('=')[0];
+                    if (name == "help" || name == "version")
+                    {
+                        throw new ArgumentException("Options that terminate the process are not supported.", parameterName);
+                    }
+                    continue;
+                }
+
+                for (int i = 0; i < flags.Length; i++)
+                {
+                    if (flags[i] == 'v' || flags[i] == 'V')
+                    {
+                        throw new ArgumentException("Options that terminate the process are not supported.", parameterName);
+                    }
+                    if (flags[i] == '-' &&
+                        (i + 1 == flags.Length || flags[i + 1] < '0' || flags[i + 1] > '9'))
+                    {
+                        throw new ArgumentException("Separate nkf options with spaces; embedded dashes are only supported for numeric arguments.", parameterName);
+                    }
+                }
             }
         }
         /// <summary>
@@ -215,9 +233,7 @@ namespace Nkf.Net
         /// <returns></returns>
         public static bool FileConvert1(string fileName)
         {
-            SetNkfOptionAtLast();
-
-            return NativeMethods.NkfFileConvert1Safe(fileName, fileName.Length + 1);
+            return NativeMethods.NkfFileConvert1Safe(fileName, fileName.Length + 1, CurrentNkfOption);
         }
 
         /// <summary>
@@ -228,9 +244,7 @@ namespace Nkf.Net
         /// <returns></returns>
         public static bool FileConvert2(string inFileName, string outFileName)
         {
-            SetNkfOptionAtLast();
-
-            return NativeMethods.NkfFileConvert2Safe(inFileName, inFileName.Length + 1, outFileName, outFileName.Length + 1);
+            return NativeMethods.NkfFileConvert2Safe(inFileName, inFileName.Length + 1, outFileName, outFileName.Length + 1, CurrentNkfOption);
         }
 
         public static string GetGuess()

@@ -97,6 +97,7 @@ namespace Nkf.Net
         /// <param name="nkfOption"></param>
         public void SetNkfOption(string nkfOption)
         {
+            WrapNkf.ValidateNkfOption(nkfOption, "nkfOption");
             string[] options = nkfOption.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             System.Text.StringBuilder sb = new StringBuilder();
