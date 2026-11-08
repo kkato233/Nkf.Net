@@ -94,6 +94,11 @@ namespace Nkf.Net
 
         private static bool NkfConvertSafeByGCHandle(byte[] outStr, int length, out int bytes, byte[] data, int len, string nkfOption)
         {
+            if (outStr == null) throw new ArgumentNullException("outStr");
+            if (data == null) throw new ArgumentNullException("data");
+            if (length < 0 || length > outStr.Length) throw new ArgumentOutOfRangeException("length");
+            if (len < 0 || len > data.Length) throw new ArgumentOutOfRangeException("len");
+
             // 最後に設定された SetNkfOption の値を利用する
             if (nkfOption != null)
             {
@@ -105,12 +110,15 @@ namespace Nkf.Net
             }
 
             // 指定した情報を使ってコンバート実行
-            GCHandle gcBytes = GCHandle.Alloc(data, GCHandleType.Pinned);
-            GCHandle gcOutStr = GCHandle.Alloc(outStr, GCHandleType.Pinned);
-            IntPtr inBuffer = gcBytes.AddrOfPinnedObject();
-            IntPtr outBuffer = gcOutStr.AddrOfPinnedObject();
+            GCHandle gcBytes = default(GCHandle);
+            GCHandle gcOutStr = default(GCHandle);
             try
             {
+                gcBytes = GCHandle.Alloc(data, GCHandleType.Pinned);
+                gcOutStr = GCHandle.Alloc(outStr, GCHandleType.Pinned);
+                IntPtr inBuffer = gcBytes.AddrOfPinnedObject();
+                IntPtr outBuffer = gcOutStr.AddrOfPinnedObject();
+
                 int convertBytes;
                 bool result = NativeMethods.NkfConvertSafe(outBuffer, length, out convertBytes, inBuffer, len);
 
@@ -120,8 +128,14 @@ namespace Nkf.Net
             }
             finally
             {
-                gcBytes.Free();
-                gcOutStr.Free();
+                if (gcBytes.IsAllocated)
+                {
+                    gcBytes.Free();
+                }
+                if (gcOutStr.IsAllocated)
+                {
+                    gcOutStr.Free();
+                }
             }
             
         }
@@ -140,7 +154,11 @@ namespace Nkf.Net
 
         internal static string NkfConvert(byte[] buffer, int startIndex, int length,string nkfOption)
         {
-            byte []data = new byte[length * sizeof(char) + 10];
+            if (buffer == null) throw new ArgumentNullException("buffer");
+            if (startIndex < 0 || startIndex > buffer.Length) throw new ArgumentOutOfRangeException("startIndex");
+            if (length < 0 || length > buffer.Length - startIndex) throw new ArgumentOutOfRangeException("length");
+
+            byte []data = new byte[checked(length * sizeof(char) + 10)];
 
             byte[] inData;
             if (startIndex == 0) {

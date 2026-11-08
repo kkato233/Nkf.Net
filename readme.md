@@ -52,6 +52,14 @@ Console.WriteLine(s2);
 Console.WriteLine(s3);
 ```
 
+### 配列APIの範囲指定
+
+`WrapNkf.NkfConvertSafe` / `NkfConvertSafeWithOption` の入出力長は、それぞれの配列の長さ以下の非負の値を指定してください。
+`WrapNkf.NkfConvert` / `NkfEncoding.NkfConvert` / `NkfEncoding.GetChars` / `NkfEncoding.GetCharCount` では、開始位置と長さが配列内に収まる必要があります。配列末尾を開始位置として長さ `0` を指定することもできます。
+
+`null` の配列には `ArgumentNullException`、負数や配列の範囲外を指定した場合には `ArgumentOutOfRangeException` を送出します。従来の `NkfEncoding.NkfConvert` による範囲の自動切り詰めは行いません。内部のバッファーサイズ計算で整数オーバーフローが発生する場合は `OverflowException` を送出します。
+ネイティブ関数に渡す配列は呼び出し中に固定し、例外発生時も固定と一時領域を解放します。
+
 ### nkf の機能を直接利用してファイル変換する
 
 ``` C#

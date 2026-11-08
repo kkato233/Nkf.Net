@@ -109,15 +109,17 @@ namespace Nkf.Net
         /// <returns></returns>
         internal static string NkfConvert(byte[] data, int startIndex, int length)
         {
-            // 最低限のチェック
-            if (data == null || startIndex > data.Length)
-            {
-                return null;
-            }
-            if (data.Length == 0 || length == 0)
+            if (data == null) throw new ArgumentNullException("data");
+            if (startIndex < 0 || startIndex > data.Length) throw new ArgumentOutOfRangeException("startIndex");
+            if (length < 0 || length > data.Length - startIndex) throw new ArgumentOutOfRangeException("length");
+
+            if (length == 0)
             {
                 return "";
             }
+
+            int dataLen = checked(length * 4);
+            int allocationSize = checked(dataLen + 1);
 
             if (Environment.OSVersion.Platform == PlatformID.Unix)
             {
@@ -125,47 +127,42 @@ namespace Nkf.Net
                 Init();
             }
 
-            // 領域オーバーする場合は事前にカット
-            if (length + startIndex > data.Length)
+            GCHandle gcData = default(GCHandle);
+            IntPtr outStrPtr = IntPtr.Zero;
+            try
             {
-                length = data.Length - startIndex;
-            }
+                gcData = GCHandle.Alloc(data, GCHandleType.Pinned);
+                IntPtr inStrPtr = IntPtr.Add(gcData.AddrOfPinnedObject(), startIndex);
 
-            // 配列の指定の位置を取得
-            IntPtr inStrPtr = Marshal.UnsafeAddrOfPinnedArrayElement(data, startIndex);
-            // GC されないように ピン を押す
-            GCHandle gchpointData = GCHandle.FromIntPtr(inStrPtr);
+                SetNkfOption("-w"); // UTF8出力
+                outStrPtr = Marshal.AllocHGlobal(allocationSize);
 
-            SetNkfOption("-w"); // UTF8出力
+                int lpBytesReturned;
+                bool result = NkfConvertSafe(outStrPtr, dataLen, out lpBytesReturned, inStrPtr, length);
+                if (!result)
+                {
+                    throw new InvalidOperationException("Native nkf conversion failed.");
+                }
+                if (lpBytesReturned < 0 || lpBytesReturned > dataLen)
+                {
+                    throw new InvalidOperationException("Native nkf conversion returned an invalid output length.");
+                }
 
-            // 戻りの領域を確保 入力の4倍の領域
-            int dataLen = data.Length * 4;
-            IntPtr outStrPtr = Marshal.AllocHGlobal(dataLen + 1);
-
-            int lpBytesReturned;
-            bool result = NkfConvertSafe(outStrPtr, dataLen, out lpBytesReturned, inStrPtr, length);
-
-            // 変換結果を 文字列に変換する
-
-            String sAns;
-            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
-            {
-#if NETCOREAPP
-                sAns = Marshal.PtrToStringUTF8(outStrPtr);
-#else
                 byte[] strData = new byte[lpBytesReturned];
                 Marshal.Copy(outStrPtr, strData, 0, lpBytesReturned);
-                sAns = System.Text.Encoding.UTF8.GetString(strData, 0, lpBytesReturned);
-#endif
+                return System.Text.Encoding.UTF8.GetString(strData, 0, lpBytesReturned);
             }
-            else
+            finally
             {
-                sAns = Marshal.PtrToStringAuto(outStrPtr);
+                if (outStrPtr != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(outStrPtr);
+                }
+                if (gcData.IsAllocated)
+                {
+                    gcData.Free();
+                }
             }
-            
-            Marshal.FreeHGlobal(outStrPtr);
-
-            return sAns;
         }
 
         /// <summary>

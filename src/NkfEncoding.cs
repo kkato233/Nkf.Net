@@ -157,8 +157,12 @@ namespace Nkf.Net
         /// <returns>指定したバイト シーケンスをデコードすることによって生成される文字数。</returns>
         public override int GetCharCount(byte[] bytes, int index, int count)
         {
+            if (bytes == null) throw new ArgumentNullException("bytes");
+            if (index < 0 || index > bytes.Length) throw new ArgumentOutOfRangeException("index");
+            if (count < 0 || count > bytes.Length - index) throw new ArgumentOutOfRangeException("count");
+
             int workSize = this.GetMaxCharCount(count);
-            char[] workChars = new char[workSize + 1];
+            char[] workChars = new char[checked(workSize + 1)];
             int result = this.GetChars(bytes, index, count, workChars, 0);
 
             return result;
@@ -188,57 +192,46 @@ namespace Nkf.Net
         {
 
             if (chars == null) throw new ArgumentNullException("chars");
-            if (bytes == null) throw new ArgumentNullException("chars");
+            if (bytes == null) throw new ArgumentNullException("bytes");
             if (byteIndex < 0 || byteIndex > bytes.Length) throw new ArgumentOutOfRangeException("byteIndex");
+            if (byteCount < 0 || byteCount > bytes.Length - byteIndex) throw new ArgumentOutOfRangeException("byteCount");
             if (charIndex < 0 || charIndex > chars.Length) throw new ArgumentOutOfRangeException("charIndex");
-            if (bytes.Length < byteIndex + byteCount) throw new ArgumentOutOfRangeException(" byteindex および byteCount がbytes 内の有効な範囲を示していません。");
 
-            int workLength = (chars.Length - charIndex) * 3 + 5;
+            int workLength = checked((chars.Length - charIndex) * sizeof(char));
 
-            GCHandle gcBytes = GCHandle.Alloc(bytes, GCHandleType.Pinned);
-            byte[] workBytes = new byte[workLength];
-            GCHandle gcWorkBytes = GCHandle.Alloc(workBytes, GCHandleType.Pinned);
-            GCHandle gcChars = GCHandle.Alloc(chars, GCHandleType.Pinned);
+            GCHandle gcBytes = default(GCHandle);
+            GCHandle gcChars = default(GCHandle);
 
             try
             {
+                gcBytes = GCHandle.Alloc(bytes, GCHandleType.Pinned);
+                gcChars = GCHandle.Alloc(chars, GCHandleType.Pinned);
                 IntPtr inBuffer = AddIndex(gcBytes.AddrOfPinnedObject(), byteIndex);
 
                 int convertBytes;
-#if false
-                IntPtr outBuffer = gcWorkBytes.AddrOfPinnedObject();
-                NativeMethods.SetNkfOption("-mQ -w");
-                
-                // UTF8 変換
-                bool result = NativeMethods.NkfConvertSafe(outBuffer, workLength, out convertBytes, inBuffer, byteCount);
-                // UTF8->char 変換
-                int writeCharCount = this._baseEncoding.GetChars(workBytes, 0, convertBytes, chars, charIndex);
-                if (result)
-                {
-
-                    return writeCharCount;
-                }
-#else
-                IntPtr outBuffer = AddIndex(gcChars.AddrOfPinnedObject(),charIndex * sizeof(char));
+                IntPtr outBuffer = AddIndex(gcChars.AddrOfPinnedObject(), checked(charIndex * sizeof(char)));
 
                 // コード変換オプション指定
                 NativeMethods.SetNkfOption(this.currentNkfOption);
 
-                workLength = (chars.Length - charIndex) * sizeof(char);
                 // UTC2 変換
                 bool result = NativeMethods.NkfConvertSafe(outBuffer, workLength, out convertBytes, inBuffer, byteCount);
                 if (result)
                 {
                     return convertBytes / sizeof(char);
                 }
-#endif
                 return 0;
             }
             finally
             {
-                gcChars.Free();
-                gcBytes.Free();
-                gcWorkBytes.Free();
+                if (gcChars.IsAllocated)
+                {
+                    gcChars.Free();
+                }
+                if (gcBytes.IsAllocated)
+                {
+                    gcBytes.Free();
+                }
             }
         }
 
