@@ -38,6 +38,7 @@ namespace Nkf.Net
         /// <param name="nkfOption"></param>
         public void SetNkfOption(string nkfOption)
         {
+            WrapNkf.ValidateNkfOption(nkfOption, "nkfOption");
             string[] options = nkfOption.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             System.Text.StringBuilder sb = new StringBuilder();
@@ -147,8 +148,6 @@ namespace Nkf.Net
         }
 
         /// <summary>
-        /// 非推奨：内部的には文字列変換してその文字数をカウントしているので性能が良くありません。
-        /// 
         /// 指定したバイト配列に格納されているバイト シーケンスをデコードすることによって生成される文字数を計算します。
         /// </summary>
         /// <param name="bytes">デコード対象のバイト シーケンスが格納されたバイト配列。</param>
@@ -157,11 +156,12 @@ namespace Nkf.Net
         /// <returns>指定したバイト シーケンスをデコードすることによって生成される文字数。</returns>
         public override int GetCharCount(byte[] bytes, int index, int count)
         {
-            int workSize = this.GetMaxCharCount(count);
-            char[] workChars = new char[workSize + 1];
-            int result = this.GetChars(bytes, index, count, workChars, 0);
+            if (bytes == null) throw new ArgumentNullException("bytes");
+            if (index < 0 || index > bytes.Length) throw new ArgumentOutOfRangeException("index");
+            if (count < 0 || count > bytes.Length - index) throw new ArgumentOutOfRangeException("count");
 
-            return result;
+            // A null output with zero capacity asks nkf for the required size without writing.
+            return ConvertToChars(bytes, index, count, null, 0);
         }
 
         /// <summary>
@@ -188,57 +188,54 @@ namespace Nkf.Net
         {
 
             if (chars == null) throw new ArgumentNullException("chars");
-            if (bytes == null) throw new ArgumentNullException("chars");
+            if (bytes == null) throw new ArgumentNullException("bytes");
             if (byteIndex < 0 || byteIndex > bytes.Length) throw new ArgumentOutOfRangeException("byteIndex");
+            if (byteCount < 0 || byteCount > bytes.Length - byteIndex) throw new ArgumentOutOfRangeException("byteCount");
             if (charIndex < 0 || charIndex > chars.Length) throw new ArgumentOutOfRangeException("charIndex");
-            if (bytes.Length < byteIndex + byteCount) throw new ArgumentOutOfRangeException(" byteindex および byteCount がbytes 内の有効な範囲を示していません。");
 
-            int workLength = (chars.Length - charIndex) * 3 + 5;
+            return ConvertToChars(bytes, byteIndex, byteCount, chars, charIndex);
+        }
 
-            GCHandle gcBytes = GCHandle.Alloc(bytes, GCHandleType.Pinned);
-            byte[] workBytes = new byte[workLength];
-            GCHandle gcWorkBytes = GCHandle.Alloc(workBytes, GCHandleType.Pinned);
-            GCHandle gcChars = GCHandle.Alloc(chars, GCHandleType.Pinned);
+        private int ConvertToChars(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex)
+        {
+            int workLength = chars == null ? 0 : checked((chars.Length - charIndex) * sizeof(char));
+
+            GCHandle gcBytes = default(GCHandle);
+            GCHandle gcChars = default(GCHandle);
 
             try
             {
+                gcBytes = GCHandle.Alloc(bytes, GCHandleType.Pinned);
                 IntPtr inBuffer = AddIndex(gcBytes.AddrOfPinnedObject(), byteIndex);
+                IntPtr outBuffer = IntPtr.Zero;
+                if (chars != null)
+                {
+                    gcChars = GCHandle.Alloc(chars, GCHandleType.Pinned);
+                    outBuffer = AddIndex(gcChars.AddrOfPinnedObject(), checked(charIndex * sizeof(char)));
+                }
 
                 int convertBytes;
-#if false
-                IntPtr outBuffer = gcWorkBytes.AddrOfPinnedObject();
-                NativeMethods.SetNkfOption("-mQ -w");
-                
-                // UTF8 変換
-                bool result = NativeMethods.NkfConvertSafe(outBuffer, workLength, out convertBytes, inBuffer, byteCount);
-                // UTF8->char 変換
-                int writeCharCount = this._baseEncoding.GetChars(workBytes, 0, convertBytes, chars, charIndex);
-                if (result)
+                bool result = NativeMethods.NkfConvertSafe(outBuffer, workLength, out convertBytes, inBuffer, byteCount, this.currentNkfOption);
+                if (!result || convertBytes % sizeof(char) != 0)
                 {
-
-                    return writeCharCount;
+                    throw new InvalidOperationException("Native nkf conversion did not return valid UTF-16 output.");
                 }
-#else
-                IntPtr outBuffer = AddIndex(gcChars.AddrOfPinnedObject(),charIndex * sizeof(char));
-
-                // コード変換オプション指定
-                NativeMethods.SetNkfOption(this.currentNkfOption);
-
-                workLength = (chars.Length - charIndex) * sizeof(char);
-                // UTC2 変換
-                bool result = NativeMethods.NkfConvertSafe(outBuffer, workLength, out convertBytes, inBuffer, byteCount);
-                if (result)
+                if (chars != null && convertBytes > workLength)
                 {
-                    return convertBytes / sizeof(char);
+                    throw new ArgumentException("The output character array is too small.", "chars");
                 }
-#endif
-                return 0;
+                return convertBytes / sizeof(char);
             }
             finally
             {
-                gcChars.Free();
-                gcBytes.Free();
-                gcWorkBytes.Free();
+                if (gcChars.IsAllocated)
+                {
+                    gcChars.Free();
+                }
+                if (gcBytes.IsAllocated)
+                {
+                    gcBytes.Free();
+                }
             }
         }
 

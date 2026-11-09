@@ -38,23 +38,45 @@ namespace Nkf.Net
             out int lpTCHARsReturned);
 
         // LPSTR outStr,DWORD nOutBufferLength /*in Bytes*/,LPDWORD lpBytesReturned /*in Bytes*/, LPCSTR inStr,DWORD nInBufferLength /*in Bytes*/);
-        [DllImport(nkfdll)]
-        internal static extern bool NkfConvertSafe(
+        [DllImport(nkfdll, EntryPoint = "NkfConvertSafe")]
+        private static extern bool NkfConvertSafeNative(
             IntPtr outStr, 
             int nOutBufferLength,
             out int lpBytesReturned,
             IntPtr inStr, 
             int nInBufferLength);
 
+        // nkf keeps option and conversion state in thread-local storage, so setting the
+        // option and converting on the same thread is sufficient without a global lock.
+        internal static bool NkfConvertSafe(
+            IntPtr output, int capacity, out int returned, IntPtr input, int length, string option)
+        {
+            WrapNkf.ValidateNkfOption(option, "nkfOption");
+            SetNkfOptionNative(option);
+            bool result = NkfConvertSafeNative(output, capacity, out returned, input, length);
+            if (returned < 0)
+            {
+                throw new InvalidOperationException("Native nkf conversion returned an invalid output length.");
+            }
+            return result;
+        }
+
         [DllImport(nkfdll)]
         internal static extern int NkfGetKanjiCode();
 
-        [DllImport(nkfdll, CharSet = CharSet.Ansi)]
-        internal static extern bool SetNkfOption(string option);
+        [DllImport(nkfdll, EntryPoint = "SetNkfOption", CharSet = CharSet.Ansi)]
+        private static extern int SetNkfOptionNative(string option);
 
         // LPCWSTR fName,DWORD nBufferLength 
-        [DllImport(nkfdll, CharSet = CharSet.Auto)]
-        internal static extern bool NkfFileConvert1Safe(String fName,int nBufferLength);
+        [DllImport(nkfdll, EntryPoint = "NkfFileConvert1Safe", CharSet = CharSet.Auto)]
+        private static extern bool NkfFileConvert1SafeNative(String fName,int nBufferLength);
+
+        internal static bool NkfFileConvert1Safe(string fileName, int length, string option)
+        {
+            WrapNkf.ValidateNkfOption(option, "nkfOption");
+            SetNkfOptionNative(option);
+            return NkfFileConvert1SafeNative(fileName, length);
+        }
 
         [DllImport(nkfdll, CharSet = CharSet.Auto)]
         internal static extern bool GetNkfGuess(
@@ -88,13 +110,21 @@ namespace Nkf.Net
             out int lpBytesReturned);
         
         //BOOL WINAPI NkfFileConvert2SafeA(LPCSTR fInName,DWORD fInBufferLength /*in TCHARs*/,LPCSTR fOutName,DWORD fOutBufferLength /*in TCHARs*/)
-        [DllImport(nkfdll, CharSet = CharSet.Auto)]
-        internal static extern bool NkfFileConvert2Safe(
+        [DllImport(nkfdll, EntryPoint = "NkfFileConvert2Safe", CharSet = CharSet.Auto)]
+        private static extern bool NkfFileConvert2SafeNative(
             string fInName,
             int fInBufferLength /*in TCHARs*/,
             string fOutName,
             int fOutBufferLength /*in TCHARs*/
             );
+
+        internal static bool NkfFileConvert2Safe(
+            string input, int inputLength, string output, int outputLength, string option)
+        {
+            WrapNkf.ValidateNkfOption(option, "nkfOption");
+            SetNkfOptionNative(option);
+            return NkfFileConvert2SafeNative(input, inputLength, output, outputLength);
+        }
 
         // Linux 用初期化関数
         [DllImport(nkfdll)]
@@ -109,15 +139,17 @@ namespace Nkf.Net
         /// <returns></returns>
         internal static string NkfConvert(byte[] data, int startIndex, int length)
         {
-            // 最低限のチェック
-            if (data == null || startIndex > data.Length)
-            {
-                return null;
-            }
-            if (data.Length == 0 || length == 0)
+            if (data == null) throw new ArgumentNullException("data");
+            if (startIndex < 0 || startIndex > data.Length) throw new ArgumentOutOfRangeException("startIndex");
+            if (length < 0 || length > data.Length - startIndex) throw new ArgumentOutOfRangeException("length");
+
+            if (length == 0)
             {
                 return "";
             }
+
+            int dataLen = checked(length * 4);
+            int allocationSize = checked(dataLen + 1);
 
             if (Environment.OSVersion.Platform == PlatformID.Unix)
             {
@@ -125,47 +157,41 @@ namespace Nkf.Net
                 Init();
             }
 
-            // 領域オーバーする場合は事前にカット
-            if (length + startIndex > data.Length)
+            GCHandle gcData = default(GCHandle);
+            IntPtr outStrPtr = IntPtr.Zero;
+            try
             {
-                length = data.Length - startIndex;
-            }
+                gcData = GCHandle.Alloc(data, GCHandleType.Pinned);
+                IntPtr inStrPtr = IntPtr.Add(gcData.AddrOfPinnedObject(), startIndex);
 
-            // 配列の指定の位置を取得
-            IntPtr inStrPtr = Marshal.UnsafeAddrOfPinnedArrayElement(data, startIndex);
-            // GC されないように ピン を押す
-            GCHandle gchpointData = GCHandle.FromIntPtr(inStrPtr);
+                outStrPtr = Marshal.AllocHGlobal(allocationSize);
 
-            SetNkfOption("-w"); // UTF8出力
+                int lpBytesReturned;
+                bool result = NkfConvertSafe(outStrPtr, dataLen, out lpBytesReturned, inStrPtr, length, "-w");
+                if (!result)
+                {
+                    throw new InvalidOperationException("Native nkf conversion failed.");
+                }
+                if (lpBytesReturned < 0 || lpBytesReturned > dataLen)
+                {
+                    throw new InvalidOperationException("Native nkf conversion returned an invalid output length.");
+                }
 
-            // 戻りの領域を確保 入力の4倍の領域
-            int dataLen = data.Length * 4;
-            IntPtr outStrPtr = Marshal.AllocHGlobal(dataLen + 1);
-
-            int lpBytesReturned;
-            bool result = NkfConvertSafe(outStrPtr, dataLen, out lpBytesReturned, inStrPtr, length);
-
-            // 変換結果を 文字列に変換する
-
-            String sAns;
-            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
-            {
-#if NETCOREAPP
-                sAns = Marshal.PtrToStringUTF8(outStrPtr);
-#else
                 byte[] strData = new byte[lpBytesReturned];
                 Marshal.Copy(outStrPtr, strData, 0, lpBytesReturned);
-                sAns = System.Text.Encoding.UTF8.GetString(strData, 0, lpBytesReturned);
-#endif
+                return System.Text.Encoding.UTF8.GetString(strData, 0, lpBytesReturned);
             }
-            else
+            finally
             {
-                sAns = Marshal.PtrToStringAuto(outStrPtr);
+                if (outStrPtr != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(outStrPtr);
+                }
+                if (gcData.IsAllocated)
+                {
+                    gcData.Free();
+                }
             }
-            
-            Marshal.FreeHGlobal(outStrPtr);
-
-            return sAns;
         }
 
         /// <summary>

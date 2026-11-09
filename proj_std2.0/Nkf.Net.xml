@@ -121,8 +121,6 @@
         </member>
         <member name="M:Nkf.Net.NkfEncoding.GetCharCount(System.Byte[],System.Int32,System.Int32)">
             <summary>
-            非推奨：内部的には文字列変換してその文字数をカウントしているので性能が良くありません。
-            
             指定したバイト配列に格納されているバイト シーケンスをデコードすることによって生成される文字数を計算します。
             </summary>
             <param name="bytes">デコード対象のバイト シーケンスが格納されたバイト配列。</param>
@@ -272,10 +270,10 @@
             </summary>
             <param name="outStr"></param>
             <param name="length"></param>
-            <param name="bytes"></param>
+            <param name="bytes">必要な出力バイト数。length を超える場合があります。</param>
             <param name="data"></param>
             <param name="len"></param>
-            <returns></returns>
+            <returns>変換に成功し、出力が指定領域に収まった場合は true。</returns>
         </member>
         <member name="M:Nkf.Net.WrapNkf.NkfConvertSafeWithOption(System.Byte[],System.Int32,System.Int32@,System.Byte[],System.Int32,System.String)">
             <summary>
@@ -284,11 +282,11 @@
             </summary>
             <param name="outStr"></param>
             <param name="length"></param>
-            <param name="bytes"></param>
+            <param name="bytes">必要な出力バイト数。length を超える場合があります。</param>
             <param name="data"></param>
             <param name="len"></param>
             <param name="nkfOption"></param>
-            <returns></returns>
+            <returns>変換に成功し、出力が指定領域に収まった場合は true。</returns>
         </member>
         <member name="M:Nkf.Net.WrapNkf.NkfConvert(System.Byte[],System.Int32,System.Int32)">
             <summary>
